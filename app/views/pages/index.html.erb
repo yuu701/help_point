@@ -1,2 +1,14 @@
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
+<div class="top-hero-wrapper text-center">
+  <div class="container top-hero-container">
+    <h1 class="text-grey">お手伝いポイント管理</h1>
+    <h2 class="text-grey">お手伝いポイントをためてお小遣いをゲットしよう！</h2>
+    <div class="row">
+      <div class="col-md-offset-3 col-md-3">
+        <%= link_to '新規登録', new_parent_path, class: 'btn btn-block btn-grey' %>
+      </div>
+      <div class="col-md-3">
+        <%= link_to 'ログイン', '#', class:'btn btn-block btn-grey' %>
+      </div>
+    </div>
+  </div>
+</div>
