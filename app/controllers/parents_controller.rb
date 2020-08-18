@@ -13,6 +13,9 @@ class ParentsController < ApplicationController
     end
   end
   
+  def edit
+  end
+  
   private
   def parent_params
     params.require(:parent).permit(:name, :email, :password, :password_confirmation)
