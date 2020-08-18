@@ -13,6 +13,38 @@
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
     <% end %>
+    
+    <nav class="navbar navbar-default navbar-fixed-top navbar-transparent">
+      <div class="container">
+        <%= link_to "ホーム", root_path %>
+        <ul class="nav navbar-nav navbar-right">
+          <% if logged_in? %>
+            <li>
+              <%= link_to "お手伝い登録", "#" %>
+            </li>
+            <li>
+              <%= link_to "会員情報", "#" %>
+            </li>
+            <li>
+              <%= link_to "ログアウト", logout_path, method: :delete %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "新規登録", new_parent_path %>
+            </li>
+            <li>
+              <%= link_to "ログイン", login_path %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
     <%= yield %>
+    
+    <script>
+      $(function(){
+        $(".alert").fadeOut(5000);
+      });
+    </script>
   </body>
 </html>
