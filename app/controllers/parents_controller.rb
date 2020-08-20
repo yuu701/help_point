@@ -14,6 +14,17 @@ class ParentsController < ApplicationController
   end
   
   def edit
+    @parent = Parent.find_by(id: params[:id])
+  end
+  
+  def update
+    @parent = Parent.find_by(id: params[:id])
+    if current_parent == @parent
+      redirect_to root_path, success: "アカウント情報を変更しました"
+    else
+      flash.now[:danger] = "アカウント情報の変更に失敗しました"
+      render :edit
+    end
   end
   
   private

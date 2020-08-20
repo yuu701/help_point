@@ -5,7 +5,7 @@
         <h1 class="text-center text-color">新規登録</h1>
         <%= form_for @parent do |f| %>
         <div class="form-group">
-          <%= f.label :名前, class: 'text-color' %>
+          <%= f.label :ニックネーム, class: 'text-color' %>
           <%= f.text_field :name, class: "form-control" %>
         </div>
         <div class="form-group">
@@ -17,7 +17,7 @@
           <%= f.password_field :password, class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :パスワード確認用, class: "text-color" %>
+          <%= f.label :パスワード（もう一度ご入力ください）, class: "text-color" %>
           <%= f.password_field :password_confirmation, class: "form-control" %>
         </div>
         <%= f.submit "登録", class: "btn-block btn-color" %>
