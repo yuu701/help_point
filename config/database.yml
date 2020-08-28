@@ -49,6 +49,9 @@ test:
 #
 production:
   <<: *default
-  database: help_point_production
-  username: help_point
-  password: <%= ENV['HELP_POINT_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  # database: help_point_production
+  # username: help_point
+  # password: <%= ENV['HELP_POINT_DATABASE_PASSWORD'] %>
