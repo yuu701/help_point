@@ -1,0 +1,30 @@
+<header class="navbar navbar-default navbar-fixed-top navbar-transparent">
+  <div class="container">
+    <%= link_to "ホーム", root_path %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <% if logged_in? %>
+          <li>
+            <%= link_to "お手伝い登録", "#" %>
+          </li>
+          <li>
+            <%= link_to "こども登録", "#" %>
+          </li>
+          <li>
+            <%= link_to "アカウント設定", edit_parent_path(id: session[:parent_id]) %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", logout_path, method: :delete %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "新規登録", new_parent_path %>
+          </li>
+          <li>
+            <%= link_to "ログイン", login_path %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>

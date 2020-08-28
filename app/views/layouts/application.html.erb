@@ -2,56 +2,13 @@
 <html>
   <head>
     <title>HelpPoint</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-     <!--[if lt IE 9]>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
-      </script>
-    <![endif]-->
+    <%= render 'layouts/rails_default' %>
+    <%= render 'layouts/shim' %>
   </head>
-
   <body>
-    <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
-    <% end %>
-    
-    <nav class="navbar navbar-default navbar-fixed-top navbar-transparent">
-      <div class="container">
-        <%= link_to "ホーム", root_path %>
-        <ul class="nav navbar-nav navbar-right">
-          <% if logged_in? %>
-            <li>
-              <%= link_to "お手伝い登録", "#" %>
-            </li>
-            <li>
-              <%= link_to "こども登録", "#" %>
-            </li>
-            <li>
-              <%= link_to "アカウント設定", edit_parent_path(id: session[:parent_id]) %>
-            </li>
-            <li>
-              <%= link_to "ログアウト", logout_path, method: :delete %>
-            </li>
-          <% else %>
-            <li>
-              <%= link_to "新規登録", new_parent_path %>
-            </li>
-            <li>
-              <%= link_to "ログイン", login_path %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </nav>
+    <%= render 'layouts/flash_messages' %>
+    <%= render 'layouts/header' %>
     <%= yield %>
-    
-    <script>
-      $(function(){
-        $(".alert").fadeOut(5000);
-      });
-    </script>
+    <%= render 'layouts/javascript_file' %>
   </body>
 </html>
