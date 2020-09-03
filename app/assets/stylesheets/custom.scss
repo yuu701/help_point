@@ -1,3 +1,9 @@
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
 h1,h2 {
   font-weight: 100;
 }
@@ -18,6 +24,8 @@ h1,h2 {
     color: #bebebe;
   }
 }
+
+/* トップページ*/
 
 .top-hero-wrapper {
   width: 100vw;
@@ -42,6 +50,7 @@ h1,h2 {
   height: 45px;
 }
 
+/* 新規登録ページ*/
 .parents-new-wrapper {
   width: 100vw;
   height: 100vh;
@@ -73,5 +82,32 @@ h1,h2 {
   .navbar-brand {
     padding: 0px;
     margin-top: 15px;
+  }
+}
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+
+/*forms*/
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend.has-error;
+  .form-control {
+    color: $state-danger-text;
   }
 }
