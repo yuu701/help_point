@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      parent: 親
+    attributes:
+      parent:
+        name: ニックネーム
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認用
