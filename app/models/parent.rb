@@ -11,4 +11,6 @@ class Parent < ApplicationRecord
             format: { with: VALID_PASSWORD_REGEX } 
   
   has_secure_password
+  
+  has_many :children
 end

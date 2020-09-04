@@ -1,0 +1,12 @@
+<div class="children-index-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 children-index-container">
+        <h1 class="text-center text-color">お子様一覧</h1>
+        <% @children.each do |child|%>
+          <%= child.name %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

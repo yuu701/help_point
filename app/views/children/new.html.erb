@@ -1,0 +1,30 @@
+<div class="child-new-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 child-new-container">
+        <h1 class="text-center text-color">子ども登録</h1>
+        <%= form_for @child do |f| %>
+          <%= render 'shared/child_error_messages' %>
+          <div class="form-group">
+            <%= f.label :お子様のお名前, class: 'text-color' %>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :ログインＩＤ, class: "text-color" %>
+            <%= f.text_field :login_id, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :パスワード, class: "text-color" %>
+            <%= f.password_field :password, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :パスワード（確認用）, class: "text-color" %>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
+          </div>
+          <%= f.submit "登録", class: "btn-block btn-color" %>
+        <% end %>
+        <%= link_to "戻る", login_path, class: "text-color" %>
+      </div>
+    </div>
+  </div>
+</div>

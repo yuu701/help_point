@@ -141,3 +141,33 @@ h1,h2 {
     }
   }
 }
+
+/* 子供一覧ページ*/
+.child-new-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-color: #fef6e4;
+  
+  .child-new-container {
+    padding-top: 220px;
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+/* 子供一覧ページ*/
+.children-index-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-color: #fef6e4;
+  
+  .children-index-container {
+    padding-top: 220px;
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+  }
+}
