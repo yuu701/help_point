@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'pages#index'
   
   resources :parents
+  resources :icons
   
   get '/login',    to: 'sessions#new'
   post '/login',   to: 'sessions#create'

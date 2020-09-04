@@ -111,3 +111,33 @@ h1,h2 {
     color: $state-danger-text;
   }
 }
+
+/* アイコン登録ページ*/
+.icons-new-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-color: #fef6e4;
+  
+  .icons-new-container {
+    padding-top: 220px;
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+/* アイコン一覧ページ*/
+.icons-index-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-color: #fef6e4;
+  
+  .icons-index-container {
+    padding-top: 220px;
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+  }
+}
