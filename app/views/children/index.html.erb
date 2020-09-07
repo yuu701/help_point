@@ -4,8 +4,11 @@
       <div class="col-md-offset-4 col-md-4 children-index-container">
         <h1 class="text-center text-color">子ども一覧</h1>
         <% @children.each do |child|%>
-          <%= child.name %>
-          <%= link_to "編集", "#" %>
+          <div class="child">
+            <%= child.name %>
+            <%= child.icon %>
+            <%= link_to "編集", "#" %>
+          </div>
         <% end %>
       </div>
     </div>

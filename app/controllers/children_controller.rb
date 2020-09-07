@@ -1,6 +1,7 @@
 class ChildrenController < ApplicationController
   def new
     @child = Child.new
+    @icons = Icon.all
   end
   
   def create
