@@ -1,4 +1,8 @@
 class ParentsController < ApplicationController
+  
+  def show
+  end
+  
   def new
     @parent = Parent.new
   end

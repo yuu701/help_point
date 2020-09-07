@@ -5,7 +5,7 @@ class ChildrenController < ApplicationController
   
   def create
     @child = Child.new(child_params)
-    @child.parent_id = @current_parent.id
+    @child.parent_id = current_parent.id
     if @child.save
       redirect_to root_path, success: "登録が完了しました"
     else

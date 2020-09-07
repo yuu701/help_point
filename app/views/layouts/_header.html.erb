@@ -8,20 +8,20 @@
             <%= link_to "お手伝い登録", "#" %>
           </li>
           <li>
-            <%= link_to "こども登録", "#" %>
+            <%= link_to "こども管理", "#" %>
           </li>
           <li>
             <%= link_to "アカウント設定", edit_parent_path(id: session[:parent_id]) %>
           </li>
           <li>
-            <%= link_to "ログアウト", logout_path, method: :delete %>
+            <%= link_to "ログアウト", parents_logout_path, method: :delete %>
           </li>
         <% else %>
           <li>
             <%= link_to "新規登録", new_parent_path %>
           </li>
           <li>
-            <%= link_to "ログイン", login_path %>
+            <%= link_to "ログイン", parents_login_path %>
           </li>
         <% end %>
       </ul>

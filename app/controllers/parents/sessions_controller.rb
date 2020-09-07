@@ -1,6 +1,4 @@
-class SessionsController < ApplicationController
-  def new
-  end
+class Parents::SessionsController < ApplicationController
   
   def create
     parent = Parent.find_by(email: params[:session][:email].downcase)
@@ -27,4 +25,5 @@ class SessionsController < ApplicationController
     session.delete(:parent_id)
     @current_parent = nil
   end
+  
 end

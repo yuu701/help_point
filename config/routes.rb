@@ -1,18 +1,33 @@
 Rails.application.routes.draw do
-  get 'children/new'
-  get 'children/index'
-  get 'childs/new'
-  get 'sessions/new'
   root 'pages#index'
   
-  resources :parents
-  resources :icons
+  
+  
+  # namespace :admin do
+  #   get '/login',    to: 'sessions#new'
+  #   post '/login',   to: 'sessions#create'
+  #   delete '/logout', to: 'sessions#destroy'
+  # end
   
   namespace :parents do
-    resources :children
+    get '/login',    to: 'sessions#new'
+    post '/login',   to: 'sessions#create'
+    delete '/logout', to: 'sessions#destroy'
   end
   
-  get '/login',    to: 'sessions#new'
-  post '/login',   to: 'sessions#create'
-  delete 'logout', to: 'sessions#destroy'
+  # namespace :children do
+  #   get '/login',    to: 'sessions#new'
+  #   post '/login',   to: 'sessions#create'
+  #   delete '/logout', to: 'sessions#destroy'
+  # end
+  
+  
+  
+  # get '/login',    to: 'sessions#new'
+  # post '/login',   to: 'sessions#create'
+  # delete 'logout', to: 'sessions#destroy'
+  
+  resources :children
+  resources :parents
+  resources :icons
 end
