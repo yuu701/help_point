@@ -15,11 +15,11 @@ Rails.application.routes.draw do
     delete '/logout', to: 'sessions#destroy'
   end
   
-  # namespace :children do
-  #   get '/login',    to: 'sessions#new'
-  #   post '/login',   to: 'sessions#create'
-  #   delete '/logout', to: 'sessions#destroy'
-  # end
+  namespace :children do
+    get '/login',    to: 'sessions#new'
+    post '/login',   to: 'sessions#create'
+    delete '/logout', to: 'sessions#destroy'
+  end
   
   
   

@@ -3,11 +3,14 @@
     <h1 class="text-color">お手伝いポイント管理</h1>
     <h2 class="text-color">お手伝いポイントをためてお小遣いをゲットしよう！</h2>
     <div class="row">
-      <div class="col-md-offset-3 col-md-3">
+      <div class="col-md-4">
         <%= link_to '新規登録', new_parent_path, class: 'btn btn-block btn-color' %>
       </div>
-      <div class="col-md-3">
-        <%= link_to 'ログイン', parents_login_path, class:'btn btn-block btn-color' %>
+      <div class="col-md-4">
+        <%= link_to 'ママ・パパのログイン', parents_login_path, class:'btn btn-block btn-color' %>
+      </div>
+      <div class="col-md-4">
+        <%= link_to '子どものログイン', children_login_path, class:'btn btn-block btn-color' %>
       </div>
     </div>
   </div>

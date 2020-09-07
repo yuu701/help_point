@@ -2,11 +2,11 @@
   <div class="container">
     <div class="row">
       <div class="col-md-offset-4 col-md-4 parents-new-container">
-        <h1 class="text-center text-grey">ママ・パパのログイン</h1>
-        <%= form_for :session, url: parents_login_path do |f| %>
+        <h1 class="text-center text-grey">こどものログイン</h1>
+        <%= form_for :session, url: children_login_path do |f| %>
           <div class="form-group">
-            <%= f.label :メールアドレス, class: "text-grey" %>
-            <%= f.text_field :email, class: "form-control" %>
+            <%= f.label :ログインＩＤ, class: "text-grey" %>
+            <%= f.text_field :login_id, class: "form-control" %>
           </div>
           <div class="form-group">
             <%= f.label :パスワード, class: "text-color" %>

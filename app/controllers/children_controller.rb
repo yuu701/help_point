@@ -7,7 +7,7 @@ class ChildrenController < ApplicationController
     @child = Child.new(child_params)
     @child.parent_id = current_parent.id
     if @child.save
-      redirect_to root_path, success: "登録が完了しました"
+      redirect_to children_path, success: "登録が完了しました"
     else
       flash.now[:danger] = "登録に失敗しました"
       render :new

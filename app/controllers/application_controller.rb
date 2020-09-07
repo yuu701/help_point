@@ -3,13 +3,21 @@ class ApplicationController < ActionController::Base
   
   add_flash_types :success, :info, :warning, :dander
   
-  helper_method :current_parent, :logged_in?
+  helper_method :current_parent, :current_child, :parent_logged_in?, :child_logged_in?
   
   def current_parent
     @current_parent ||=Parent.find_by(id: session[:parent_id])
   end
   
-  def logged_in?
+  def current_child
+    @current_child ||=Child.find_by(id: session[:child_id])
+  end
+  
+  def parent_logged_in?
     !current_parent.nil?
+  end
+  
+  def child_logged_in?
+    !current_child.nil?
   end
 end

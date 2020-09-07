@@ -50,7 +50,7 @@ h1,h2 {
   height: 45px;
 }
 
-/* 新規登録ページ*/
+/* 親アカウント新規登録ページ*/
 .parents-new-wrapper {
   width: 100vw;
   height: 100vh;
@@ -61,6 +61,9 @@ h1,h2 {
     
     .form-group {
       margin-bottom: 20px;
+    }
+    a {
+      display: block;
     }
   }
 }
@@ -142,7 +145,7 @@ h1,h2 {
   }
 }
 
-/* 子供一覧ページ*/
+/* こども登録ページ*/
 .child-new-wrapper {
   width: 100vw;
   height: 100vh;

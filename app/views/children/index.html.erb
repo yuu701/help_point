@@ -2,11 +2,16 @@
   <div class="container">
     <div class="row">
       <div class="col-md-offset-4 col-md-4 children-index-container">
-        <h1 class="text-center text-color">お子様一覧</h1>
+        <h1 class="text-center text-color">子ども一覧</h1>
         <% @children.each do |child|%>
           <%= child.name %>
           <%= link_to "編集", "#" %>
         <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4">
+        <%= link_to "子どもを登録する", new_child_path %>
       </div>
     </div>
   </div>
