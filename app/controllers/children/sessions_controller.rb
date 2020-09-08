@@ -6,7 +6,7 @@ class Children::SessionsController < ApplicationController
       log_in child
       redirect_to root_path, success: "ログインに成功しました"
     else
-      flash.now[:dander] = "ログインに失敗しました"
+      flash.now[:danger] = "ログインに失敗しました"
       render :new
     end
   end
@@ -14,16 +14,6 @@ class Children::SessionsController < ApplicationController
   def destroy
     log_out
     redirect_to root_path, info: "ログアウトしました"
-  end
-  
-  private
-  def log_in(child)
-    session[:child_id] = child.id
-  end
-  
-  def log_out
-    session.delete(:child_id)
-    @current_child = nil
   end
   
 end

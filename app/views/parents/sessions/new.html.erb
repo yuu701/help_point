@@ -6,7 +6,7 @@
         <%= form_for :session, url: parents_login_path do |f| %>
           <div class="form-group">
             <%= f.label :メールアドレス, class: "text-grey" %>
-            <%= f.text_field :email, class: "form-control" %>
+            <%= f.email_field :email, class: "form-control" %>
           </div>
           <div class="form-group">
             <%= f.label :パスワード, class: "text-color" %>

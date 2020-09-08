@@ -10,6 +10,7 @@ class ParentsController < ApplicationController
   def create
     @parent = Parent.new(parent_params)
     if @parent.save
+      log_in @parent
       redirect_to root_path, success: "登録が完了しました"
     else
       flash.now[:danger] = "登録に失敗しました"
