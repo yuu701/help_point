@@ -3,7 +3,7 @@ class Children::SessionsController < ApplicationController
   def create
     child = Child.find_by(login_id: params[:session][:login_id])
     if child && child.authenticate(params[:session][:password])
-      log_in child
+      log_in_child child
       redirect_to root_path, success: "ログインに成功しました"
     else
       flash.now[:danger] = "ログインに失敗しました"
@@ -12,7 +12,7 @@ class Children::SessionsController < ApplicationController
   end
   
   def destroy
-    log_out
+    log_out_child
     redirect_to root_path, info: "ログアウトしました"
   end
   

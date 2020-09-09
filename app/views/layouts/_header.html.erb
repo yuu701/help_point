@@ -11,7 +11,8 @@
             <%= link_to "こども管理",  children_path %>
           </li>
           <li>
-            <%= link_to "アカウント設定", edit_parent_path(id: session[:parent_id]) %>
+            <!--%= link_to "アカウント設定", edit_parent_path(id: session[:parent_id]) %>-->
+            <%= link_to "アカウント設定", edit_parent_path(current_parent) %>
           </li>
           <li>
             <%= link_to "ログアウト", parents_logout_path, method: :delete %>

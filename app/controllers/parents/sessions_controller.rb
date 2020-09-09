@@ -5,7 +5,7 @@ class Parents::SessionsController < ApplicationController
   def create
     parent = Parent.find_by(email: params[:session][:email].downcase)
     if parent && parent.authenticate(params[:session][:password])
-      log_in parent
+      log_in_parent parent
       redirect_to root_path, success: "ログインに成功しました"
     else
       flash.now[:danger] = "ログインに失敗しました"
@@ -14,7 +14,7 @@ class Parents::SessionsController < ApplicationController
   end
   
   def destroy
-    log_out
+    log_out_parent
     redirect_to root_path, info: "ログアウトしました"
   end
   

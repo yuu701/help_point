@@ -4,27 +4,28 @@
       <div class="col-md-offset-4 col-md-4 parents-new-container">
         <h1 class="text-center text-color">アカウント設定</h1>
         <%= form_for @parent do |f| %>
-        <div class="form-group">
-          <%= f.label :name, "ニックネーム", class: 'text-color' %>
-          <%= f.text_field :name, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :email, "メールアドレス", class: "text-color" %>
-          <%= f.text_field :email, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :password, "現在のパスワード", class: "text-color" %>
-          <%= f.password_field :password, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :newpassword, "新しいパスワード", class: "text-color" %>
-          <%= f.password_field :password, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :newpassword, "新しいパスワード（再入力）", class: "text-color" %>
-          <%= f.password_field :password_confirmation, class: "form-control" %>
-        </div>
-        <%= f.submit "変更する", class: "btn-block btn-color" %>
+          <%= render 'shared/error_messages' %>
+          <div class="form-group">
+            <%= f.label :name, "ニックネーム", class: 'text-color' %>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :email, "メールアドレス", class: "text-color" %>
+            <%= f.text_field :email, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password, "現在のパスワード", class: "text-color" %>
+            <%= f.password_field :password, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :newpassword, "新しいパスワード", class: "text-color" %>
+            <%= f.password_field :password, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :newpassword, "新しいパスワード（再入力）", class: "text-color" %>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
+          </div>
+          <%= f.submit "変更する", class: "btn-block btn-color" %>
         <% end %>
       </div>
     </div>

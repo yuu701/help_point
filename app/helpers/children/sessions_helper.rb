@@ -1,6 +1,6 @@
 module Children::SessionsHelper
   
-  def log_in(child)
+  def log_in_child(child)
     session[:child_id] = child.id
   end
   
@@ -12,7 +12,7 @@ module Children::SessionsHelper
     !current_child.nil?
   end
   
-  def log_out
+  def log_out_child
     session.delete(:child_id)
     @current_child = nil
   end
