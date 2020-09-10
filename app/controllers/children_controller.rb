@@ -6,6 +6,7 @@ class ChildrenController < ApplicationController
   
   def create
     @child = Child.new(child_params)
+    @icons = Icon.all
     @child.parent_id = current_parent.id
     if @child.save
       redirect_to children_path, success: "登録が完了しました"

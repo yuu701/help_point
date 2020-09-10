@@ -1,5 +1,6 @@
 module Parents::SessionsHelper
   
+  # 渡されたparentをログイン
   def log_in_parent(parent)
     session[:parent_id] = parent.id
   end
@@ -10,6 +11,7 @@ module Parents::SessionsHelper
     end
   end
   
+  # 渡されたparentがログイン済parentであればtrueを返す
   def current_parent?(parent)
     parent == current_parent
   end

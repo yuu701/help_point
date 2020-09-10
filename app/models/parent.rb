@@ -7,7 +7,7 @@ class Parent < ApplicationRecord
             uniqueness: { case_sensitive: false }, format: { with: VALID_EMAIL_REGEX }
   
   VALID_PASSWORD_REGEX = /\A(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)\z/
-  validates :password, presence: true, length: { minimum: 8, maximum: 32 },
+  validates :password, presence: true, length: { minimum: 8, maximum: 32 }, allow_nil:true,
             format: { with: VALID_PASSWORD_REGEX } 
   
   has_secure_password
