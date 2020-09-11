@@ -1,0 +1,22 @@
+<div class="helps-index-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 helps-index-container">
+        <h1 class="text-center text-color">お手伝い一覧</h1>
+        <% @helps.each do |help|%>
+          <div class="help">
+            <%= help.name %>
+            <%= help.description %>
+            <%= help.point %>
+            <%= link_to "編集", "#" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4">
+        <%= link_to "お手伝いを登録する", new_help_path %>
+      </div>
+    </div>
+  </div>
+</div>

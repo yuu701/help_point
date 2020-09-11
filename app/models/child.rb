@@ -13,4 +13,6 @@ class Child < ApplicationRecord
   validates :parent_id, presence: true
   
   belongs_to :parent
+  has_many :helps, dependent: :destroy
+  
 end

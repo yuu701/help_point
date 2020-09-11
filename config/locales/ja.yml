@@ -1,10 +1,17 @@
 ja:
   activerecord:
-    models:
-      parent: 親
     attributes:
       parent:
         name: ニックネーム
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード確認用
+      child:
+        name: お子様のお名前
+        login_id: ログインＩＤ
+        password: パスワード
+        password_confirmation: パスワード確認用
+      help:
+        name: お手伝い名
+        point: ポイント
+        child_id: お子様

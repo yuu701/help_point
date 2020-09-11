@@ -1,0 +1,35 @@
+<div class="help-new-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 help-new-container">
+        <h1 class="text-center text-color">お手伝い登録</h1>
+        <%= form_for @help do |f| %>
+          <%= render 'shared/help_error_messages' %>
+          <div class="form-group">
+            <%= f.label :お手伝い名, class: 'text-color' %>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :説明, class: "text-color" %>
+            <%= f.text_area :description, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :ポイント（半角数字）, class: "text-color" %>
+            <%= f.number_field :point, class: "form-control" %>
+          </div>
+          <p class="text-color">お手伝いを依頼するこども</p>
+          <div class="form-group">
+            <% @children.each do |child|%>
+              <div class="child-select">
+                <%= f.radio_button :child_id, child.id %>
+                <%= f.label :child_id, child.name %>
+              </div>
+            <% end %>
+          </div>
+          <%= f.submit "登録", class: "btn-block btn-color" %>
+        <% end %>
+        <%= link_to "戻る", "#", class: "text-color" %>
+      </div>
+    </div>
+  </div>
+</div>

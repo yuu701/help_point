@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'helps/new'
   root 'pages#index'
   
   
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
   # post '/login',   to: 'sessions#create'
   # delete 'logout', to: 'sessions#destroy'
   
+  resources :helps
   resources :children
   resources :parents
   resources :icons
