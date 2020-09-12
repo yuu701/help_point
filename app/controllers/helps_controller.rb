@@ -1,14 +1,13 @@
 class HelpsController < ApplicationController
   def new
     @help = Help.new
-    @children = Child.all
+    @children = current_parent.children
   end
   
   def create
     @help = Help.new(help_params)
-    @children = Child.all
+    @children = current_parent.children
     @help.parent_id = current_parent.id
-    # @help.child_id = params[:child_id]
     if @help.save
       redirect_to helps_path, success: "登録が完了しました"
     else
@@ -23,6 +22,6 @@ class HelpsController < ApplicationController
   
   private
   def help_params
-    params.require(:help).permit(:name, :description, :point)
+    params.require(:help).permit(:name, :description, :point, :child_id)
   end
 end
