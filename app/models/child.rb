@@ -10,8 +10,6 @@ class Child < ApplicationRecord
   
   has_secure_password
   
-  validates :parent_id, presence: true
-  
   belongs_to :parent
   has_many :helps, dependent: :destroy
   

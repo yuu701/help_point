@@ -17,7 +17,7 @@ class ChildrenController < ApplicationController
   end
 
   def index
-    @children = Child.all
+    @children = current_parent.children
   end
   
   private

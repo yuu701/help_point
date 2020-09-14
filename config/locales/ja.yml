@@ -1,5 +1,13 @@
 ja:
   activerecord:
+    errors:
+      messages:
+        blank: を入力してください
+        talken: はすでに存在します
+      full_messages:
+        format: "%{attribute}%{message}"
+    models:
+      child: お子様
     attributes:
       parent:
         name: ニックネーム

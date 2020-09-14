@@ -4,7 +4,7 @@
       <div class="col-md-offset-4 col-md-4 child-new-container">
         <h1 class="text-center text-color">子ども登録</h1>
         <%= form_for @child do |f| %>
-          <%= render 'shared/child_error_messages' %>
+          <%= render 'shared/error_messages', {model: @child} %>
           <div class="form-group">
             <%= f.label :お子様のお名前, class: 'text-color' %>
             <%= f.text_field :name, class: "form-control" %>

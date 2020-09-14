@@ -4,7 +4,7 @@
       <div class="col-md-offset-4 col-md-4 help-new-container">
         <h1 class="text-center text-color">お手伝い登録</h1>
         <%= form_for @help do |f| %>
-          <%= render 'shared/help_error_messages' %>
+          <%= render 'shared/error_messages', {model: @help} %>
           <div class="form-group">
             <%= f.label :お手伝い名, class: 'text-color' %>
             <%= f.text_field :name, class: "form-control" %>
