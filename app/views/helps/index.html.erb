@@ -1,21 +1,44 @@
 <div class="helps-index-wrapper">
   <div class="container">
     <div class="row">
-      <div class="col-md-offset-4 col-md-4 helps-index-container">
+      <div class="col-md-offset-1 col-md-10 helps-index-container">
         <h1 class="text-center text-color">お手伝い一覧</h1>
-        <% @helps.each do |help|%>
-          <div class="help">
-            <%= help.name %>
-            <%= help.description %>
-            <%= help.point %>
-            <%= link_to "編集", "#" %>
-          </div>
+        <% @children.each do |child|%>
+          <p><%= child.name %>のお手伝い</p>
+          <table class="text-center text-color">
+            <!--<tr>-->
+            <!--  <th>お手伝い名</th>-->
+            <!--  <th>説明</th>-->
+            <!--  <th>ポイント</th>-->
+            <!--  <th></th>-->
+            <!--  <th></th>-->
+            <!--</tr>-->
+            <% @helps.each do |help|%>
+              <% if child.id == help.child_id %>
+                <tr>
+                  <td><%= help.name %></td>
+                  <td><%= help.description %></td>
+                  <td><%= help.point %>pt</td>
+                  <td><%= link_to "編集", "#" %></td>
+                  <td><%= link_to "削除", "#" %></td>
+                </tr>
+              <% end %>  
+            <% end %>
+          </table>
         <% end %>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-offset-4 col-md-4">
-        <%= link_to "お手伝いを登録する", new_help_path %>
+      <div class="col-md-offset-2 col-md-4">
+        <%= link_to "お手伝いを登録", new_help_path, class:'btn btn-block btn-color' %>
+      </div>
+      <div class="col-md-4">
+        <%= link_to "お手伝いを依頼", "#", class:'btn btn-block btn-color' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-offset-6 col-md-4">
+        <%= link_to "依頼中のお手伝いを確認", "#",class:'btn btn-block btn-color' %>
       </div>
     </div>
   </div>
