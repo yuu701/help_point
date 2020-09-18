@@ -4,27 +4,29 @@
       <div class="col-md-offset-1 col-md-10 helps-index-container">
         <h1 class="text-center text-color">お手伝い一覧</h1>
         <% @children.each do |child|%>
-          <p><%= child.name %>のお手伝い</p>
-          <table class="text-center text-color">
-            <!--<tr>-->
-            <!--  <th>お手伝い名</th>-->
-            <!--  <th>説明</th>-->
-            <!--  <th>ポイント</th>-->
-            <!--  <th></th>-->
-            <!--  <th></th>-->
-            <!--</tr>-->
-            <% @helps.each do |help|%>
-              <% if child.id == help.child_id %>
+          <p class="text-color"><%= child.name %>のお手伝い</p>
+            <% if child.helps.count != 0 %>
+              <table class="text-center text-color">
                 <tr>
-                  <td><%= help.name %></td>
-                  <td><%= help.description %></td>
-                  <td><%= help.point %>pt</td>
-                  <td><%= link_to "編集", "#" %></td>
-                  <td><%= link_to "削除", "#" %></td>
+                  <th>お手伝い名</th>
+                  <th>説明</th>
+                  <th>ポイント</th>
+                  <th></th>
+                  <th></th>
                 </tr>
-              <% end %>  
+                <% child.helps.each do |help|%>
+                  <tr>
+                    <td><%= help.name %></td>
+                    <td><%= safe_join(help.description.split("\n"), tag(:br)) %></td>
+                    <td><%= help.point %>pt</td>
+                    <td><%= link_to "編集", "#" %></td>
+                    <td><%= link_to "削除", "#" %></td>
+                  </tr>
+                <% end %>
+              </table>
+            <% else %>
+              <p class="text-color">まだありません</p>
             <% end %>
-          </table>
         <% end %>
       </div>
     </div>

@@ -18,7 +18,7 @@ class HelpsController < ApplicationController
 
   def index
     @children = current_parent.children
-    @helps = current_parent.helps
+    # @helps = current_parent.helps
   end
   
   private
