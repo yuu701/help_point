@@ -216,3 +216,22 @@ h1,h2 {
     }
   }
 }
+
+/* お手伝い依頼登録ページ*/
+.request-new-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-color: #fef6e4;
+  
+  .request-new-container {
+    padding-top: 220px;
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    p {
+      font-weight: bold;
+    }  
+  }
+}

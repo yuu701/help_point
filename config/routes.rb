@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  get 'helps/new'
+  
   root 'pages#index'
-  
-  
   
   # namespace :admin do
   #   get '/login',    to: 'sessions#new'
@@ -28,7 +26,10 @@ Rails.application.routes.draw do
   # post '/login',   to: 'sessions#create'
   # delete 'logout', to: 'sessions#destroy'
   
-  resources :helps
+  resources :helps do
+    resources :requests
+  end
+  
   resources :children
   resources :parents
   resources :icons

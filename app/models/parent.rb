@@ -14,4 +14,5 @@ class Parent < ApplicationRecord
   
   has_many :children, dependent: :destroy
   has_many :helps, through: :children
+  has_many :requests, through: :children
 end
