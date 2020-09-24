@@ -19,6 +19,7 @@ class RequestsController < ApplicationController
   end
 
   def index
+    @children = current_parent.children
   end
   
    private
