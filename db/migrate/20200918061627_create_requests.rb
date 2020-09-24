@@ -7,7 +7,7 @@ class CreateRequests < ActiveRecord::Migration[5.2]
       t.integer :parent_id
       t.integer :child_id
       t.date :request_date
-      t.boolean :status
+      t.boolean :status, null: false, default: false
 
       t.timestamps
     end

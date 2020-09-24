@@ -22,4 +22,8 @@ ja:
       help:
         name: お手伝い名
         point: ポイント
-        child_id: お子様
+        child: お子様
+      request:
+        name: お手伝い名
+        point: ポイント
+        child: お子様

@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_09_18_061627) do
     t.integer "parent_id"
     t.integer "child_id"
     t.date "request_date"
-    t.boolean "status"
+    t.boolean "status", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
