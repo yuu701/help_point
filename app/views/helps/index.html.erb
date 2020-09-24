@@ -20,7 +20,7 @@
                     <td><%= help.name %></td>
                     <td><%= safe_join(help.description.split("\n"), tag(:br)) %></td>
                     <td><%= help.point %>pt</td>
-                    <td><%= link_to "依頼する", new_help_request_path(help_id: help.id) %></td>
+                    <td><%= link_to "依頼する", new_request_path(help_id: help.id) %></td>
                     <td><%= link_to "編集", "#" %></td>
                     <td><%= link_to "削除", "#" %></td>
                   </tr>
@@ -37,7 +37,7 @@
         <%= link_to "お手伝いを登録", new_help_path, class:'btn btn-block btn-color' %>
       </div>
       <div class="col-md-4">
-        <%= link_to "依頼中のお手伝いを確認", "#",class:'btn btn-block btn-color' %>
+        <%= link_to "依頼中のお手伝いを確認", requests_path, class:'btn btn-block btn-color' %>
       </div>
     </div>
   </div>

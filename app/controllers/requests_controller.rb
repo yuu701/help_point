@@ -22,6 +22,11 @@ class RequestsController < ApplicationController
     @children = current_parent.children
   end
   
+  def destroy
+    Request.find_by(id: params[:id]).destroy
+    redirect_to requests_path, success: 'お手伝い依頼を削除しました'
+  end
+  
    private
   def request_params
     params.require(:request).permit(:name, :description, :point, :child_id, :request_date)

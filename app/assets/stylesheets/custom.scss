@@ -194,7 +194,7 @@ h1,h2 {
 /* お手伝い一覧ページ*/
 .helps-index-wrapper {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #fef6e4;
   
   .helps-index-container {
@@ -217,10 +217,10 @@ h1,h2 {
   }
 }
 
-/* お手伝い依頼登録ページ*/
+/* リクエスト登録ページ*/
 .request-new-wrapper {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #fef6e4;
   
   .request-new-container {
@@ -233,5 +233,31 @@ h1,h2 {
     p {
       font-weight: bold;
     }  
+  }
+}
+
+/* リクエスト一覧ページ*/
+.requests-index-wrapper {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #fef6e4;
+  
+  .requests-index-container {
+    padding-top: 220px;
+    
+    // h2 {
+    //   font-size: 20px;
+    // }
+    
+    table{
+      background-color: #f3d2c1;
+      margin: 10px 0 20px 0;
+      width: 100%;
+      
+      th, td {
+        padding: 10px;
+        border: 1px solid #001858;
+      }
+    }
   }
 }
