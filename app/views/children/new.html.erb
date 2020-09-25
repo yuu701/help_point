@@ -3,22 +3,22 @@
     <div class="row">
       <div class="col-md-offset-4 col-md-4 child-new-container">
         <h1 class="text-center text-color">子ども登録</h1>
-        <%= form_for @child do |f| %>
+        <%= form_with model: @child, local: true do |f| %>
           <%= render 'shared/error_messages', {model: @child} %>
           <div class="form-group">
-            <%= f.label :お子様のお名前, class: 'text-color' %>
+            <%= f.label :name, "お子様のお名前", class: 'text-color' %>
             <%= f.text_field :name, class: "form-control" %>
           </div>
           <div class="form-group">
-            <%= f.label :ログインＩＤ, class: "text-color" %>
+            <%= f.label :login_id, "ログインＩＤ", class: "text-color" %>
             <%= f.text_field :login_id, class: "form-control" %>
           </div>
           <div class="form-group">
-            <%= f.label :パスワード（英数字を必ず含む８文字以上）, class: "text-color" %>
+            <%= f.label :password, "パスワード（英数字を必ず含む８文字以上）", class: "text-color" %>
             <%= f.password_field :password, class: "form-control" %>
           </div>
           <div class="form-group">
-            <%= f.label :パスワード（確認用）, class: "text-color" %>
+            <%= f.label :password_confirmation, "パスワード（確認用）", class: "text-color" %>
             <%= f.password_field :password_confirmation, class: "form-control" %>
           </div>
           <div class="form-group">

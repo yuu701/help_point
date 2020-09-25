@@ -3,18 +3,18 @@
     <div class="row">
       <div class="col-md-offset-4 col-md-4 help-new-container">
         <h1 class="text-center text-color">お手伝い登録</h1>
-        <%= form_for @help do |f| %>
+        <%= form_with model: @help, local: true do |f| %>
           <%= render 'shared/error_messages', {model: @help} %>
           <div class="form-group">
-            <%= f.label :お手伝い名, class: 'text-color' %>
+            <%= f.label :name, "お手伝い名", class: 'text-color' %>
             <%= f.text_field :name, class: "form-control" %>
           </div>
           <div class="form-group">
-            <%= f.label :説明, class: "text-color" %>
+            <%= f.label :description, "説明", class: "text-color" %>
             <%= f.text_area :description, class: "form-control" %>
           </div>
           <div class="form-group">
-            <%= f.label :ポイント（半角数字）, class: "text-color" %>
+            <%= f.label :point, "ポイント（半角数字）", class: "text-color" %>
             <%= f.number_field :point, class: "form-control" %>
           </div>
           <p class="text-color">お手伝いを依頼するこども</p>

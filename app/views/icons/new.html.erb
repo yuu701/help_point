@@ -3,9 +3,9 @@
     <div class="row">
       <div class="col-md-offset-4 col-md-4 icons-new-container">
         <h1 class="text-center text-color">アイコン登録</h1>
-        <%= form_for @icon do |f| %>
+        <%= form_with model: @icon, local: true do |f| %>
           <div class="form-group">
-            <%= f.label :アイコン, class: 'text-color' %>
+            <%= f.label :image, "アイコン", class: 'text-color' %>
             <%= f.file_field :image, class: "form-control" %>
           </div>
           <%= f.submit "登録", class: "btn-block btn-color" %>
