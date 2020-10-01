@@ -19,7 +19,11 @@ class RequestsController < ApplicationController
   end
 
   def index
-    @children = current_parent.children
+    if parent_logged_in?
+      @children = current_parent.children
+    elsif child_logged_in?
+      @requests = current_child.requests
+    end
   end
   
   def destroy
