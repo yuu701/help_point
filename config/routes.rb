@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'applies/new'
+  get 'applies/index'
   root 'pages#index'
   
   # namespace :admin do
@@ -28,8 +30,9 @@ Rails.application.routes.draw do
   
   resources :helps
   resources :requests
+  resources :applies
   
-  resources :children
   resources :parents
+  resources :children
   resources :icons
 end

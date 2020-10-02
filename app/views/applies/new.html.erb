@@ -1,0 +1,37 @@
+<div class="apply-new-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 apply-new-container">
+        <h1 class="text-center text-color">お手伝い報告</h1>
+        <%= form_with model: @apply, local: true do |f| %>
+          <%= render 'shared/error_messages', {model: @apply} %>
+          <%= f.hidden_field :request_id, value: params[:request_id] %>
+          <div class="form-group">
+            <%= f.label :completion_date, "お手伝いした日", class: 'text-color' %>
+            <%= f.date_field :completion_date, value: Date.today, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <table>
+              <tr>
+                  <th>お手伝い名</th>
+                  <th>説明</th>
+                  <th>ポイント</th>
+                </tr>
+              <tr>
+                <td><%= @request.name %></td>
+                <td><%= safe_join(@request.description.split("\n"), tag(:br)) %></td>
+                <td><%= @request.point %></td>
+              </tr>
+            </table>
+          </div>
+          <div class="form-group">
+            <%= f.label :comment, "アピールポイント", class: "text-color" %>
+            <%= f.text_area :comment, class: "form-control" %>
+          </div>
+          <%= f.submit "報告", class: "btn-block btn-color" %>
+        <% end %>
+        <%= link_to "戻る", "#", class: "text-color" %>
+      </div>
+    </div>
+  </div>
+</div>
