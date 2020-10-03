@@ -6,7 +6,7 @@
             <h1 class="text-center text-color">依頼中のお手伝い一覧</h1>
             <% @children.each do |child|%>
               <p class="text-color"><%= child.name %>へ依頼中のお手伝い</p>
-              <% if child.helps.count != 0 %>
+              <% if child.requests.count != 0 %>
                 <table class="text-center text-color">
                   <tr>
                     <th>日付</th>
@@ -34,8 +34,11 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-offset-4 col-md-4">
+        <div class="col-md-offset-2 col-md-4">
           <%= link_to "お手伝いを登録", new_help_path, class:'btn btn-block btn-color' %>
+        </div>
+        <div class="col-md-4">
+          <%= link_to "依頼中のお手伝いを確認", requests_path, class:'btn btn-block btn-color' %>
         </div>
       </div>
     <% elsif child_logged_in? %>

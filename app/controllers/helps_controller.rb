@@ -15,10 +15,31 @@ class HelpsController < ApplicationController
       render :new
     end
   end
+  
+  def edit
+    @help = Help.find(params[:id])
+    @children = current_parent.children
+  end
+  
+  def update
+    @help = Help.find(params[:id])
+    @children = current_parent.children
+    if @help.update_attributes(help_params)
+      redirect_to helps_path, success: "お手伝いを変更しました"
+    else
+      flash.now[:danger] = "お手伝いの変更に失敗しました"
+      render :edit
+    end
+  end
 
   def index
     @children = current_parent.children
     # @helps = current_parent.helps
+  end
+  
+  def destroy
+    Help.find_by(id: params[:id]).destroy
+    redirect_to helps_path, success: 'お手伝いを削除しました'
   end
   
   private

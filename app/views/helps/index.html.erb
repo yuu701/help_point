@@ -21,8 +21,8 @@
                     <td><%= safe_join(help.description.split("\n"), tag(:br)) %></td>
                     <td><%= help.point %>pt</td>
                     <td><%= link_to "依頼する", new_request_path(help_id: help.id) %></td>
-                    <td><%= link_to "編集", "#" %></td>
-                    <td><%= link_to "削除", "#" %></td>
+                    <td><%= link_to "編集", edit_help_path(help.id) %></td>
+                    <td><%= link_to "削除", help_path(help.id), method: :delete %></td>
                   </tr>
                 <% end %>
               </table>
