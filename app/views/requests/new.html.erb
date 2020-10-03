@@ -5,6 +5,7 @@
         <h1 class="text-center text-color">お手伝い依頼</h1>
         <%= form_with model: @request, local: true do |f| %>
           <%= render 'shared/error_messages', {model: @request} %>
+          <%= f.hidden_field :help_id, value: params[:help_id] %>
           <div class="form-group">
             <%= f.label :request_date, "お手伝いして欲しい日", class: 'text-color' %>
             <%= f.date_field :request_date, value: Date.today, class: "form-control" %>

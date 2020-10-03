@@ -8,7 +8,7 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
     @request.parent_id = current_parent.id
-    @help = Help.find_by(id: params[:help_id])
+    @help = Help.find_by(id: params[:request][:help_id])
     @children = current_parent.children
     if @request.save
       redirect_to helps_path, success: "登録が完了しました"
