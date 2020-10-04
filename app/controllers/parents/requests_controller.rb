@@ -22,16 +22,14 @@ class Parents::RequestsController < ApplicationController
   
   def edit
     @request = Request.find(params[:id])
-    @help = Help.find_by(id: params[:request][:help_id])
     @children = current_parent.children
   end
   
   def update
     @request = Request.find(params[:id])
-    @help = Help.find_by(id: params[:request][:help_id])
     @children = current_parent.children
     if @request.update_attributes(request_params)
-      redirect_to requests_path, success: "お手伝いを変更しました"
+      redirect_to parents_requests_path, success: "お手伝いを変更しました"
     else
       flash.now[:danger] = "お手伝いの変更に失敗しました"
       render :edit

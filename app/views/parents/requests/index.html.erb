@@ -21,7 +21,7 @@
                       <td><%= request.name %></td>
                       <td><%= safe_join(request.description.split("\n"), tag(:br)) %></td>
                       <td><%= request.point %>pt</td>
-                      <td><%= link_to "編集", "#" %></td>
+                      <td><%= link_to "編集",  edit_parents_request_path(request.id) %></td>
                       <td><%= link_to "削除", parents_request_path(request.id), method: :delete %></td>
                     </tr>
                   <% end %>
