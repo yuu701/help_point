@@ -14,19 +14,15 @@ Rails.application.routes.draw do
     get '/login',    to: 'sessions#new'
     post '/login',   to: 'sessions#create'
     delete '/logout', to: 'sessions#destroy'
+    resources :requests
   end
   
   namespace :children do
     get '/login',    to: 'sessions#new'
     post '/login',   to: 'sessions#create'
     delete '/logout', to: 'sessions#destroy'
+    resources :requests
   end
-  
-  
-  
-  # get '/login',    to: 'sessions#new'
-  # post '/login',   to: 'sessions#create'
-  # delete 'logout', to: 'sessions#destroy'
   
   resources :helps
   resources :requests

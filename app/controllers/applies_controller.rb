@@ -11,7 +11,7 @@ class AppliesController < ApplicationController
     # debugger
     # binding.pry
     if @apply.save
-      @request.status = true
+      @request.update_attributes(status: true)
       redirect_to requests_path, success: "ママ・パパに報告しました"
     else
       flash.now[:danger] = "報告が失敗しました"

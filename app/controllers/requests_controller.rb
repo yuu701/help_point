@@ -3,13 +3,15 @@ class RequestsController < ApplicationController
     @request = Request.new
     @help = Help.find_by(id: params[:help_id])
     @children = current_parent.children
+    # binding.pry
   end
   
   def create
     @request = Request.new(request_params)
-    @request.parent_id = current_parent.id
     @help = Help.find_by(id: params[:request][:help_id])
     @children = current_parent.children
+    @request.parent_id = current_parent.id
+    # binding.pry
     if @request.save
       redirect_to helps_path, success: "登録が完了しました"
     else
@@ -17,12 +19,30 @@ class RequestsController < ApplicationController
       render :new
     end
   end
+  
+  def edit
+    @request = Request.find(params[:id])
+    @help = Help.find_by(id: params[:request][:help_id])
+    @children = current_parent.children
+  end
+  
+  def update
+    @request = Request.find(params[:id])
+    @help = Help.find_by(id: params[:request][:help_id])
+    @children = current_parent.children
+    if @request.update_attributes(request_params)
+      redirect_to requests_path, success: "お手伝いを変更しました"
+    else
+      flash.now[:danger] = "お手伝いの変更に失敗しました"
+      render :edit
+    end
+  end
 
   def index
     if parent_logged_in?
       @children = current_parent.children
     elsif child_logged_in?
-      @requests = current_child.requests
+      @requests = current_child.requests.where(status: false)
     end
   end
   
