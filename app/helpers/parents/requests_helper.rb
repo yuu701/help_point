@@ -1,0 +1,2 @@
+module Parents::RequestsHelper
+end

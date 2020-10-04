@@ -19,7 +19,10 @@
           </li>
         <% elsif child_logged_in? %>
           <li>
-            <%= link_to "お手伝いをする", requests_path %>
+            <%= current_child.name %>
+          </li>
+          <li>
+            <%= link_to "お手伝いをする", children_requests_path %>
           </li>
           <li>
             <%= link_to "ログアウト", children_logout_path, method: :delete %>

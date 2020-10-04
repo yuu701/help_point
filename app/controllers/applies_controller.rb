@@ -12,7 +12,7 @@ class AppliesController < ApplicationController
     # binding.pry
     if @apply.save
       @request.update_attributes(status: true)
-      redirect_to requests_path, success: "ママ・パパに報告しました"
+      redirect_to children_requests_path, success: "ママ・パパに報告しました"
     else
       flash.now[:danger] = "報告が失敗しました"
       render :new

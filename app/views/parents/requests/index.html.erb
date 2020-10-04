@@ -1,0 +1,44 @@
+<div class="requests-index-wrapper">
+  <div class="container">
+      <div class="row">
+        <div class="col-md-offset-1 col-md-10 requests-index-container">
+            <h1 class="text-center text-color">依頼中のお手伝い一覧</h1>
+            <% @children.each do |child|%>
+              <p class="text-color"><%= child.name %>へ依頼中のお手伝い</p>
+              <% if child.requests.count != 0 %>
+                <table class="text-center text-color">
+                  <tr>
+                    <th>日付</th>
+                    <th>お手伝い名</th>
+                    <th>説明</th>
+                    <th>ポイント</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                  <% child.requests.each do |request|%>
+                    <tr>
+                      <td><%= request.request_date %></td>
+                      <td><%= request.name %></td>
+                      <td><%= safe_join(request.description.split("\n"), tag(:br)) %></td>
+                      <td><%= request.point %>pt</td>
+                      <td><%= link_to "編集", "#" %></td>
+                      <td><%= link_to "削除", parents_request_path(request.id), method: :delete %></td>
+                    </tr>
+                  <% end %>
+                </table>
+              <% else %>
+                <p class="text-color">まだありません</p>
+              <% end %>
+            <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-offset-2 col-md-4">
+          <%= link_to "お手伝いを登録", new_help_path, class:'btn btn-block btn-color' %>
+        </div>
+        <div class="col-md-4">
+          <%= link_to "お手伝いを確認", helps_path, class:'btn btn-block btn-color' %>
+        </div>
+      </div>
+  </div>
+</div>

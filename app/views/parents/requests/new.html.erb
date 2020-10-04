@@ -1,0 +1,46 @@
+<div class="request-new-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 request-new-container">
+        <h1 class="text-center text-color">お手伝い依頼</h1>
+        <%= form_with(model: [ :parents, @request], local: true) do |f| %>
+          <%= render 'shared/error_messages', {model: @request} %>
+          <%= f.hidden_field :help_id, value: @help.id %>
+          <div class="form-group">
+            <%= f.label :request_date, "お手伝いして欲しい日", class: 'text-color' %>
+            <%= f.date_field :request_date, value: Date.today, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :name, "依頼するお手伝い", class: "text-color" %>
+            <%= f.text_field :name, value: @help.name, class: "form-control"  %>
+          </div>
+          <div class="form-group">
+            <%= f.label :description, "説明", class: "text-color" %>
+            <%= f.text_area :description, value: @help.description,class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :point, "ポイント（半角数字）", class: "text-color" %>
+            <%= f.number_field :point, value: @help.point, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <% @children.each do |child|%>
+              <% if @help.child_id == child.id %>
+              <div class="child-select">
+                  <%= f.radio_button :child_id, child.id, checked: true %>
+                  <%= f.label :child_id, child.name %>
+                </div>
+              <% else %>
+                <div class="child-select">
+                  <%= f.radio_button :child_id, child.id %>
+                  <%= f.label :child_id, child.name %>
+                </div>
+              <% end %>  
+            <% end %>
+          </div>
+          <%= f.submit "登録", class: "btn-block btn-color" %>
+        <% end %>
+        <%= link_to "戻る", helps_path, class: "text-color" %>
+      </div>
+    </div>
+  </div>
+</div>

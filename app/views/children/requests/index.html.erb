@@ -1,0 +1,31 @@
+<div class="requests-index-wrapper">
+  <div class="container">
+      <div class="row">
+        <div class="col-md-offset-1 col-md-10 requests-index-container">
+          <h1 class="text-center text-color">頼まれているお手伝い</h1>
+            <% if @requests.count != 0 %>
+              <table class="text-center text-color">
+                <tr>
+                  <th>日付</th>
+                  <th>お手伝い名</th>
+                  <th>説明</th>
+                  <th>ポイント</th>
+                  <th></th>
+                </tr>
+                <% @requests.each do |request|%>
+                  <tr>
+                    <td><%= request.request_date %></td>
+                    <td><%= request.name %></td>
+                    <td><%= safe_join(request.description.split("\n"), tag(:br)) %></td>
+                    <td><%= request.point %>pt</td>
+                    <td><%= link_to "できた！", new_apply_path(request_id: request.id) %></td>
+                  </tr>
+                <% end %>
+              </table>
+            <% else %>
+              <p class="text-color">頼まれているお手伝いはありません</p>
+            <% end %>
+        </div>
+      </div>
+  </div>
+</div>
