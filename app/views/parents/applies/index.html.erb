@@ -5,7 +5,7 @@
           <h1 class="text-center text-color">承認待ちお手伝い</h1>
           <% @children.each do |child|%>
            <p><%= child.name %>のお手伝い</p>
-            <% if @children.count != 0 %>
+            <% if child.applies.where(close: false).count != 0 %>
               <table class="text-center text-color">
                 <tr>
                   <th>お手伝いした日</th>
@@ -16,15 +16,15 @@
                   <th></th>
                   <th></th>
                 </tr>
-                <% @applies.each do |apply|%>
+                <% child.applies.where(close: false).each do |apply|%>
                   <tr>
                     <td><%= apply.completion_date %></td>
                     <td><%= apply.request.name %></td>
                     <td><%= safe_join(apply.request.description.split("\n"), tag(:br)) %></td>
                     <td><%= apply.request.point %>pt</td>
                     <td><%= apply.comment %></td>
-                    <td><%= link_to "編集", edit_children_apply_path(apply.id) %></td>
-                    <td><%= link_to "報告をやめる", children_apply_path(apply.id), method: :delete %></td>
+                    <td><%= link_to "ｏｋ！", "#" %></td>
+                    <td><%= link_to "やり直し", parents_apply_path(apply.id), method: :delete %></td>
                   </tr>
                 <% end %>
               </table>

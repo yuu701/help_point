@@ -1,7 +1,7 @@
 class Parents::AppliesController < ApplicationController
   def index
     @children = current_parent.children
-    @applies = current_child.applies.where(close: false)
+    # @applies = current_parent.applies.where(close: false)
   end
   
   def destroy
@@ -9,6 +9,6 @@ class Parents::AppliesController < ApplicationController
     apply.destroy
     request = apply.request
     request.update_attributes(status: false)
-    redirect_to children_applies_path, success: '報告をやめました'
+    redirect_to parents_applies_path, success: '承認を却下しました'
   end
 end
