@@ -1,0 +1,2 @@
+module Parents::AppliesHelper
+end

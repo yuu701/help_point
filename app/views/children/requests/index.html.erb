@@ -6,7 +6,7 @@
             <% if @requests.count != 0 %>
               <table class="text-center text-color">
                 <tr>
-                  <th>日付</th>
+                  <th>頼まれた日</th>
                   <th>お手伝い名</th>
                   <th>説明</th>
                   <th>ポイント</th>
@@ -18,13 +18,18 @@
                     <td><%= request.name %></td>
                     <td><%= safe_join(request.description.split("\n"), tag(:br)) %></td>
                     <td><%= request.point %>pt</td>
-                    <td><%= link_to "できた！", new_apply_path(request_id: request.id) %></td>
+                    <td><%= link_to "できた！", new_children_apply_path(request_id: request.id) %></td>
                   </tr>
                 <% end %>
               </table>
             <% else %>
               <p class="text-color">頼まれているお手伝いはありません</p>
             <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-offset-4 col-md-4">
+          <%= link_to "報告中のお手伝い", children_applies_path, class:'btn btn-block btn-color' %>
         </div>
       </div>
   </div>

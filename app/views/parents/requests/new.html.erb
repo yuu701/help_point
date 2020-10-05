@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-offset-4 col-md-4 request-new-container">
         <h1 class="text-center text-color">お手伝い依頼</h1>
-        <%= form_with(model: [ :parents, @request], local: true) do |f| %>
+        <%= form_with(model: [ :parents, @request ], local: true) do |f| %>
           <%= render 'shared/error_messages', {model: @request} %>
           <%= f.hidden_field :help_id, value: @help.id %>
           <div class="form-group">

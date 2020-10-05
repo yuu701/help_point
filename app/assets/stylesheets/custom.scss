@@ -245,10 +245,6 @@ h1,h2 {
   .requests-index-container {
     padding-top: 220px;
     
-    // h2 {
-    //   font-size: 20px;
-    // }
-    
     table{
       background-color: #f3d2c1;
       margin: 10px 0 20px 0;
@@ -274,6 +270,28 @@ h1,h2 {
     .form-group {
       margin-bottom: 20px;
     }
+    
+    table{
+      background-color: #f3d2c1;
+      margin: 10px 0 20px 0;
+      width: 100%;
+      
+      th, td {
+        padding: 10px;
+        border: 1px solid #001858;
+      }
+    }
+  }
+}
+
+/* 申請一覧ページ*/
+.applies-index-wrapper {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #fef6e4;
+  
+  .applies-index-container {
+    padding-top: 220px;
     
     table{
       background-color: #f3d2c1;

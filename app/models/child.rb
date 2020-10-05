@@ -13,4 +13,5 @@ class Child < ApplicationRecord
   belongs_to :parent
   has_many :helps, dependent: :destroy
   has_many :requests, dependent: :destroy
+  has_many :applies, through: :requests
 end

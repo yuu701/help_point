@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     post '/login',   to: 'sessions#create'
     delete '/logout', to: 'sessions#destroy'
     resources :requests
+    resources :applies, only: [:index, :destroy]
   end
   
   namespace :children do
@@ -22,10 +23,10 @@ Rails.application.routes.draw do
     post '/login',   to: 'sessions#create'
     delete '/logout', to: 'sessions#destroy'
     resources :requests, only: [:index]
+    resources :applies
   end
   
   resources :helps
-  resources :applies
   resources :parents
   resources :children
   resources :icons

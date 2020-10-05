@@ -1,0 +1,38 @@
+<div class="applies-index-wrapper">
+  <div class="container">
+      <div class="row">
+        <div class="col-md-offset-1 col-md-10 applies-index-container">
+          <h1 class="text-center text-color">承認待ちお手伝い</h1>
+          <% @children.each do |child|%>
+           <p><%= child.name %>のお手伝い</p>
+            <% if @children.count != 0 %>
+              <table class="text-center text-color">
+                <tr>
+                  <th>お手伝いした日</th>
+                  <th>お手伝い名</th>
+                  <th>説明</th>
+                  <th>ポイント</th>
+                  <th>アピールポイント</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+                <% @applies.each do |apply|%>
+                  <tr>
+                    <td><%= apply.completion_date %></td>
+                    <td><%= apply.request.name %></td>
+                    <td><%= safe_join(apply.request.description.split("\n"), tag(:br)) %></td>
+                    <td><%= apply.request.point %>pt</td>
+                    <td><%= apply.comment %></td>
+                    <td><%= link_to "編集", edit_children_apply_path(apply.id) %></td>
+                    <td><%= link_to "報告をやめる", children_apply_path(apply.id), method: :delete %></td>
+                  </tr>
+                <% end %>
+              </table>
+            <% else %>
+              <p class="text-color">報告中のお手伝いはありません</p>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+  </div>
+</div>
