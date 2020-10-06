@@ -27,3 +27,9 @@ ja:
         name: お手伝い名
         point: ポイント
         child: お子様
+      apply:
+        completion_date: お手伝いした日
+      result:
+        completion_date: お手伝いした日
+        name: お手伝い名
+        point: ポイント

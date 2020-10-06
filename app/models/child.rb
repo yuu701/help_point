@@ -14,4 +14,5 @@ class Child < ApplicationRecord
   has_many :helps, dependent: :destroy
   has_many :requests, dependent: :destroy
   has_many :applies, through: :requests
+  has_many :results, dependent: :destroy
 end

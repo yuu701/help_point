@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :applies
   end
   
+  resources :results
   resources :helps
   resources :parents
   resources :children

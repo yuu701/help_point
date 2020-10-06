@@ -1,0 +1,47 @@
+<div class="result-new-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 result-new-container">
+        <h1 class="text-center text-color"><%= @apply.request.child.name %>のお手伝い承認</h1>
+        <%= form_with model: @result, local: true do |f| %>
+          <%= render 'shared/error_messages', {model: @result} %>
+          <%= f.hidden_field :apply_id, value: @apply.id %>
+          <div class="form-group">
+            <%= f.label :completion_date, "お手伝いした日", class: 'text-color' %>
+            <%= f.date_field :completion_date, value: @apply.completion_date, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :name, "お手伝い名", class: "text-color" %>
+            <%= f.text_field :name, value: @apply.request.name, class: "form-control"  %>
+          </div>
+          <div class="form-group">
+            <%= f.label :description, "説明", class: "text-color" %>
+            <%= f.text_area :description, value: @apply.request.description, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :point, "ポイント（半角数字）", class: "text-color" %>
+            <%= f.number_field :point, value: @apply.request.point, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :bonus, "ボーナスポイント（半角数字）", class: "text-color" %>
+            <%= f.number_field :bonus, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <p>アピールポイント</p>
+            <% if @apply.comment != "" %>
+              <p><%= safe_join(@apply.comment.split("\n"), tag(:br)) %></p>
+            <% else %>
+              <p>-------</p>
+            <% end %>  
+          </div>
+          <div class="form-group">
+            <%= f.label :parents_comment, "コメント", class: "text-color" %>
+            <%= f.text_area :parents_comment, class: "form-control" %>
+          </div>
+          <%= f.submit "登録", class: "btn-block btn-color" %>
+        <% end %>
+        <%= link_to "戻る", helps_path, class: "text-color" %>
+      </div>
+    </div>
+  </div>
+</div>
