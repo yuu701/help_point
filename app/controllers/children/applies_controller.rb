@@ -10,12 +10,28 @@ class Children::AppliesController < ApplicationController
     @request = Request.find_by(id: params[:apply][:request_id])
     # debugger
     # binding.pry
-    if @apply.save
-      @request.update_attributes(status: true)
+    # if @apply.save
+    #   @request.update_attributes(status: true)
+    #   redirect_to children_requests_path, success: "ママ・パパに報告しました"
+    # else
+    #   flash.now[:danger] = "報告が失敗しました"
+    #   render :new
+    # end
+    begin
+      Apply.transaction do
+        Request.transaction do
+          @apply.save!
+          @request.update_attributes!(status: true)
+        end
+      end
       redirect_to children_requests_path, success: "ママ・パパに報告しました"
-    else
+    rescue => e
       flash.now[:danger] = "報告が失敗しました"
       render :new
+    # else
+      # other exception
+    # ensure
+      # always executed
     end
   end
   
@@ -41,9 +57,16 @@ class Children::AppliesController < ApplicationController
   
   def destroy
     apply = Apply.find_by(id: params[:id])
-    apply.destroy
     request = apply.request
-    request.update_attributes(status: false)
+    # apply.destroy
+    # request.update_attributes(status: false)
+    # redirect_to children_applies_path, success: '報告をやめました'
+    Apply.transaction do
+      Request.transaction do
+        apply.destroy!
+        request.update_attributes!(status: false)
+      end
+    end
     redirect_to children_applies_path, success: '報告をやめました'
   end
   

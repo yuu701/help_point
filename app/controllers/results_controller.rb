@@ -11,10 +11,22 @@ class ResultsController < ApplicationController
     @result.appeal_comment = @apply.comment
     @result.child_id = @apply.request.child_id
     # binding.pry
-    if @result.save
-      @apply.update_attributes(close: true)
+    # if @result.save
+    #   @apply.update_attributes(close: true)
+    #   redirect_to helps_path, success: "承認が完了しました"
+    # else
+    #   flash.now[:danger] = "承認に失敗しました"
+    #   render :new
+    # end
+     begin
+      Result.transaction do
+        Apply.transaction do
+          @result.save!
+          @apply.update_attributes!(close: true)
+        end
+      end
       redirect_to helps_path, success: "承認が完了しました"
-    else
+    rescue => e
       flash.now[:danger] = "承認に失敗しました"
       render :new
     end

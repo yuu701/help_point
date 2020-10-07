@@ -24,7 +24,7 @@
                     <td><%= apply.request.name %></td>
                     <td><%= safe_join(apply.request.description.split("\n"), tag(:br)) %></td>
                     <td><%= apply.request.point %>pt</td>
-                    <td><%= apply.comment %></td>
+                    <td><%= safe_join(apply.comment.split("\n"), tag(:br)) %></td>
                     <td><%= link_to "承認する", new_result_path(apply_id: apply.id) %></td>
                     <td><%= link_to "やり直し", parents_apply_path(apply.id), method: :delete %></td>
                   </tr>
