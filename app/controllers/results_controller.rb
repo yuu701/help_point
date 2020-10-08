@@ -9,6 +9,7 @@ class ResultsController < ApplicationController
     @result = Result.new(result_params)
     @apply = Apply.find_by(id: params[:result][:apply_id])
     @result.appeal_comment = @apply.comment
+    @result.parent_id = current_parent.id
     @result.child_id = @apply.request.child_id
     # binding.pry
     # if @result.save
@@ -50,13 +51,13 @@ class ResultsController < ApplicationController
   #   end
   # end
 
-  # def index
-  #   if parent_logged_in?
-  #     @children = current_parent.children
-  #   elsif child_logged_in?
-  #     @requests = current_child.requests.where(status: false)
-  #   end
-  # end
+  def index
+    if parent_logged_in?
+      @results = current_parent.results
+    elsif child_logged_in?
+      @results = current_child.parent.results
+    end
+  end
   
   # def destroy
   #   Request.find_by(id: params[:id]).destroy

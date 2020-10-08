@@ -1,0 +1,16 @@
+<div class="result-index-wrapper">
+  <div class="container">
+    <div class="result-index-container">
+      <h1 class="text-center text-color">お手伝いポイント</h1>
+      <%= month_calendar events: @results do |date, results| %>
+        <%= date.day %>
+        
+        <% results.each do |result| %>
+          <div>
+            <%= result.child.name %>
+          </div>
+          <% end %>  
+      <% end %>
+    </div>
+  </div>
+</div>

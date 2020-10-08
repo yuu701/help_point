@@ -16,4 +16,5 @@ class Parent < ApplicationRecord
   has_many :helps, through: :children
   has_many :requests
   has_many :applies, through: :requests
+  has_many :results
 end

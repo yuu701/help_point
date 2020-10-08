@@ -8,6 +8,7 @@ class CreateResults < ActiveRecord::Migration[5.2]
       t.integer :bonus
       t.string :appeal_comment
       t.string :parents_comment
+      t.integer :parent_id
       t.integer :child_id
 
       t.timestamps

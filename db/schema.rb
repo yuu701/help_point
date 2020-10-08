@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 2020_10_06_044747) do
     t.integer "bonus"
     t.string "appeal_comment"
     t.string "parents_comment"
+    t.integer "parent_id"
     t.integer "child_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -4,5 +4,10 @@ class Result < ApplicationRecord
   validates :description, length: { maximum: 255 }
   validates :point, presence: true
   
+  belongs_to :parent
   belongs_to :child
+  
+  def start_time
+    self.completion_date
+  end
 end

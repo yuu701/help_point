@@ -75,3 +75,4 @@ gem 'bootstrap-sass'
 gem 'bcrypt'
 gem 'rails-i18n'
 gem "carrierwave"
+gem 'simple_calendar', '~> 2.0'
