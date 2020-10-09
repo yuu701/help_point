@@ -1,0 +1,39 @@
+<div class="result-show-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-1 col-md-10 result-show-container">
+        <h1 class="text-center text-color"><%= @date %> お手伝い一覧</h1>
+        <% @children.each do |child|%>
+          <% if child.results.where(completion_date: @date).count != 0 %>
+            <p class="text-color">お手伝いした人：<%= child.name %></p>
+            <table class="text-center text-color">
+              <tr>
+                <th>お手伝い名</th>
+                <th>説明</th>
+                <th>ポイント</th>
+                <th>ボーナス</th>
+                <th>アピールポイント</th>
+                <th>コメント</th>
+                <th></th>
+                <th></th>
+              </tr>
+              <% child.results.where(completion_date: @date).each do |result|%>
+                <tr>
+                  <td><%= result.name %></td>
+                  <td><%= safe_join(result.description.split("\n"), tag(:br)) %></td>
+                  <td><%= result.point %>pt</td>
+                  <td><%= result.bonus %>pt</td>
+                  <td><%= safe_join(result.appeal_comment.split("\n"), tag(:br)) %></td>
+                  <td><%= safe_join(result.parents_comment.split("\n"), tag(:br)) %></td>
+                  <td><%= link_to "編集", edit_result_path(result.id) %></td>
+                  <td><%= link_to "削除", result_path(result.id), method: :delete %></td>
+                </tr>
+              <% end %>
+            </table>
+          <% end %>
+        <% end %>
+        <%= link_to "戻る", results_path, class:'text-color' %>
+      </div>
+    </div>
+  </div>
+</div>

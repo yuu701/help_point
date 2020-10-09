@@ -6,6 +6,7 @@
             <% if @applies.count != 0 %>
               <table class="text-center text-color">
                 <tr>
+                  <th>頼まれた日</th>
                   <th>お手伝いした日</th>
                   <th>お手伝い名</th>
                   <th>説明</th>
@@ -16,6 +17,7 @@
                 </tr>
                 <% @applies.each do |apply|%>
                   <tr>
+                    <td><%= apply.request.request_date %></td>
                     <td><%= apply.completion_date %></td>
                     <td><%= apply.request.name %></td>
                     <td><%= safe_join(apply.request.description.split("\n"), tag(:br)) %></td>

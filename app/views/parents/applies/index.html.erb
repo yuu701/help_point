@@ -8,8 +8,8 @@
             <% if child.applies.where(close: false).count != 0 %>
               <table class="text-center text-color">
                 <tr>
-                  <th>お手伝いした日</th>
                   <th>依頼日</th>
+                  <th>お手伝いした日</th>
                   <th>お手伝い名</th>
                   <th>説明</th>
                   <th>ポイント</th>
@@ -19,8 +19,8 @@
                 </tr>
                 <% child.applies.where(close: false).each do |apply|%>
                   <tr>
-                    <td><%= apply.completion_date %></td>
                     <td><%= apply.request.request_date %></td>
+                    <td><%= apply.completion_date %></td>
                     <td><%= apply.request.name %></td>
                     <td><%= safe_join(apply.request.description.split("\n"), tag(:br)) %></td>
                     <td><%= apply.request.point %>pt</td>

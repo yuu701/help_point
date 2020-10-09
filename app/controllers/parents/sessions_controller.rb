@@ -6,7 +6,7 @@ class Parents::SessionsController < ApplicationController
     parent = Parent.find_by(email: params[:session][:email].downcase)
     if parent && parent.authenticate(params[:session][:password])
       log_in_parent parent
-      redirect_to root_path, success: "ログインに成功しました"
+      redirect_to results_path, success: "ログインに成功しました"
     else
       flash.now[:danger] = "ログインに失敗しました"
       render :new

@@ -8,7 +8,7 @@
           <%= f.hidden_field :request_id, value: @request.id %>
           <div class="form-group">
             <%= f.label :completion_date, "お手伝いした日", class: 'text-color' %>
-            <%= f.date_field :completion_date, value: Date.today, class: "form-control" %>
+            <%= f.date_field :completion_date, value: @request.request_date, class: "form-control" %>
           </div>
           <div class="form-group">
             <table>

@@ -26,7 +26,7 @@ class ResultsController < ApplicationController
           @apply.update_attributes!(close: true)
         end
       end
-      redirect_to helps_path, success: "承認が完了しました"
+      redirect_to parents_applies_path, success: "承認が完了しました"
     rescue => e
       flash.now[:danger] = "承認に失敗しました"
       render :new
@@ -53,12 +53,24 @@ class ResultsController < ApplicationController
 
   def index
     if parent_logged_in?
+      @children = current_parent.children
       @results = current_parent.results
     elsif child_logged_in?
+      @children = current_child.parent.children
       @results = current_child.parent.results
     end
   end
   
+  def show
+    @date = params[:date]
+    if parent_logged_in?
+      @children = current_parent.children
+      # @results = current_parent.results.where(completion_date: @date)
+    elsif child_logged_in?
+      @children = current_child.parent.children
+      # @results = current_child.parent.results.where(completion_date: @date)
+    end
+  end
   # def destroy
   #   Request.find_by(id: params[:id]).destroy
   #   redirect_to requests_path, success: 'お手伝い依頼を削除しました'

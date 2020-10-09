@@ -336,3 +336,25 @@ h1,h2 {
     padding-top: 220px;
   }
 }
+
+/* 承認詳細ページ*/
+.result-show-wrapper {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #fef6e4;
+  
+  .result-show-container {
+    padding-top: 220px;
+    
+    table{
+      background-color: #f3d2c1;
+      margin: 10px 0 20px 0;
+      width: 100%;
+      
+      th, td {
+        padding: 10px;
+        border: 1px solid #001858;
+      }
+    }
+  }
+}

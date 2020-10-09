@@ -5,11 +5,13 @@
       <%= month_calendar events: @results do |date, results| %>
         <%= date.day %>
         
+        <% displayed_children = [] %>
         <% results.each do |result| %>
-          <div>
-            <%= result.child.name %>
-          </div>
-          <% end %>  
+          <%if(!displayed_children.include?(result.child)) %>
+            <%= link_to result.child.name, result_path(result.id, date: result.completion_date) %>
+          <% end %>
+          <% displayed_children.push(result.child) %>
+        <% end %>  
       <% end %>
     </div>
   </div>
