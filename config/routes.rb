@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   
-  get 'applies/new'
-  get 'applies/index'
   root 'pages#index'
   
   # namespace :admin do

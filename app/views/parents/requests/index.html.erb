@@ -8,18 +8,18 @@
               <% if child.requests.where(status: false).count != 0 %>
                 <table class="text-center text-color">
                   <tr>
-                    <th>日付</th>
-                    <th>お手伝い名</th>
-                    <th>説明</th>
-                    <th>ポイント</th>
-                    <th></th>
-                    <th></th>
+                    <th class="text-center col-md-1">依頼日</th>
+                    <th class="text-center col-md-3">お手伝い名</th>
+                    <th class="text-center col-md-4">説明</th>
+                    <th class="text-center col-md-2">ポイント</th>
+                    <th class="col-md-1"></th>
+                    <th class="col-md-1"></th>
                   </tr>
                   <% child.requests.where(status: false).each do |request|%>
                     <tr>
-                      <td><%= request.request_date %></td>
-                      <td><%= request.name %></td>
-                      <td><%= safe_join(request.description.split("\n"), tag(:br)) %></td>
+                      <td><%= request.request_date.strftime("%-m/%-d") %></td>
+                      <td class="text-left"><%= request.name %></td>
+                      <td class="text-left"><%= safe_join(request.description.split("\n"), tag(:br)) %></td>
                       <td><%= request.point %>pt</td>
                       <td><%= link_to "編集",  edit_parents_request_path(request.id) %></td>
                       <td><%= link_to "削除", parents_request_path(request.id), method: :delete %></td>

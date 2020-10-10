@@ -8,23 +8,23 @@
             <% if child.applies.where(close: false).count != 0 %>
               <table class="text-center text-color">
                 <tr>
-                  <th>依頼日</th>
-                  <th>お手伝いした日</th>
-                  <th>お手伝い名</th>
-                  <th>説明</th>
-                  <th>ポイント</th>
-                  <th>アピールポイント</th>
-                  <th></th>
-                  <th></th>
+                  <th class="text-center col-md-1">依頼日</th>
+                  <th class="text-center col-md-1">実行日</th>
+                  <th class="text-center col-md-2">お手伝い名</th>
+                  <th class="text-center col-md-2">説明</th>
+                  <th class="text-center col-md-1">ポイント</th>
+                  <th class="text-center col-md-3">アピールポイント</th>
+                  <th class="col-md-1"></th>
+                  <th class="col-md-1"></th>
                 </tr>
                 <% child.applies.where(close: false).each do |apply|%>
                   <tr>
-                    <td><%= apply.request.request_date %></td>
-                    <td><%= apply.completion_date %></td>
-                    <td><%= apply.request.name %></td>
-                    <td><%= safe_join(apply.request.description.split("\n"), tag(:br)) %></td>
+                    <td><%= apply.request.request_date.strftime("%-m/%-d") %></td>
+                    <td><%= apply.completion_date.strftime("%-m/%-d")  %></td>
+                    <td class="text-left"><%= apply.request.name %></td>
+                    <td class="text-left"><%= safe_join(apply.request.description.split("\n"), tag(:br)) %></td>
                     <td><%= apply.request.point %>pt</td>
-                    <td><%= safe_join(apply.comment.split("\n"), tag(:br)) %></td>
+                    <td class="text-left"><%= safe_join(apply.comment.split("\n"), tag(:br)) %></td>
                     <td><%= link_to "承認する", new_result_path(apply_id: apply.id) %></td>
                     <td><%= link_to "やり直し", parents_apply_path(apply.id), method: :delete %></td>
                   </tr>

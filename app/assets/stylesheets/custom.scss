@@ -4,6 +4,13 @@
   box-sizing:         border-box;
 }
 
+@mixin wrapper {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #fef6e4;
+}
+
+/*共通*/
 h1,h2 {
   font-weight: 100;
 }
@@ -22,49 +29,6 @@ h1,h2 {
   
   &:hover {
     color: #bebebe;
-  }
-}
-
-/* トップページ*/
-
-.top-hero-wrapper {
-  width: 100vw;
-  height: 100vh;
-  background-color: #fef6e4;
-}
-
-.top-hero-container {
-  padding-top: 220px;
-  
-  h1 {
-    font-size: 50px;
-    margin-bottom: 20px;
-  }
-  
-  h2 {
-    margin-bottom: 60px;
-  }
-}
-
-.form-control {
-  height: 45px;
-}
-
-/* 親アカウント新規登録ページ*/
-.parents-new-wrapper {
-  width: 100vw;
-  height: 100vh;
-  background-color: #fef6e4;
-  
-  .parents-new-container {
-    padding-top: 220px;
-    
-    .form-group {
-      margin-bottom: 20px;
-    }
-    a {
-      display: block;
-    }
   }
 }
 
@@ -88,16 +52,6 @@ h1,h2 {
   }
 }
 
-/* miscellaneous */
-
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  @include box_sizing;
-}
-
 /*forms*/
 
 #error_explanation {
@@ -115,26 +69,70 @@ h1,h2 {
   }
 }
 
+.form-group {
+    margin-bottom: 20px;
+  }
+  
+.form-control {
+  height: 45px;
+}
+
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+
+
+/* トップページ*/
+
+.top-hero-wrapper {
+  @include wrapper;
+}
+
+.top-hero-container {
+  padding-top: 220px;
+  
+  h1 {
+    font-size: 50px;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    margin-bottom: 60px;
+  }
+}
+
+/* 親アカウント新規登録ページ*/
+.parents-new-wrapper {
+  @include wrapper;
+}
+
+.parents-new-container {
+  padding-top: 220px;
+  
+  a {
+    display: block;
+  }
+}
+
 /* アイコン登録ページ*/
 .icons-new-wrapper {
-  width: 100vw;
-  height: 100vh;
-  background-color: #fef6e4;
+  @include wrapper;
   
   .icons-new-container {
     padding-top: 220px;
-    
-    .form-group {
-      margin-bottom: 20px;
-    }
   }
 }
 
 /* アイコン一覧ページ*/
 .icons-index-wrapper {
-  width: 100vw;
-  height: 100vh;
-  background-color: #fef6e4;
+  @include wrapper;
   
   .icons-index-container {
     padding-top: 220px;
@@ -143,16 +141,10 @@ h1,h2 {
 
 /* こども登録ページ*/
 .child-new-wrapper {
-  width: 100vw;
-  height: 100vh;
-  background-color: #fef6e4;
+  @include wrapper;
   
   .child-new-container {
-    padding-top: 220px;
-    
-    .form-group {
-      margin-bottom: 20px;
-    }
+    padding-top: 150px;
     
     .icon-select {
       float: left;
@@ -162,28 +154,20 @@ h1,h2 {
 
 /* 子供一覧ページ*/
 .children-index-wrapper {
-  width: 100vw;
-  height: 100vh;
-  background-color: #fef6e4;
+  @include wrapper;
   
   .children-index-container {
-    padding-top: 220px;
+    padding-top: 150px;
     
   }
 }
 
 /* お手伝い登録ページ、お手伝い編集ページ*/
 .help-new-wrapper {
-  width: 100vw;
-  height: 100vh;
-  background-color: #fef6e4;
+  @include wrapper;
   
   .help-new-container {
-    padding-top: 220px;
-    
-    .form-group {
-      margin-bottom: 20px;
-    }
+    padding-top: 150px;
     
     p {
       font-weight: bold;
@@ -193,12 +177,11 @@ h1,h2 {
 
 /* お手伝い一覧ページ*/
 .helps-index-wrapper {
-  width: 100vw;
-  min-height: 100vh;
-  background-color: #fef6e4;
+  @include wrapper;
+  padding-bottom: 100px;
   
   .helps-index-container {
-    padding-top: 220px;
+    padding-top: 150px;
     
     // h2 {
     //   font-size: 20px;
@@ -219,16 +202,10 @@ h1,h2 {
 
 /* リクエスト登録ページ*/
 .request-new-wrapper {
-  width: 100vw;
-  min-height: 100vh;
-  background-color: #fef6e4;
+  @include wrapper;
   
   .request-new-container {
-    padding-top: 220px;
-    
-    .form-group {
-      margin-bottom: 20px;
-    }
+    padding-top: 150px;
     
     p {
       font-weight: bold;
@@ -238,12 +215,11 @@ h1,h2 {
 
 /* リクエスト一覧ページ*/
 .requests-index-wrapper {
-  width: 100vw;
-  min-height: 100vh;
-  background-color: #fef6e4;
+  @include wrapper;
+  padding-bottom: 100px;
   
   .requests-index-container {
-    padding-top: 220px;
+    padding-top: 150px;
     
     table{
       background-color: #f3d2c1;
@@ -260,16 +236,10 @@ h1,h2 {
 
 /* 申請登録ページ*/
 .apply-new-wrapper {
-  width: 100vw;
-  min-height: 100vh;
-  background-color: #fef6e4;
+  @include wrapper;
   
   .apply-new-container {
-    padding-top: 220px;
-    
-    .form-group {
-      margin-bottom: 20px;
-    }
+    padding-top: 150px;
     
     table{
       background-color: #f3d2c1;
@@ -286,12 +256,14 @@ h1,h2 {
 
 /* 申請一覧ページ*/
 .applies-index-wrapper {
-  width: 100vw;
-  min-height: 100vh;
-  background-color: #fef6e4;
+  @include wrapper;
   
   .applies-index-container {
-    padding-top: 220px;
+    padding-top: 150px;
+    
+    .table-date {
+      font-size: 10px;
+    }
     
     table{
       background-color: #f3d2c1;
@@ -308,17 +280,11 @@ h1,h2 {
 
 /* 承認登録ページ*/
 .result-new-wrapper {
-  width: 100vw;
-  min-height: 100vh;
-  background-color: #fef6e4;
+  @include wrapper;
   
   .result-new-container {
-    padding-top: 220px;
-    
-    .form-group {
-      margin-bottom: 20px;
-    }
-    
+    padding-top: 150px;
+  
     p {
       font-weight: bold;
       color: #001858;
@@ -328,23 +294,19 @@ h1,h2 {
 
 /* 承認結果ページ*/
 .result-index-wrapper {
-  width: 100vw;
-  min-height: 100vh;
-  background-color: #fef6e4;
+  @include wrapper;
   
   .result-index-container {
-    padding-top: 220px;
+    padding-top: 150px;
   }
 }
 
 /* 承認詳細ページ*/
 .result-show-wrapper {
-  width: 100vw;
-  min-height: 100vh;
-  background-color: #fef6e4;
+  @include wrapper;
   
   .result-show-container {
-    padding-top: 220px;
+    padding-top: 150px;
     
     table{
       background-color: #f3d2c1;

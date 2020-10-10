@@ -8,19 +8,21 @@
             <% if child.helps.count != 0 %>
               <table class="text-center text-color">
                 <tr>
-                  <th>お手伝い名</th>
-                  <th>説明</th>
-                  <th>ポイント</th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
+                  <th class="text-center col-md-3">お手伝い名</th>
+                  <th class="text-center col-md-4">説明</th>
+                  <th class="text-center col-md-1">ポイント</th>
+                  <th class="col-md-1"></th>
+                  <th class="col-md-1"></th>
+                  <th class="col-md-1"></th>
+                  <th class="col-md-1"></th>
                 </tr>
                 <% child.helps.each do |help|%>
                   <tr>
-                    <td><%= help.name %></td>
-                    <td><%= safe_join(help.description.split("\n"), tag(:br)) %></td>
+                    <td class="text-left"><%= help.name %></td>
+                    <td class="text-left"><%= safe_join(help.description.split("\n"), tag(:br)) %></td>
                     <td><%= help.point %>pt</td>
                     <td><%= link_to "依頼する", new_parents_request_path(help_id: help.id) %></td>
+                    <td><%= link_to "pt登録", "#" %></td>
                     <td><%= link_to "編集", edit_help_path(help.id) %></td>
                     <td><%= link_to "削除", help_path(help.id), method: :delete %></td>
                   </tr>
