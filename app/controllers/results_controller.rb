@@ -59,18 +59,25 @@ class ResultsController < ApplicationController
       @children = current_child.parent.children
       @results = current_child.parent.results.order(child_id: "ASC")
     end
+    
+    if params[:date] != nil
+      @date = params[:date]
+      render "results/_result_day"
+    else
+      render "results/_result_month"
+    end
   end
   
   def show
-    @date = params[:date]
-    if parent_logged_in?
-      @children = current_parent.children
-      # @results = current_parent.results.where(completion_date: @date)
-    elsif child_logged_in?
-      @children = current_child.parent.children
-      # @results = current_child.parent.results.where(completion_date: @date)
-    end
+    # if parent_logged_in?
+    #   @children = current_parent.children
+    #   # @results = current_parent.results.where(completion_date: @date)
+    # elsif child_logged_in?
+    #   @children = current_child.parent.children
+    #   # @results = current_child.parent.results.where(completion_date: @date)
+    # end
   end
+  
   # def destroy
   #   Request.find_by(id: params[:id]).destroy
   #   redirect_to requests_path, success: 'お手伝い依頼を削除しました'
