@@ -11,15 +11,7 @@ class ResultsController < ApplicationController
     @result.appeal_comment = @apply.comment
     @result.parent_id = current_parent.id
     @result.child_id = @apply.request.child_id
-    # binding.pry
-    # if @result.save
-    #   @apply.update_attributes(close: true)
-    #   redirect_to helps_path, success: "承認が完了しました"
-    # else
-    #   flash.now[:danger] = "承認に失敗しました"
-    #   render :new
-    # end
-     begin
+    begin
       Result.transaction do
         Apply.transaction do
           @result.save!
@@ -60,12 +52,18 @@ class ResultsController < ApplicationController
       @results = current_child.parent.results.order(child_id: "ASC")
     end
     
+    # @day = {}
+    # @results.each do |result|
+    #   result[:completion_date]  
+    # end
+    
     if params[:date] != nil
       @date = params[:date]
-      render "results/_result_day"
+      render "results/result_day"
     else
-      render "results/_result_month"
+      render "results/result_month"
     end
+    # binding.pry
   end
   
   def show

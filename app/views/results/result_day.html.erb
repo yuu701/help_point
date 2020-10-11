@@ -1,7 +1,7 @@
-<div class="result-show-wrapper">
+<div class="result-day-wrapper">
   <div class="container">
     <div class="row">
-      <div class="col-md-offset-1 col-md-10 result-show-container">
+      <div class="col-md-offset-1 col-md-10 result-day-container">
         <h1 class="text-center text-color"><%= @date %> お手伝い一覧</h1>
         <% @children.each do |child|%>
           <% if child.results.where(completion_date: @date).count != 0 %>

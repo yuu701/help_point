@@ -5,7 +5,7 @@
           <h1 class="text-center text-color">承認待ちお手伝い</h1>
           <% @children.each do |child|%>
            <p><%= child.name %>のお手伝い</p>
-            <% if child.applies.where(close: false).count != 0 %>
+            <% if child.not_closed_applies.count != 0 %>
               <table class="text-center text-color">
                 <tr>
                   <th class="text-center col-md-1">依頼日</th>
@@ -17,7 +17,7 @@
                   <th class="col-md-1"></th>
                   <th class="col-md-1"></th>
                 </tr>
-                <% child.applies.where(close: false).each do |apply|%>
+                <% child.not_closed_applies.each do |apply|%>
                   <tr>
                     <td><%= apply.request.request_date.strftime("%-m/%-d") %></td>
                     <td><%= apply.completion_date.strftime("%-m/%-d")  %></td>

@@ -15,4 +15,16 @@ class Child < ApplicationRecord
   has_many :requests, dependent: :destroy
   has_many :applies, through: :requests
   has_many :results, dependent: :destroy
+  
+  def not_closed_applies
+    applies.where(close: false)
+  end
+  
+  def on_requests
+    requests.where(status: false)
+  end
+  
+  def match_completion_date
+    results.where(completion_date: @date)
+  end
 end

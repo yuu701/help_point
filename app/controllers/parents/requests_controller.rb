@@ -3,7 +3,6 @@ class Parents::RequestsController < ApplicationController
     @request = Request.new
     @help = Help.find_by(id: params[:help_id])
     @children = current_parent.children
-    # binding.pry
   end
   
   def create
@@ -11,7 +10,6 @@ class Parents::RequestsController < ApplicationController
     @help = Help.find_by(id: params[:request][:help_id])
     @children = current_parent.children
     @request.parent_id = current_parent.id
-    # binding.pry
     if @request.save
       redirect_to parents_requests_path, success: "登録が完了しました"
     else

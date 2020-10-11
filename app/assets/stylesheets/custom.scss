@@ -292,20 +292,28 @@ h1,h2 {
   }
 }
 
-/* 承認結果ページ*/
-.result-index-wrapper {
+/* 結果 月カレンダーページ*/
+.result-month-wrapper {
   @include wrapper;
   
-  .result-index-container {
-    padding-top: 150px;
+  .result-month-container {
+    padding-top: 100px;
+    
+    p {
+      display: inline-block;
+    }
+    
+    .child-name {
+      width: 50px;
+    }
   }
 }
 
 /* 承認詳細ページ*/
-.result-show-wrapper {
+.result-day-wrapper {
   @include wrapper;
   
-  .result-show-container {
+  .result-day-container {
     padding-top: 150px;
     
     table{

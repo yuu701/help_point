@@ -1,7 +1,6 @@
 class Parents::AppliesController < ApplicationController
   def index
     @children = current_parent.children
-    # @applies = current_parent.applies.where(close: false)
   end
   
   def destroy
