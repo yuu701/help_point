@@ -1,27 +1,67 @@
 class ResultsController < ApplicationController
   def new
+    # ポイント承認ページ
     @result = Result.new
-    @apply = Apply.find_by(id: params[:apply_id])
-    # binding.pry
+    if params[:apply_id] != nil
+      @apply = Apply.find_by(id: params[:apply_id])
+      render "results/approval_new"
+    # ポイント登録ページ
+    elsif params[:help_id] != nil
+      @help = Help.find_by(id: params[:help_id])
+      render "results/direct_new"
+    end
   end
   
   def create
     @result = Result.new(result_params)
-    @apply = Apply.find_by(id: params[:result][:apply_id])
-    @result.appeal_comment = @apply.comment
     @result.parent_id = current_parent.id
-    @result.child_id = @apply.request.child_id
-    begin
-      Result.transaction do
-        Apply.transaction do
-          @result.save!
-          @apply.update_attributes!(close: true)
+    # ポイント承認処理
+    if @apply = Apply.find_by(id: params[:result][:apply_id])
+      @result.appeal_comment = @apply.comment
+      @result.child_id = @apply.request.child_id
+      begin
+        Result.transaction do
+          Apply.transaction do
+            @result.save!
+            @apply.update_attributes!(close: true)
+          end
         end
+        redirect_to parents_applies_path, success: "承認が完了しました"
+      rescue => e
+        flash.now[:danger] = "承認に失敗しました"
+        render :approval_new
       end
-      redirect_to parents_applies_path, success: "承認が完了しました"
-    rescue => e
-      flash.now[:danger] = "承認に失敗しました"
-      render :new
+    # ポイントを直接登録する処理
+    elsif @help = Help.find_by(id: params[:result][:help_id])
+      @result.child_id = @help.child_id
+      @request = Request.new(
+        name: @help.name, 
+        description: @help.description, 
+        point: @help.point, 
+        parent_id: @help.parent_id, 
+        child_id: @help.child_id,
+        request_date: @result.completion_date,
+        status: true)
+      @apply = Apply.new(
+        comment: nil,
+        completion_date: @result.completion_date,
+        close: true)
+      begin
+        Result.transaction do
+          Request.transaction do
+            Apply.transaction do
+              @result.save!
+              @request.save!
+              @apply.request_id = @request.id
+              @apply.save!
+            end
+          end
+        end
+        redirect_to helps_path, success: "ポイント登録が完了しました"
+      rescue => e
+        flash.now[:danger] = "ポイント登録に失敗しました"
+        render :direct_new
+      end
     end
   end
   
