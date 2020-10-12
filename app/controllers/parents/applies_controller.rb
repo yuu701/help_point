@@ -1,5 +1,6 @@
 class Parents::AppliesController < ApplicationController
   def index
+    @applies = current_parent.applies.where(close: false)
     @children = current_parent.children
   end
   
