@@ -24,7 +24,7 @@ class Child < ApplicationRecord
     requests.where(status: false)
   end
   
-  # def match_completion_date
-  #   results.where(completion_date: @date)
-  # end
+  def match_completion_date(date)
+    results.where(completion_date: date)
+  end
 end
