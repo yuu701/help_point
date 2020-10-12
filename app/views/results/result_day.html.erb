@@ -8,23 +8,23 @@
             <p class="text-color">お手伝いした人：<%= child.name %></p>
             <table class="text-center text-color">
               <tr>
-                <th>お手伝い名</th>
-                <th>説明</th>
-                <th>ポイント</th>
-                <th>ボーナス</th>
-                <th>アピールポイント</th>
-                <th>コメント</th>
-                <th></th>
-                <th></th>
+                <th class="text-center col-md-2">お手伝い名</th>
+                <th class="text-center col-md-2">説明</th>
+                <th class="text-center col-md-1">ポイント</th>
+                <th class="text-center col-md-1">ボーナス</th>
+                <th class="text-center col-md-2">アピールポイント</th>
+                <th class="text-center col-md-2">コメント</th>
+                <th class="col-md-1"></th>
+                <th class="col-md-1"></th>
               </tr>
               <% child.results.where(completion_date: @date).each do |result|%>
                 <tr>
                   <td><%= result.name %></td>
-                  <td><%= safe_join(result.description.split("\n"), tag(:br)) %></td>
+                  <td><%= safe_join(result.description.split("\n"), tag.br) %></td>
                   <td><%= result.point %>pt</td>
                   <td><%= result.bonus %>pt</td>
-                  <td><%= safe_join(result.appeal_comment.split("\n"), tag(:br)) %></td>
-                  <td><%= safe_join(result.parents_comment.split("\n"), tag(:br)) %></td>
+                  <td><%= safe_join(result.appeal_comment.split("\n"), tag.br) %></td>
+                  <td><%= safe_join(result.parents_comment.split("\n"), tag.br) %></td>
                   <td><%= link_to "編集", edit_result_path(result.id) %></td>
                   <td><%= link_to "削除", result_path(result.id), method: :delete %></td>
                 </tr>

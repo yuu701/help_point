@@ -20,9 +20,9 @@
                     <td><%= apply.request.request_date.strftime("%-m/%-d") %></td>
                     <td><%= apply.completion_date.strftime("%-m/%-d") %></td>
                     <td class="text-left"><%= apply.request.name %></td>
-                    <td class="text-left"><%= safe_join(apply.request.description.split("\n"), tag(:br)) %></td>
+                    <td class="text-left"><%= safe_join(apply.request.description.split("\n"), tag.br) %></td>
                     <td><%= apply.request.point %>pt</td>
-                    <td class="text-left"><%= apply.comment %></td>
+                    <td class="text-left"><%= safe_join(apply.comment.split("\n"), tag.br) %></td>
                     <td><%= link_to "編集", edit_children_apply_path(apply.id) %></td>
                     <td><%= link_to "取り消し", children_apply_path(apply.id), method: :delete %></td>
                   </tr>

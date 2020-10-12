@@ -19,7 +19,7 @@
                     <tr>
                       <td><%= request.request_date.strftime("%-m/%-d") %></td>
                       <td class="text-left"><%= request.name %></td>
-                      <td class="text-left"><%= safe_join(request.description.split("\n"), tag(:br)) %></td>
+                      <td class="text-left"><%= safe_join(request.description.split("\n"), tag.br) %></td>
                       <td><%= request.point %>pt</td>
                       <td><%= link_to "編集",  edit_parents_request_path(request.id) %></td>
                       <td><%= link_to "削除", parents_request_path(request.id), method: :delete %></td>

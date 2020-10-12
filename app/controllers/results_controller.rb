@@ -43,17 +43,18 @@ class ResultsController < ApplicationController
         request_date: @result.completion_date,
         status: true)
       @apply = Apply.new(
-        comment: nil,
+        comment: "",
         completion_date: @result.completion_date,
         close: true)
       begin
-        Result.transaction do
-          Request.transaction do
-            Apply.transaction do
-              @result.save!
+        Request.transaction do
+          Apply.transaction do
+            Result.transaction do
               @request.save!
               @apply.request_id = @request.id
               @apply.save!
+              @result.appeal_comment = @apply.comment
+              @result.save!
             end
           end
         end

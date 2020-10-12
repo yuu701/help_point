@@ -29,7 +29,7 @@
           <div class="form-group">
             <p>アピールポイント</p>
             <% if @apply.comment != "" %>
-              <p><%= safe_join(@apply.comment.split("\n"), tag(:br)) %></p>
+              <p><%= safe_join(@apply.comment.split("\n"), tag.br) %></p>
             <% else %>
               <p>-------</p>
             <% end %>  

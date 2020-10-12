@@ -19,7 +19,7 @@
                 <% child.helps.each do |help|%>
                   <tr>
                     <td class="text-left"><%= help.name %></td>
-                    <td class="text-left"><%= safe_join(help.description.split("\n"), tag(:br)) %></td>
+                    <td class="text-left"><%= safe_join(help.description.split("\n"), tag.br) %></td>
                     <td><%= help.point %>pt</td>
                     <td><%= link_to "依頼する", new_parents_request_path(help_id: help.id) %></td>
                     <td><%= link_to "pt登録", new_result_path(help_id: help.id) %></td>
