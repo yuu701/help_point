@@ -57,7 +57,7 @@ class ResultsController < ApplicationController
             end
           end
         end
-        redirect_to helps_path, success: "ポイント登録が完了しました"
+        redirect_to parents_helps_path, success: "ポイント登録が完了しました"
       rescue => e
         flash.now[:danger] = "ポイント登録に失敗しました"
         render :direct_new

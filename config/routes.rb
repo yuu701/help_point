@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     get '/login',    to: 'sessions#new'
     post '/login',   to: 'sessions#create'
     delete '/logout', to: 'sessions#destroy'
-    resources :requests
+    resources :requests, :helps
     resources :applies, only: [:index, :destroy]
   end
   
@@ -20,12 +20,11 @@ Rails.application.routes.draw do
     get '/login',    to: 'sessions#new'
     post '/login',   to: 'sessions#create'
     delete '/logout', to: 'sessions#destroy'
-    resources :requests, only: [:index]
+    resources :requests, :helps, only: [:index]
     resources :applies
   end
   
   resources :results
-  resources :helps
   resources :parents
   resources :children
   resources :icons

@@ -1,0 +1,25 @@
+<%= form_with(model: [ :parents, @help ], local: true) do |f| %>
+  <%= render 'shared/error_messages', {model: @help} %>
+  <div class="form-group">
+    <%= f.label :name, "お手伝い名", class: 'text-color' %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, "説明", class: "text-color" %>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :point, "ポイント（半角数字）", class: "text-color" %>
+    <%= f.number_field :point, class: "form-control" %>
+  </div>
+  <p class="text-color">お手伝いを依頼するこども</p>
+  <div class="form-group">
+    <% @children.each do |child|%>
+      <div class="child-select">
+        <%= f.radio_button :child_id, child.id %>
+        <%= f.label :child_id, child.name %>
+      </div>
+    <% end %>
+  </div>
+  <%= f.submit yield(:button_text), class: "btn-block btn-color" %>
+<% end %>

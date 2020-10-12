@@ -1,0 +1,37 @@
+<div class="helps-index-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-1 col-md-10 helps-index-container">
+        <h1 class="text-center text-color">お手伝いリスト</h1>
+        <% if @helps.count != 0 %>
+          <table class="text-center text-color">
+            <tr>
+              <th class="text-center col-md-3">お手伝い名</th>
+              <th class="text-center col-md-6">説明</th>
+              <th class="text-center col-md-1">ポイント</th>
+              <th class="col-md-2"></th>
+            </tr>
+            <% @helps.each do |help|%>
+              <tr>
+                <td class="text-left"><%= help.name %></td>
+                <td class="text-left"><%= safe_join(help.description.split("\n"), tag(:br)) %></td>
+                <td><%= help.point %>pt</td>
+                <td><%= link_to "お手伝いした！", new_children_apply_path(help_id: help.id) %></td>
+              </tr>
+            <% end %>
+          </table>
+        <% else %>
+          <p class="text-color">まだありません</p>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-offset-2 col-md-4">
+        <%= link_to "頼まれているお手伝い", children_requests_path, class:'btn btn-block btn-color' %>
+      </div>
+      <div class="col-md-4">
+        <%= link_to "報告中のお手伝い", children_applies_path, class:'btn btn-block btn-color' %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,7 +13,7 @@ class RequestsController < ApplicationController
     @request.parent_id = current_parent.id
     # binding.pry
     if @request.save
-      redirect_to helps_path, success: "登録が完了しました"
+      redirect_to parents_helps_path, success: "登録が完了しました"
     else
       flash.now[:danger] = "登録に失敗しました"
       render :new
