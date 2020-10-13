@@ -24,6 +24,7 @@ ja:
         point: ポイント
         child: お子様
       request:
+        request_date: 依頼日
         name: お手伝い名
         point: ポイント
         child: お子様
@@ -33,3 +34,4 @@ ja:
         completion_date: お手伝いした日
         name: お手伝い名
         point: ポイント
+        bonus: ボーナスポイント（ない場合は０）
