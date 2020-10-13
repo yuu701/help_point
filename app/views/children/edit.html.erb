@@ -1,0 +1,39 @@
+<div class="child-new-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 child-new-container">
+        <h1 class="text-center text-color">子ども情報変更</h1>
+        <%= form_with model: @child, local: true do |f| %>
+          <%= render 'shared/error_messages', {model: @child} %>
+          <div class="form-group">
+            <%= f.label :name, "お子様のお名前", class: 'text-color' %>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :login_id, "ログインＩＤ", class: "text-color" %>
+            <%= f.text_field :login_id, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password, "パスワード（英数字を必ず含む８文字以上）", class: "text-color" %>
+            <%= f.password_field :password, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password_confirmation, "パスワード（確認用）", class: "text-color" %>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <p><%= f.label :アイコン選択, class: "text-color" %></p>
+            <% @icons.each do |icon|%>
+              <div class="icon-select">
+                <p><%= image_tag(icons_path(icon.id)) %></p>
+                <p><%= f.radio_button :icon, icon.id %></p>
+              </div>
+            <% end %>
+          </div>
+          <%= f.submit "変更する", class: "btn-block btn-color" %>
+        <% end %>
+        <%= link_to "戻る", children_path, class: "text-color" %>
+      </div>
+    </div>
+  </div>
+</div>

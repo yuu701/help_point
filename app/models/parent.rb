@@ -13,7 +13,7 @@ class Parent < ApplicationRecord
   has_secure_password
   
   has_many :children, dependent: :destroy
-  has_many :helps, through: :children
+  has_many :helps
   has_many :requests
   has_many :applies, through: :requests
   has_many :results

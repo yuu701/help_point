@@ -16,8 +16,29 @@ class ChildrenController < ApplicationController
     end
   end
 
+  def edit
+    @child = Child.find(params[:id])
+    @icons = Icon.all
+  end
+  
+  def update
+    @child = Child.find(params[:id])
+    @icons = Icon.all
+    if @child.update_attributes(child_params)
+      redirect_to children_path, success: "お子さま情報を変更しました"
+    else
+      flash.now[:danger] = "お子さま情報の変更に失敗しました"
+      render :edit
+    end
+  end
+
   def index
     @children = current_parent.children
+  end
+  
+  def destroy
+    Child.find_by(id: params[:id]).destroy
+    redirect_to children_path, success: 'お子さまの名前を削除しました'
   end
   
   private

@@ -159,6 +159,16 @@ h1,h2 {
   .children-index-container {
     padding-top: 150px;
     
+    table{
+      background-color: #f3d2c1;
+      margin: 10px 0 20px 0;
+      width: 100%;
+      
+      th, td {
+        padding: 10px;
+        border: 1px solid #001858;
+      }
+    }
   }
 }
 

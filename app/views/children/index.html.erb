@@ -1,20 +1,23 @@
 <div class="children-index-wrapper">
   <div class="container">
     <div class="row">
-      <div class="col-md-offset-4 col-md-4 children-index-container">
+      <div class="col-md-offset-3 col-md-6 children-index-container">
         <h1 class="text-center text-color">子ども一覧</h1>
-        <% @children.each do |child|%>
-          <div class="child">
-            <%= child.name %>
-            <%= child.icon %>
-            <%= link_to "編集", "#" %>
-          </div>
-        <% end %>
+        <table class="text-center text-color">
+          <% @children.each do |child|%>
+            <tr>
+              <td class="col-md-3"><%= child.name %></td>
+              <td class="col-md-3"><%= child.icon %></td>
+              <td class="col-md-3"><%= link_to "編集", edit_child_path(child.id) %></td>
+              <td class="col-md-3"><%= link_to "削除", child_path(child.id), method: :delete %></td>
+            </tr>
+          <% end %>
+        </table>
       </div>
     </div>
     <div class="row">
       <div class="col-md-offset-4 col-md-4">
-        <%= link_to "子どもを登録する", new_child_path %>
+        <%= link_to "子どもを登録する", new_child_path, class:'btn btn-block btn-color' %>
       </div>
     </div>
   </div>

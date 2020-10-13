@@ -94,8 +94,9 @@ class ResultsController < ApplicationController
     end
     
     # @day = {}
+    # @children = []
     # @results.each do |result|
-    #   result[:completion_date]  
+    #   @day[result.completion_date]= @children.push(child_id) 
     # end
     
     if params[:date] != nil

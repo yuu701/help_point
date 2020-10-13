@@ -6,5 +6,5 @@ class Request < ApplicationRecord
   
   belongs_to :parent
   belongs_to :child
-  has_one :apply, validate: :false
+  has_one :apply, dependent: :destroy
 end

@@ -4,6 +4,6 @@ class Help < ApplicationRecord
   validates :point, presence: true
   # validates :child_id, presence: { message: "を選択してください"}
   
-  # belongs_to :parent
+  belongs_to :parent
   belongs_to :child
 end
