@@ -27,4 +27,10 @@ class Child < ApplicationRecord
   def match_completion_date(date)
     results.where(completion_date: date)
   end
+  
+  def total_point
+    sum_point = results.group("YEAR(completion_date)").group("MONTH(completion_date)").sum(:point)
+    sum_bonus = results.group("YEAR(completion_date)").group("MONTH(completion_date)").sum(:bonus)
+    sum = [:point, :bonus].map{|s| child.results.group("YEAR(completion_date)").group("MONTH(completion_date)").sum(s)} 
+  end
 end

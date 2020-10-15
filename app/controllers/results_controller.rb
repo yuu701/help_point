@@ -93,11 +93,16 @@ class ResultsController < ApplicationController
       @results = current_child.parent.results.order(child_id: "ASC")
     end
     
-    # @day = {}
-    # @children = []
-    # @results.each do |result|
-    #   @day[result.completion_date]= @children.push(child_id) 
-    # end
+    @displays = {}
+    @results.each do |result|
+      if @displays.key?(result.completion_date)
+        if @displays[result.completion_date].exclude?(result.child.name)
+          @displays[result.completion_date].push(result.child.name)
+        end
+      else
+        @displays[result.completion_date] = [result.child.name]
+      end
+    end
     
     if params[:date] != nil
       @date = params[:date]
