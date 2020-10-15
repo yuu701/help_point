@@ -66,23 +66,19 @@ class ResultsController < ApplicationController
     end
   end
   
-  # def edit
-  #   @request = Request.find(params[:id])
-  #   @help = Help.find_by(id: params[:request][:help_id])
-  #   @children = current_parent.children
-  # end
+  def edit
+    @result = Result.find(params[:id])
+  end
   
-  # def update
-  #   @request = Request.find(params[:id])
-  #   @help = Help.find_by(id: params[:request][:help_id])
-  #   @children = current_parent.children
-  #   if @request.update_attributes(request_params)
-  #     redirect_to requests_path, success: "お手伝いを変更しました"
-  #   else
-  #     flash.now[:danger] = "お手伝いの変更に失敗しました"
-  #     render :edit
-  #   end
-  # end
+  def update
+    @result = Result.find(params[:id])
+    if @result.update_attributes(result_params)
+      redirect_to results_path, success: "ポイントを変更しました"
+    else
+      flash.now[:danger] = "ポイントの変更に失敗しました"
+      render :edit
+    end
+  end
 
   def index
     if parent_logged_in?

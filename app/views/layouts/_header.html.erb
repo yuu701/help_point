@@ -19,7 +19,7 @@
           </li>
         <% elsif child_logged_in? %>
           <li>
-            <%= current_child.name %>
+            <p><%= current_child.name %></p>
           </li>
           <li>
             <%= link_to "お手伝いをする", children_helps_path %>
