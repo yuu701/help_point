@@ -1,6 +1,8 @@
 <header class="navbar navbar-default navbar-fixed-top navbar-transparent">
   <div class="container">
-    <%= link_to "ホーム", results_path %>
+    <%= link_to results_path do %>
+      <%= icon 'fas', 'home fa-3x', class: "navbar-home"  %>
+    <% end %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if parent_logged_in? %>
@@ -11,7 +13,6 @@
             <%= link_to "こども管理",  children_path %>
           </li>
           <li>
-            <!--%= link_to "アカウント設定", edit_parent_path(id: session[:parent_id]) %>-->
             <%= link_to "アカウント設定", edit_parent_path(current_parent) %>
           </li>
           <li>
@@ -19,7 +20,7 @@
           </li>
         <% elsif child_logged_in? %>
           <li>
-            <p><%= current_child.name %></p>
+            <%= link_to current_child.name, edit_child_path(current_child) %></p>
           </li>
           <li>
             <%= link_to "お手伝いをする", children_helps_path %>

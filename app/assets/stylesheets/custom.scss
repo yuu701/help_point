@@ -39,16 +39,22 @@ h1,h2 {
   z-index: 10000;
 }
 
+.navbar-home {
+    padding: 0px;
+    margin-top: 10px;
+    float: left;
+    color: #8bd3dd;
+    
+    &:hover {
+    color: #bae8e8;
+    }
+  }
+  
 .navbar-transparent {
   // margin-bottom: 0px;
   background-color: #fef6e4;
   // a {
   //   color: #fbf7d5 !important;
-  // }
-  
-  // .navbar-brand {
-  //   padding: 0px;
-  //   margin-top: 15px;
   // }
 }
 

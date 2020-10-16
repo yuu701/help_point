@@ -76,3 +76,4 @@ gem 'bcrypt'
 gem 'rails-i18n'
 gem "carrierwave"
 gem 'simple_calendar', '~> 2.0'
+gem 'font-awesome-sass'
