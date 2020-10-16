@@ -5,7 +5,7 @@
             <h1 class="text-center text-color">依頼中のお手伝い一覧</h1>
             <% @children.each do |child|%>
               <p class="text-color"><%= child.name %>へ依頼中のお手伝い</p>
-              <% if child.on_requests.count != 0 %>
+              <% if child.on_requests.length != 0 %>
                 <table class="text-center text-color">
                   <tr>
                     <th class="text-center col-md-1">依頼日</th>

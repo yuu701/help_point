@@ -109,7 +109,7 @@ class ResultsController < ApplicationController
     # binding.pry
   end
   
-  def show
+  # def show
     # if parent_logged_in?
     #   @children = current_parent.children
     #   # @results = current_parent.results.where(completion_date: @date)
@@ -117,7 +117,7 @@ class ResultsController < ApplicationController
     #   @children = current_child.parent.children
     #   # @results = current_child.parent.results.where(completion_date: @date)
     # end
-  end
+  # end
   
   # def destroy
   #   Request.find_by(id: params[:id]).destroy

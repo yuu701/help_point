@@ -21,11 +21,9 @@ class ParentsController < ApplicationController
   end
   
   def edit
-    @parent = Parent.find(params[:id])
   end
   
   def update
-    @parent = Parent.find(params[:id])
     if @parent.update_attributes(parent_params)
     # if current_parent == @parent
       redirect_to results_path, success: "アカウント情報を変更しました"
@@ -46,7 +44,7 @@ class ParentsController < ApplicationController
   def logged_in_parent
     unless parent_logged_in?
       flash[:danger] = "ログインが必要です"
-      redirect_to parents_login_path
+      redirect_to root_path
     end
   end
   

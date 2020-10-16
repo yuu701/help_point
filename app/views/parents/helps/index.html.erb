@@ -5,7 +5,7 @@
         <h1 class="text-center text-color">お手伝い一覧</h1>
         <% @children.each do |child|%>
           <p class="text-color"><%= child.name %>のお手伝い</p>
-            <% if child.helps.count != 0 %>
+            <% if child.helps.length != 0 %>
               <table class="text-center text-color">
                 <tr>
                   <th class="text-center col-md-3">お手伝い名</th>

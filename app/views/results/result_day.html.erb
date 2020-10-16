@@ -4,7 +4,7 @@
       <div class="col-md-offset-1 col-md-10 result-day-container">
         <h1 class="text-center text-color"><%= @date %> お手伝い一覧</h1>
         <% @children.each do |child|%>
-          <% if child.match_completion_date(@date).count != 0 %>
+          <% if child.match_completion_date(@date).length != 0 %>
             <p class="text-color">お手伝いした人：<%= child.name %></p>
             <table class="text-center text-color">
               <tr>
