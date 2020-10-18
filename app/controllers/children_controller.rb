@@ -1,4 +1,7 @@
 class ChildrenController < ApplicationController
+  before_action :logged_in_parent
+  before_action :correct_parent_for_child, only:[:edit, :update, :destroy]
+  
   def new
     @child = Child.new
     @icons = Icon.all
@@ -44,5 +47,13 @@ class ChildrenController < ApplicationController
   private
   def child_params
     params.require(:child).permit(:name, :login_id, :password, :password_confirmation, :icon)
+  end
+  
+  # beforeアクション
+  
+  # childに対して正しいparentかどうか確認
+  def correct_parent_for_child
+    @child = Child.find(params[:id])
+    redirect_to(children_path) unless @child.parent == current_parent
   end
 end

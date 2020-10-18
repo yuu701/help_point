@@ -24,4 +24,10 @@ module Parents::SessionsHelper
     session.delete(:parent_id)
     @current_parent = nil
   end
+  
+  # 渡されたmodelのparentがログイン済parentであればtrueを返す
+  def correct_parent_for_model?(model)
+    model.parent == current_parent
+  end
+  
 end

@@ -1,4 +1,6 @@
 class Parents::SessionsController < ApplicationController
+  before_action :logged_out_parent_and_child, only:[:new, :create]
+  
   def new
   end
   

@@ -1,4 +1,7 @@
 class Parents::RequestsController < ApplicationController
+  before_action :logged_in_parent
+  before_action :correct_parent_for_requests, only:[:edit, :update, :destroy]
+  
   def new
     @request = Request.new
     @help = Help.find_by(id: params[:help_id])
@@ -19,12 +22,12 @@ class Parents::RequestsController < ApplicationController
   end
   
   def edit
-    @request = Request.find(params[:id])
+    # @request = Request.find(params[:id])
     @children = current_parent.children
   end
   
   def update
-    @request = Request.find(params[:id])
+    # @request = Request.find(params[:id])
     @children = current_parent.children
     if @request.update_attributes(request_params)
       redirect_to parents_requests_path, success: "お手伝いを変更しました"
@@ -46,5 +49,11 @@ class Parents::RequestsController < ApplicationController
    private
   def request_params
     params.require(:request).permit(:name, :description, :point, :child_id, :request_date)
+  end
+  
+  # requestに対して正しいparentかどうか確認
+  def correct_parent_for_requests
+    @request = Request.find(params[:id])
+    redirect_to(parents_requests_path) unless correct_parent_for_model?(@request)
   end
 end

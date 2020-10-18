@@ -1,4 +1,7 @@
 class Parents::HelpsController < ApplicationController
+  before_action :logged_in_parent
+  before_action :correct_parent_for_helps, only:[:edit, :update, :destroy]
+  
   def new
     @help = Help.new
     @children = current_parent.children
@@ -17,12 +20,12 @@ class Parents::HelpsController < ApplicationController
   end
   
   def edit
-    @help = Help.find(params[:id])
+    # @help = Help.find(params[:id])
     @children = current_parent.children
   end
   
   def update
-    @help = Help.find(params[:id])
+    # @help = Help.find(params[:id])
     @children = current_parent.children
     if @help.update_attributes(help_params)
       redirect_to parents_helps_path, success: "お手伝いを変更しました"
@@ -44,5 +47,11 @@ class Parents::HelpsController < ApplicationController
   private
   def help_params
     params.require(:help).permit(:name, :description, :point, :child_id)
+  end
+  
+  # helpに対して正しいparentかどうか確認
+  def correct_parent_for_helps
+    @help = Help.find(params[:id])
+    redirect_to(parents_helps_path) unless correct_parent_for_model?(@help)
   end
 end

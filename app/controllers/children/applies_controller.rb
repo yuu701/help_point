@@ -1,4 +1,7 @@
 class Children::AppliesController < ApplicationController
+  before_action :logged_in_child
+  before_action :correct_child_for_applies, only:[:edit, :update, :destroy]
+  
   def new
     @apply = Apply.new
     # リクエストからのお手伝い報告
@@ -56,12 +59,12 @@ class Children::AppliesController < ApplicationController
   end
   
   def edit
-    @apply = Apply.find(params[:id])
+    # @apply = Apply.find(params[:id])
     @request = @apply.request
   end
   
   def update
-    @apply = Apply.find(params[:id])
+    # @apply = Apply.find(params[:id])
     @request = @apply.request
     if @apply.update_attributes(apply_params)
       redirect_to children_applies_path, success: "お手伝い報告を変更しました"
@@ -90,5 +93,11 @@ class Children::AppliesController < ApplicationController
    private
   def apply_params
     params.require(:apply).permit(:comment, :completion_date)
+  end
+  
+  # applyに対して正しいchildかどうか確認
+  def correct_child_for_applies
+    @apply = Apply.find(params[:id])
+    redirect_to(children_applies_path) unless correct_child_for_model?(@apply.request)
   end
 end

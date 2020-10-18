@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   end
   
   resources :results
-  resources :parents
+  resources :parents, except: [:index]
   resources :children
   resources :icons
 end

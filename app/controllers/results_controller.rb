@@ -1,4 +1,7 @@
 class ResultsController < ApplicationController
+  before_action :logged_in_parent_or_child
+  before_action :correct_parent_for_results, only:[:edit, :update, :destroy]
+  
   def new
     # ポイント承認ページ
     @result = Result.new
@@ -90,6 +93,7 @@ class ResultsController < ApplicationController
     end
     
     @displays = {}
+    
     @results.each do |result|
       if @displays.key?(result.completion_date)
         if @displays[result.completion_date].exclude?(result.child.name)
@@ -128,4 +132,20 @@ class ResultsController < ApplicationController
   def result_params
     params.require(:result).permit(:name, :description, :point, :bonus, :completion_date, :parents_comment)
   end
+  
+  #beforeアクション
+  # ログイン済parentまたはchildどうか確認
+  def logged_in_parent_or_child
+    unless parent_logged_in? || child_logged_in?
+      flash[:danger] = "ログインが必要です"
+        redirect_to root_path
+    end
+  end
+  
+  # requestに対して正しいparentかどうか確認
+  def correct_parent_for_results
+    @result = Result.find(params[:id])
+    redirect_to(results_path) unless correct_parent_for_model?(@result)
+  end
+  
 end

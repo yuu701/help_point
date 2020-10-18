@@ -25,7 +25,6 @@ class ParentsController < ApplicationController
   
   def update
     if @parent.update_attributes(parent_params)
-    # if current_parent == @parent
       redirect_to results_path, success: "アカウント情報を変更しました"
     else
       flash.now[:danger] = "アカウント情報の変更に失敗しました"
@@ -40,18 +39,10 @@ class ParentsController < ApplicationController
   
   # beforeアクション
   
-  # ログイン済parentかどうか確認
-  def logged_in_parent
-    unless parent_logged_in?
-      flash[:danger] = "ログインが必要です"
-      redirect_to root_path
-    end
-  end
-  
   # 正しいparentかどうか確認
   def correct_parent
     @parent = Parent.find(params[:id])
-    redirect_to(root_url) unless current_parent?(@parent)
+    redirect_to(results_path) unless current_parent?(@parent)
   end
   
 end

@@ -1,4 +1,8 @@
 class Children::SessionsController < ApplicationController
+  before_action :logged_out_parent_and_child, only:[:new, :create]
+  
+  def new
+  end
   
   def create
     child = Child.find_by(login_id: params[:session][:login_id])
