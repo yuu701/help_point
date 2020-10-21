@@ -3,15 +3,16 @@
     <div class="row">
       <div class="result-month-container">
         <div class="col-md-offset-9 col-md-3 text-color point-container">
-          <h2>今月のポイント</h2>
+          <h2><%= @search_month.month %>月のポイント</h2>
           <% @children.each do |child|%>
             <div class="child-point">
               <p class="text-right child-name"><%= child.name %></p>
               <p>：</p>
-              <p></p>
+              <p><%= child.total_point(@search_date) %></p>
             </div>
           <% end %>
         </div>
+        
         <%= month_calendar events: @results do |date, results| %>
           <%= date.day %>
           

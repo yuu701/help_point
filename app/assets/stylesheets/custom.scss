@@ -328,7 +328,7 @@ h1,h2 {
   }
 }
 
-/* 承認詳細ページ*/
+/* 結果　１日の詳細ページ*/
 .result-day-wrapper {
   @include wrapper;
   
@@ -346,4 +346,29 @@ h1,h2 {
       }
     }
   }
+}
+
+/* カレンダー*/
+.simple-calendar {
+  .day {}
+
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .today {}
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {}
+  .next-month {}
+  .current-month {}
+
+  .has-events {}
 }

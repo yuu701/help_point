@@ -104,13 +104,19 @@ class ResultsController < ApplicationController
       end
     end
     
-    if params[:date] != nil
+    if params[:start_date]
+      @search_date = params[:start_date]
+    else
+      @search_date = Date.today
+    end
+    @search_month = @search_date.to_date
+    
+    if params[:date]
       @date = params[:date]
       render "results/result_day"
     else
       render "results/result_month"
     end
-    # binding.pry
   end
   
   # def show
