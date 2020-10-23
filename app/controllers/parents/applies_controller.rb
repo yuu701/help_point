@@ -9,9 +9,13 @@ class Parents::AppliesController < ApplicationController
   
   def destroy
     apply = Apply.find_by(id: params[:id])
-    apply.destroy
     request = apply.request
-    request.update_attributes(status: false)
+    Apply.transaction do
+      Request.transaction do
+        apply.destroy!
+        request.update_attributes(status: false)
+      end
+    end
     redirect_to parents_applies_path, success: '承認を却下しました'
   end
   

@@ -24,7 +24,7 @@
                     <td><%= apply.request.point %>pt</td>
                     <td class="text-left"><%= safe_join(apply.comment.split("\n"), tag.br) %></td>
                     <td><%= link_to "編集", edit_children_apply_path(apply.id) %></td>
-                    <td><%= link_to "取り消し", children_apply_path(apply.id), method: :delete %></td>
+                    <td><%= link_to "取り消し", children_apply_path(apply.id), method: :delete, data: { confirm: 'お手伝いの報告をやめますか？'} %></td>
                   </tr>
                 <% end %>
               </table>

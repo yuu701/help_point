@@ -24,7 +24,7 @@
                     <td><%= link_to "依頼する", new_parents_request_path(help_id: help.id) %></td>
                     <td><%= link_to "pt登録", new_result_path(help_id: help.id) %></td>
                     <td><%= link_to "編集", edit_parents_help_path(help.id) %></td>
-                    <td><%= link_to "削除", parents_help_path(help.id), method: :delete %></td>
+                    <td><%= link_to "削除", parents_help_path(help.id), method: :delete, data: { confirm: 'お手伝いを削除しますか？'} %></td>
                   </tr>
                 <% end %>
               </table>
