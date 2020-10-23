@@ -318,12 +318,19 @@ h1,h2 {
   .result-month-container {
     padding-top: 100px;
     
+    h1 {
+    }
+    
+    .point-container {
+      float: right;
+    }
+    
     p {
       display: inline-block;
     }
     
     .child-name {
-      width: 50px;
+      // width: 50px;
     }
   }
 }
@@ -350,9 +357,20 @@ h1,h2 {
 
 /* カレンダー*/
 .simple-calendar {
-  .day {}
-
-  .wday-0 {}
+  clear: right;
+  
+  .day {
+    // background-color: #fee6d4;
+    background-color: #F9E9D3;
+    border: 2px solid #f3d2c1;
+  }
+  
+  thead {
+    background-color: #f3d2c1;
+  }
+  
+  .wday-0 {
+  }
   .wday-1 {}
   .wday-2 {}
   .wday-3 {}
@@ -371,4 +389,16 @@ h1,h2 {
   .current-month {}
 
   .has-events {}
+  
+  .calendar-heading{
+    margin-bottom: 15px;
+  }
+  
+  .calendar-title{
+    font-size: 25px;
+  }
+  
+  a {
+    color: #f582ae;
+  }
 }

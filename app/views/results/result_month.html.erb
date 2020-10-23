@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="result-month-container">
-        <div class="col-md-offset-9 col-md-3 text-color point-container">
+        <div class="text-color point-container">
           <h2><%= @search_month.month %>月のポイント</h2>
           <% @children.each do |child|%>
             <div class="child-point">
@@ -16,7 +16,7 @@
         <%= month_calendar events: @results do |date, results| %>
           <%= date.day %>
           
-          <!--%= @displays[results] %>-->
+          <%#= @displays[results] %>
           <% displayed_children = [] %>
           <% results.each do |result| %>
             <%if(!displayed_children.include?(result.child)) %>

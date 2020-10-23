@@ -92,8 +92,8 @@ class ResultsController < ApplicationController
       @results = current_child.parent.results.order(child_id: "ASC")
     end
     
-    @displays = {}
     
+    @displays = {}
     @results.each do |result|
       if @displays.key?(result.completion_date)
         if @displays[result.completion_date].exclude?(result.child.name)
@@ -103,6 +103,13 @@ class ResultsController < ApplicationController
         @displays[result.completion_date] = [result.child.name]
       end
     end
+
+    # str = Struct.new("Display",:start_time, :child_names) 
+    # @views = {}
+    # @displays.each do |k,v|
+    #   @views.push = str.new(k, v)
+    # end
+    # binding.pry
     
     if params[:start_date]
       @search_date = params[:start_date]
