@@ -5,6 +5,7 @@ class CreateApplies < ActiveRecord::Migration[5.2]
       t.string :comment
       t.date :completion_date
       t.boolean :close, null: false, default: false
+      t.boolean :direct, null: false, default: false
 
       t.timestamps
     end

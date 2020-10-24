@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2020_10_06_044747) do
     t.string "comment"
     t.date "completion_date"
     t.boolean "close", default: false, null: false
+    t.boolean "direct", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

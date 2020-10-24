@@ -42,6 +42,7 @@ class Children::AppliesController < ApplicationController
         child_id: @help.child_id,
         request_date: @apply.completion_date,
         status: true)
+      @apply.direct = true
       begin
           Request.transaction do
             Apply.transaction do
@@ -79,12 +80,21 @@ class Children::AppliesController < ApplicationController
   end
   
   def destroy
-    apply = Apply.find_by(id: params[:id])
+    apply = Apply.find(params[:id])
     request = apply.request
-    Apply.transaction do
-      Request.transaction do
-        apply.destroy!
-        request.update_attributes!(status: false)
+    if apply.direct == false
+      Apply.transaction do
+        Request.transaction do
+          apply.destroy!
+          request.update_attributes!(status: false)
+        end
+      end
+    else
+      Apply.transaction do
+        Request.transaction do
+          apply.destroy!
+          request.destroy!
+        end
       end
     end
     redirect_to children_applies_path, success: '報告をやめました'
