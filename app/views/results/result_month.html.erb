@@ -2,6 +2,11 @@
   <div class="container">
     <div class="row">
       <div class="result-month-container">
+        <% if parent_logged_in? && @applies.length != 0%>
+          <%= link_to "承認まちお手伝いがあります", parents_applies_path %>
+        <% elsif child_logged_in? && @requests.length != 0 %>
+          <%= link_to "お手伝いを頼まれています", children_requests_path %>
+        <% end%>
         <div class="text-color point-container">
           <h2><%= @search_month.month %>月のポイント</h2>
           <% @children.each do |child|%>

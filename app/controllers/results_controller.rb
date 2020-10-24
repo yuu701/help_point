@@ -88,9 +88,11 @@ class ResultsController < ApplicationController
   def index
     if parent_logged_in?
       @children = current_parent.children
+      @applies = current_parent.applies.where(close: false)
       @results = current_parent.results.order(child_id: "ASC")
     elsif child_logged_in?
       @children = current_child.parent.children
+      @requests = current_child.requests.where(status: false)
       @results = current_child.parent.results.order(child_id: "ASC")
     end
     
