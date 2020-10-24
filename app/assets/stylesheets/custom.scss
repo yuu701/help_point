@@ -321,6 +321,13 @@ h1,h2 {
     h1 {
     }
     
+    .sign-container {
+      float: left;
+      a {
+        color: red;
+      }
+    }
+    
     .point-container {
       float: right;
     }
