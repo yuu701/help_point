@@ -3,6 +3,7 @@ class Apply < ApplicationRecord
   validates :completion_date, presence: true
   
   belongs_to :request
+  has_one :result, dependent: :destroy
   
   # def closed
   #   self.close

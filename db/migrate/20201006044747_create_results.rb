@@ -10,6 +10,7 @@ class CreateResults < ActiveRecord::Migration[5.2]
       t.string :parents_comment
       t.integer :parent_id
       t.integer :child_id
+      t.integer :apply_id
 
       t.timestamps
     end

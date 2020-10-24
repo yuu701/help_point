@@ -22,6 +22,7 @@ class ResultsController < ApplicationController
     if @apply = Apply.find_by(id: params[:result][:apply_id])
       @result.appeal_comment = @apply.comment
       @result.child_id = @apply.request.child_id
+      @result.apply_id = @apply.id
       begin
         Result.transaction do
           Apply.transaction do
@@ -57,6 +58,7 @@ class ResultsController < ApplicationController
               @apply.request_id = @request.id
               @apply.save!
               @result.appeal_comment = @apply.comment
+              @result.apply_id = @apply.id
               @result.save!
             end
           end
@@ -136,10 +138,21 @@ class ResultsController < ApplicationController
     # end
   # end
   
-  # def destroy
-  #   Request.find_by(id: params[:id]).destroy
-  #   redirect_to requests_path, success: 'お手伝い依頼を削除しました'
-  # end
+  def destroy
+    result = Result.find(params[:id])
+    request = result.apply.request
+    apply = result.apply
+    Request.transaction do
+      Apply.transaction do
+        Result.transaction do
+          request.destroy!
+          apply.destroy!
+          result.destroy!
+        end
+      end
+    end
+    redirect_to root_path, success: 'お手伝い実績を削除しました'
+  end
   
    private
   def result_params

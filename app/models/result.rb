@@ -7,6 +7,7 @@ class Result < ApplicationRecord
   
   belongs_to :parent
   belongs_to :child
+  belongs_to :apply
   
   def start_time
     self.completion_date
