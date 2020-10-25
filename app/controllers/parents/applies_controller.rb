@@ -23,7 +23,7 @@ class Parents::AppliesController < ApplicationController
   
   # applyに対して正しいparentかどうか確認
   def correct_parent_for_applies
-    @apply = Apply.find(params[:id])
-    redirect_to(parents_applies_path) unless correct_parent_for_model?(@apply.request)
+    @apply = Apply.find_by(id: params[:id])
+    redirect_to(parents_applies_path) unless @apply && correct_parent_for_model?(@apply.request)
   end
 end

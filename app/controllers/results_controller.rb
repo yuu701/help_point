@@ -108,12 +108,11 @@ class ResultsController < ApplicationController
       end
     end
 
-    # str = Struct.new("Display",:start_time, :child_names) 
-    # @views = {}
-    # @displays.each do |k,v|
-    #   @views.push = str.new(k, v)
-    # end
-    # binding.pry
+    @display_children = []
+    @displays.each do |k,v|
+      struct = Struct.new("Display",:start_time, :child_names) 
+      @display_children.push(struct.new(k, v))
+    end
     
     if params[:start_date]
       @search_date = params[:start_date]
@@ -172,7 +171,7 @@ class ResultsController < ApplicationController
   
   # requestに対して正しいparentかどうか確認
   def correct_parent_for_results
-    @result = Result.find(params[:id])
+    @result = Result.find_by(id: params[:id])
     redirect_to(results_path) unless correct_parent_for_model?(@result)
   end
   

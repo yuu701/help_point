@@ -41,7 +41,7 @@ class ParentsController < ApplicationController
   
   # 正しいparentかどうか確認
   def correct_parent
-    @parent = Parent.find(params[:id])
+    @parent = Parent.find_by(id: params[:id])
     redirect_to(results_path) unless current_parent?(@parent)
   end
   

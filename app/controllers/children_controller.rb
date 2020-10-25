@@ -53,7 +53,7 @@ class ChildrenController < ApplicationController
   
   # childに対して正しいparentかどうか確認
   def correct_parent_for_child
-    @child = Child.find(params[:id])
-    redirect_to(children_path) unless @child.parent == current_parent
+    @child = Child.find_by(id: params[:id])
+    redirect_to(children_path) unless @child && @child.parent == current_parent
   end
 end

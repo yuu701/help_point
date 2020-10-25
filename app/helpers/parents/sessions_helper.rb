@@ -27,7 +27,7 @@ module Parents::SessionsHelper
   
   # 渡されたmodelのparentがログイン済parentであればtrueを返す
   def correct_parent_for_model?(model)
-    model.parent == current_parent
+    !model.nil? && model.parent == current_parent
   end
   
 end

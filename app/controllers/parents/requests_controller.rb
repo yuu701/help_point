@@ -53,7 +53,7 @@ class Parents::RequestsController < ApplicationController
   
   # requestに対して正しいparentかどうか確認
   def correct_parent_for_requests
-    @request = Request.find(params[:id])
+    @request = Request.find_by(id: params[:id])
     redirect_to(parents_requests_path) unless correct_parent_for_model?(@request)
   end
 end

@@ -51,7 +51,7 @@ class Parents::HelpsController < ApplicationController
   
   # helpに対して正しいparentかどうか確認
   def correct_parent_for_helps
-    @help = Help.find(params[:id])
+    @help = Help.find_by(id: params[:id])
     redirect_to(parents_helps_path) unless correct_parent_for_model?(@help)
   end
 end

@@ -20,17 +20,15 @@
           <% end %>
         </div>
         
-        <%= month_calendar events: @results do |date, results| %>
+        <%= month_calendar events: @display_children do |date, display_children| %>
           <%= date.day %>
           
-          <%#= @displays[results] %>
-          <% displayed_children = [] %>
-          <% results.each do |result| %>
-            <%if(!displayed_children.include?(result.child)) %>
-             <%= link_to result.child.name, results_path(date: result.completion_date) %>
+          <% display_children.each do |display_child| %>
+            <% display_child.child_names.each do |child_name| %>
+              <%= link_to child_name, results_path(date: display_child.start_time )%>
             <% end %>
-            <% displayed_children.push(result.child) %>
-          <% end %>  
+          <% end %>
+          
         <% end %>
       </div>
     </div>

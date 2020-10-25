@@ -107,7 +107,7 @@ class Children::AppliesController < ApplicationController
   
   # applyに対して正しいchildかどうか確認
   def correct_child_for_applies
-    @apply = Apply.find(params[:id])
-    redirect_to(children_applies_path) unless correct_child_for_model?(@apply.request)
+    @apply = Apply.find_by(id: params[:id])
+    redirect_to(children_applies_path) unless @apply && correct_child_for_model?(@apply.request)
   end
 end
