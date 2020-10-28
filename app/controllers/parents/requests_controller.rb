@@ -38,7 +38,13 @@ class Parents::RequestsController < ApplicationController
   end
 
   def index
-    @children = current_parent.children
+    @requests = current_parent.requests.where(status: false)
+    @children = []
+    @requests.each do |request|
+      if @children.exclude?(request.child)
+        @children.push(request.child)
+      end
+    end
   end
   
   def destroy

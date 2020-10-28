@@ -3,32 +3,34 @@
       <div class="row">
         <div class="col-md-offset-1 col-md-10 requests-index-container">
             <h1 class="text-center text-color">依頼中のお手伝い一覧</h1>
-            <% @children.each do |child|%>
-              <p class="text-color"><%= child.name %>へ依頼中のお手伝い</p>
-              <% if child.on_requests.length != 0 %>
-                <table class="text-center text-color">
-                  <tr>
-                    <th class="text-center col-md-1">依頼日</th>
-                    <th class="text-center col-md-3">お手伝い名</th>
-                    <th class="text-center col-md-4">説明</th>
-                    <th class="text-center col-md-2">ポイント</th>
-                    <th class="col-md-1"></th>
-                    <th class="col-md-1"></th>
-                  </tr>
-                  <% child.on_requests.each do |request|%>
+            <% if @requests.length != 0 %>
+              <% @children.each do |child|%>
+                <%# if child.on_requests.length != 0 %>
+                  <p class="text-color"><%= child.name %>へ依頼中のお手伝い</p>
+                  <table class="text-center text-color">
                     <tr>
-                      <td><%= request.request_date.strftime("%-m/%-d") %></td>
-                      <td class="text-left"><%= request.name %></td>
-                      <td class="text-left"><%= safe_join(request.description.split("\n"), tag.br) %></td>
-                      <td><%= request.point %>pt</td>
-                      <td><%= link_to "編集",  edit_parents_request_path(request.id) %></td>
-                      <td><%= link_to "削除", parents_request_path(request.id), method: :delete, data: { confirm: 'リクエストを取り消しますか？'} %></td>
+                      <th class="text-center col-md-1">依頼日</th>
+                      <th class="text-center col-md-3">お手伝い名</th>
+                      <th class="text-center col-md-4">説明</th>
+                      <th class="text-center col-md-2">ポイント</th>
+                      <th class="col-md-1"></th>
+                      <th class="col-md-1"></th>
                     </tr>
-                  <% end %>
-                </table>
-              <% else %>
-                <p class="text-color">ありません</p>
+                    <% child.on_requests.each do |request|%>
+                      <tr>
+                        <td><%= request.request_date.strftime("%-m/%-d") %></td>
+                        <td class="text-left"><%= request.name %></td>
+                        <td class="text-left"><%= safe_join(request.description.split("\n"), tag.br) %></td>
+                        <td><%= request.point %>pt</td>
+                        <td><%= link_to "編集",  edit_parents_request_path(request.id) %></td>
+                        <td><%= link_to "削除", parents_request_path(request.id), method: :delete, data: { confirm: 'リクエストを取り消しますか？'} %></td>
+                      </tr>
+                    <% end %>
+                  </table>
+                <%# end %>
               <% end %>
+            <% else %> 
+              <p class="text-color">依頼中のお手伝いはありません</p>
             <% end %>
         </div>
       </div>

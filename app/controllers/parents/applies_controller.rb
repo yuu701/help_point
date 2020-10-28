@@ -4,7 +4,13 @@ class Parents::AppliesController < ApplicationController
   
   def index
     @applies = current_parent.applies.where(close: false)
-    @children = current_parent.children
+    # @children = current_parent.children
+    @children = []
+    @applies.each do |apply|
+      if @children.exclude?(apply.request.child)
+        @children.push(apply.request.child)
+      end
+    end
   end
   
   def destroy
