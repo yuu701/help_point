@@ -17,7 +17,7 @@ class Child < ApplicationRecord
   has_many :results, dependent: :destroy
   
   def not_closed_applies
-    applies.where(close: false)
+    applies.where(close: false).includes(:request)
   end
   
   def on_requests
@@ -29,8 +29,14 @@ class Child < ApplicationRecord
   end
   
   def total_point(search_date)
-    sum_point = results.where(completion_date: search_date.in_time_zone.all_month).sum(:point)
-    sum_bonus = results.where(completion_date: search_date.in_time_zone.all_month).sum(:bonus)
-    total_point = sum_point + sum_bonus
+    # sum_point = results.where(completion_date: search_date.in_time_zone.all_month).sum(:point)
+    # sum_bonus = results.where(completion_date: search_date.in_time_zone.all_month).sum(:bonus)
+    # total_point = sum_point + sum_bonus
+    point_bonus_arrays = results.where(completion_date: search_date.in_time_zone.all_month).pluck(:point, :bonus)
+    total_point = 0
+    point_bonus_arrays.each do |array|
+      total_point += array.sum
+    end
+    return total_point
   end
 end

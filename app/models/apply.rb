@@ -4,6 +4,7 @@ class Apply < ApplicationRecord
   
   belongs_to :request
   has_one :result, dependent: :destroy
+  has_one :child, through: :request
   
   # def closed
   #   self.close

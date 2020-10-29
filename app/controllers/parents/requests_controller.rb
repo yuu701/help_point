@@ -38,7 +38,7 @@ class Parents::RequestsController < ApplicationController
   end
 
   def index
-    @requests = current_parent.requests.where(status: false)
+    @requests = current_parent.requests.where(status: false).includes(:child)
     @children = []
     @requests.each do |request|
       if @children.exclude?(request.child)

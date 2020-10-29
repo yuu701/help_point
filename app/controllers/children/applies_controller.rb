@@ -76,7 +76,7 @@ class Children::AppliesController < ApplicationController
   end
 
   def index
-    @applies = current_child.applies.where(close: false)
+    @applies = current_child.applies.where(close: false).includes(:request)
   end
   
   def destroy

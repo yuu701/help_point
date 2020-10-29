@@ -36,7 +36,7 @@ class Parents::HelpsController < ApplicationController
   end
 
   def index
-    @children = current_parent.children
+    @children = current_parent.children.includes(:helps)
   end
   
   def destroy
