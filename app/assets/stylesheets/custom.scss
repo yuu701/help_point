@@ -130,6 +130,23 @@ h1,h2 {
   }
 }
 
+/* 親アカウント編集ページ*/
+.parents-edit-wrapper {
+  @include wrapper;
+}
+
+.parents-edit-container {
+  padding-top: 220px;
+  
+  // .change_password_container {
+  //   background-color: #8bd3dd;
+  // }
+  
+  // .change_password_check {
+  //   display: none;
+  // }
+}
+
 /* アイコン登録ページ*/
 .icons-new-wrapper {
   @include wrapper;

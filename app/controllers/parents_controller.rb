@@ -23,13 +23,31 @@ class ParentsController < ApplicationController
   def edit
   end
   
+  # def update
+  #   if @parent.update_attributes(parent_params)
+  #     redirect_to results_path, success: "アカウント情報を変更しました"
+  #   else
+  #     flash.now[:danger] = "アカウント情報の変更に失敗しました"
+  #     render :edit
+  #   end
+  # end
+  
   def update
-    if @parent.update_attributes(parent_params)
-      redirect_to results_path, success: "アカウント情報を変更しました"
+    if params[:parent][:change_password] == "true"
+      if @parent.authenticate(params[:parent][:current_password]) && @parent.update_attributes(parent_params)
+        redirect_to results_path, success: "アカウント情報を変更しました"
+      else
+        flash.now[:danger] = "アカウント情報の変更に失敗しました"
+        render :edit
+      end
     else
-      flash.now[:danger] = "アカウント情報の変更に失敗しました"
-      render :edit
-    end
+      if @parent.update_attributes(parent_params)
+        redirect_to results_path, success: "アカウント情報を変更しました"
+      else
+        flash.now[:danger] = "アカウント情報の変更に失敗しました"
+        render :edit
+      end
+    end  
   end
   
   private
