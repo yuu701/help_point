@@ -27,12 +27,28 @@ class ChildrenController < ApplicationController
   def update
     @child = Child.find(params[:id])
     @icons = Icon.all
-    if @child.update_attributes(child_params)
-      redirect_to children_path, success: "お子さま情報を変更しました"
+    # if @child.update_attributes(child_params)
+    #   redirect_to children_path, success: "お子さま情報を変更しました"
+    # else
+    #   flash.now[:danger] = "お子さま情報の変更に失敗しました"
+    #   render :edit
+    # end
+    
+    if params[:child][:change_password] == "true"
+      if @child.authenticate(params[:child][:current_password]) && @child.update_attributes(child_params)
+        redirect_to children_path, success: "お子さま情報を変更しました"
+      else
+        flash.now[:danger] = "お子さま情報の変更に失敗しました"
+        render :edit
+      end
     else
-      flash.now[:danger] = "お子さま情報の変更に失敗しました"
-      render :edit
-    end
+      if @child.update_attributes(child_params)
+        redirect_to children_path, success: "お子さま情報を変更しました"
+      else
+        flash.now[:danger] = "お子さま情報の変更に失敗しました"
+        render :edit
+      end
+    end  
   end
 
   def index

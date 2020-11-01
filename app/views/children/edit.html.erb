@@ -13,11 +13,19 @@
             <%= f.label :login_id, "ログインＩＤ", class: "text-color" %>
             <%= f.text_field :login_id, class: "form-control" %>
           </div>
-          <div class="form-group">
+          <div class="change_password_container">
+            <%= f.check_box :change_password, {class: "change_password_check", "data-toggle": "collapse", "data-target": ".password_form", "aria-expanded": "false", "aria-controls": "current_password new_password new_password_confirmation"}, "true", "false"  %>
+            <%= f.label :change_password, "パスワードを変更する" %>
+          </div>
+          <div class="form-group collapse password_form" id = "current_password">
+            <%= f.label :current_password, "現在のパスワード", class: "text-color" %>
+            <%= f.password_field :current_password, class: "form-control" %>
+          </div>
+          <div class="form-group collapse password_form" id = "new_password">
             <%= f.label :password, "パスワード（英数字を必ず含む８文字以上）", class: "text-color" %>
             <%= f.password_field :password, class: "form-control" %>
           </div>
-          <div class="form-group">
+          <div class="form-group collapse password_form" id = "new_password_confirmation">
             <%= f.label :password_confirmation, "パスワード（確認用）", class: "text-color" %>
             <%= f.password_field :password_confirmation, class: "form-control" %>
           </div>
