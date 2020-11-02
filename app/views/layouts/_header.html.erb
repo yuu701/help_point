@@ -4,7 +4,9 @@
       <%= icon 'fas', 'home fa-3x', class: "navbar-home"  %>
     <% end %>
     <nav>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right navbar-expand_sm navbar-expand-md">
+      <button class="navbar-toggler" type ="button" data-toggle="collapse" data-target = "" aria-controls="" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span></button>
         <% if parent_logged_in? %>
           <li>
             <%= link_to "お手伝い管理", parents_helps_path %>

@@ -340,6 +340,7 @@ h1,h2 {
     
     .sign-container {
       float: left;
+      
       a {
         color: red;
       }
@@ -381,7 +382,7 @@ h1,h2 {
 
 /* カレンダー*/
 .simple-calendar {
-  clear: right;
+  // clear: right;
   
   .day {
     // background-color: #fee6d4;
