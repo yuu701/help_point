@@ -4,41 +4,42 @@
       <%= link_to root_path do %>
         <%= icon 'fas', 'home fa-3x', class: "navbar-home"  %>
       <% end %>
-      <button class="navbar-toggler" type ="button" data-toggle="collapse" data-target="#navbar-contents" aria-controls="navbar-contents" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse navbar-right" id="navbar-contents">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContents" aria-controls="navbarContents" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse navbar-right" id="navbarContents">
           <ul class="nav navbar-nav">
           <% if parent_logged_in? %>
-            <li>
+            <li class="nav-item">
               <%= link_to "お手伝い管理", parents_helps_path %>
             </li>
-            <li>
+            <li class="nav-item">
               <%= link_to "こども管理",  children_path %>
             </li>
-            <li>
+            <li class="nav-item">
               <%= link_to "アカウント設定", edit_parent_path(current_parent) %>
             </li>
-            <li>
+            <li class="nav-item">
               <%= link_to "ログアウト", parents_logout_path, method: :delete %>
             </li>
           <% elsif child_logged_in? %>
-            <li>
+            <li class="nav-item">
               <p><%= current_child.name %></p>
             </li>
-            <li>
+            <li class="nav-item">
               <%= link_to "お手伝いをする", children_helps_path %>
             </li>
-            <li>
+            <li class="nav-item">
               <%= link_to "ログアウト", children_logout_path, method: :delete %>
             </li>
           <% else %>
-            <li>
+            <li class="nav-item">
               <%= link_to "新規登録", new_parent_path %>
             </li>
-            <li>
+            <li class="nav-item">
               <%= link_to "ママ・パパのログイン", parents_login_path %>
             </li>
-            <li>
+            <li class="nav-item">
               <%= link_to "こどものログイン", children_login_path %>
             </li>
           <% end %>
