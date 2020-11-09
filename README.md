@@ -1,24 +1,25 @@
-# README
+# お手伝いポイント管理アプリ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+【概要】
+子どもに対して親がお手伝いをリクエストして、子どもがお手伝いをすると親が承認してポイントに反映される。
 
-Things you may want to cover:
+【機能一覧】
+* 新規登録
 
-* Ruby version
+* 子アカウント作成
 
-* System dependencies
+* 親、子のログイン
 
-* Configuration
+* お手伝い項目・ポイント設定
 
-* Database creation
+* リクエスト機能
 
-* Database initialization
+* お手伝いポイント申請・承認・やり直し
 
-* How to run the test suite
+* 親が直接ポイント登録
 
-* Services (job queues, cache servers, search engines, etc.)
+* 子がリクエストなしでポイント申請登録
 
-* Deployment instructions
+* カレンダー機能
 
-* ...
+*　今月のポイント表示 
