@@ -5,7 +5,6 @@ class IconsController < ApplicationController
   
   def create
     @icon = Icon.new(icon_params)
-    @icon.image = params[:icon][:image].read
     if @icon.save
       redirect_to root_path, success: "登録が完了しました"
     else

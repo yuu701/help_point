@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_06_044747) do
+ActiveRecord::Schema.define(version: 2020_11_11_065539) do
 
   create_table "applies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "request_id"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2020_10_06_044747) do
   end
 
   create_table "icons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.binary "image", limit: 16777215
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
