@@ -162,7 +162,11 @@ h1,h2 {
   @include wrapper;
   
   .icons-index-container {
-    padding-top: 220px;
+    padding-top: 100px;
+    
+    .icon {
+      
+    }
   }
 }
 
@@ -395,26 +399,26 @@ h1,h2 {
     background-color: #f3d2c1;
   }
   
-  .wday-0 {
-  }
-  .wday-1 {}
-  .wday-2 {}
-  .wday-3 {}
-  .wday-4 {}
-  .wday-5 {}
-  .wday-6 {}
+  // .wday-0 {
+  // }
+  // .wday-1 {}
+  // .wday-2 {}
+  // .wday-3 {}
+  // .wday-4 {}
+  // .wday-5 {}
+  // .wday-6 {}
 
-  .today {}
-  .past {}
-  .future {}
+  // .today {}
+  // .past {}
+  // .future {}
 
-  .start-date {}
+  // .start-date {}
 
-  .prev-month {}
-  .next-month {}
-  .current-month {}
+  // .prev-month {}
+  // .next-month {}
+  // .current-month {}
 
-  .has-events {}
+  // .has-events {}
   
   .calendar-heading{
     margin-bottom: 15px;

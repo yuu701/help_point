@@ -4,7 +4,9 @@
       <div class="col-md-offset-4 col-md-4 icons-index-container">
         <h1 class="text-center text-color">アイコン一覧</h1>
         <% @icons.each do |icon|%>
-          <%= image_tag(icons_path(icon.id)) %>
+          <div class="icon">
+            <%= image_tag icon.image.url %>
+          </div>
         <% end %>
       </div>
     </div>
