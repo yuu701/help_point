@@ -1,13 +1,15 @@
 <div class="icons-index-wrapper">
   <div class="container">
     <div class="row">
-      <div class="col-md-offset-4 col-md-4 icons-index-container">
+      <div class="icons-index-container">
         <h1 class="text-center text-color">アイコン一覧</h1>
-        <% @icons.each do |icon|%>
-          <div class="icon">
-            <%= image_tag icon.image.url %>
-          </div>
-        <% end %>
+        <div class="row">
+          <% @icons.each do |icon|%>
+            <div class="icon col-md-2">
+              <%= image_tag icon.image.url %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

@@ -25,7 +25,7 @@
             <p><%= f.label :アイコン選択, class: "text-color" %></p>
             <% @icons.each do |icon|%>
               <div class="icon-select">
-                <p><%= image_tag(icons_path(icon.id)) %></p>
+                <p><%= image_tag icon.image.url %></p>
                 <p><%= f.radio_button :icon, icon.id %></p>
               </div>
             <% end %>
