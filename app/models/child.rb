@@ -11,6 +11,7 @@ class Child < ApplicationRecord
   has_secure_password
   
   belongs_to :parent
+  belongs_to :icon
   has_many :helps, dependent: :destroy
   has_many :requests, dependent: :destroy
   has_many :applies, through: :requests

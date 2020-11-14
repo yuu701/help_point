@@ -62,7 +62,7 @@ class ChildrenController < ApplicationController
   
   private
   def child_params
-    params.require(:child).permit(:name, :login_id, :password, :password_confirmation, :icon)
+    params.require(:child).permit(:name, :login_id, :password, :password_confirmation, :icon_id)
   end
   
   # beforeアクション

@@ -1,44 +1,46 @@
-<div class="child-new-wrapper">
+<div class="child-edit-wrapper">
   <div class="container">
     <div class="row">
-      <div class="col-md-offset-4 col-md-4 child-new-container">
-        <h1 class="text-center text-color">子ども情報変更</h1>
+      <div class="child-edit-container">
+        <h1 class="text-center text-color col-md-offset-4 col-md-4">子ども情報変更</h1>
         <%= form_with model: @child, local: true do |f| %>
           <%= render 'shared/error_messages', {model: @child} %>
-          <div class="form-group">
+          <div class="form-group col-md-offset-4 col-md-4">
             <%= f.label :name, "お子様のお名前", class: 'text-color' %>
             <%= f.text_field :name, class: "form-control" %>
           </div>
-          <div class="form-group">
+          <div class="form-group col-md-offset-4 col-md-4">
             <%= f.label :login_id, "ログインＩＤ", class: "text-color" %>
             <%= f.text_field :login_id, class: "form-control" %>
           </div>
-          <div class="change_password_container">
+          <div class="change_password_container col-md-offset-4 col-md-4">
             <%= f.check_box :change_password, {class: "change_password_check", "data-toggle": "collapse", "data-target": ".password_form", "aria-expanded": "false", "aria-controls": "current_password new_password new_password_confirmation"}, "true", "false"  %>
             <%= f.label :change_password, "パスワードを変更する" %>
           </div>
-          <div class="form-group collapse password_form" id = "current_password">
+          <div class="form-group collapse password_form col-md-offset-4 col-md-4" id = "current_password">
             <%= f.label :current_password, "現在のパスワード", class: "text-color" %>
             <%= f.password_field :current_password, class: "form-control" %>
           </div>
-          <div class="form-group collapse password_form" id = "new_password">
+          <div class="form-group collapse password_form col-md-offset-4 col-md-4" id = "new_password">
             <%= f.label :password, "パスワード（英数字を必ず含む８文字以上）", class: "text-color" %>
             <%= f.password_field :password, class: "form-control" %>
           </div>
-          <div class="form-group collapse password_form" id = "new_password_confirmation">
+          <div class="form-group collapse password_form col-md-offset-4 col-md-4" id = "new_password_confirmation">
             <%= f.label :password_confirmation, "パスワード（確認用）", class: "text-color" %>
             <%= f.password_field :password_confirmation, class: "form-control" %>
           </div>
-          <div class="form-group">
-            <p><%= f.label :アイコン選択, class: "text-color" %></p>
+          <div class="form-group icon-select col-md-offset-2 col-md-8">
+            <p><%= f.label :アイコン選択, class: "text-color col-md-offset-3" %></p>
             <% @icons.each do |icon|%>
-              <div class="icon-select">
-                <p><%= image_tag(icons_path(icon.id)) %></p>
-                <p><%= f.radio_button :icon, icon.id %></p>
+              <div class="col-md-2">
+                <p><%= image_tag icon.image.url %></p>
+                <p class="text-center"><%= f.radio_button :icon_id, icon.id %></p>
               </div>
             <% end %>
           </div>
-          <%= f.submit "変更する", class: "btn-block btn-color" %>
+          <div class="col-md-offset-4 col-md-4">
+            <%= f.submit "変更する", class: "btn-block btn-color" %>
+          </div>
         <% end %>
         <%= link_to "戻る", children_path, class: "text-color" %>
       </div>

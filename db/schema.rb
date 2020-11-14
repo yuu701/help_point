@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_11_065539) do
+ActiveRecord::Schema.define(version: 2020_11_14_085413) do
 
   create_table "applies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "request_id"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_11_11_065539) do
     t.string "name"
     t.string "login_id"
     t.string "password_digest"
-    t.binary "icon"
+    t.string "icon_id"
     t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

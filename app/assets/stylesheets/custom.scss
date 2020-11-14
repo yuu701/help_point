@@ -181,7 +181,33 @@ h1,h2 {
     padding-top: 150px;
     
     .icon-select {
-      float: left;
+      margin-top: 15px;
+    
+      p {
+        display: block;
+      } 
+      
+      img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
+}
+
+/* こども編集ページ*/
+.child-edit-wrapper {
+  @include wrapper;
+  
+  .child-edit-container {
+    padding-top: 150px;
+    
+    .icon-select {
+      margin-top: 15px;
+    
+      p {
+        display: block;
+      } 
       
       img {
         width: 100px;
@@ -208,6 +234,11 @@ h1,h2 {
         border: 1px solid #001858;
       }
     }
+    
+    img {
+        width: 50px;
+        height: 50px;
+      }
   }
 }
 
@@ -390,6 +421,11 @@ h1,h2 {
         border: 1px solid #001858;
       }
     }
+    
+    img {
+        width: 50px;
+        height: 50px;
+      }
   }
 }
 

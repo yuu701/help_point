@@ -7,7 +7,7 @@
           <% @children.each do |child|%>
             <tr>
               <td class="col-md-3"><%= child.name %></td>
-              <td class="col-md-3"><%= child.icon %></td>
+              <td class="col-md-3"><%= image_tag child.icon.image.url %></td>
               <td class="col-md-3"><%= link_to "編集", edit_child_path(child.id) %></td>
               <td class="col-md-3"><%= link_to "削除", child_path(child.id), method: :delete, data: { confirm: '削除しますか？'} %></td>
             </tr>
