@@ -13,10 +13,10 @@
           <h2><%= @search_month.month %>月のポイント</h2>
           <% @children.each do |child|%>
             <div class="child-point">
-              <p class="text-right child-name"><%= child.name %></p>
               <%= image_tag child.icon.image.url %>
+              <p class="text-right child-name"><%= child.name %></p>
               <p>：</p>
-              <p><%= child.total_point(@search_date) %></p>
+              <p><%= child.total_point(@search_date) %>pt</p>
             </div>
           <% end %>
         </div>
