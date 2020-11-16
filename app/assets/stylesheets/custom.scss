@@ -190,6 +190,7 @@ h1,h2 {
       img {
         width: 100px;
         height: 100px;
+        border-radius: 50%;
       }
     }
   }
@@ -212,6 +213,7 @@ h1,h2 {
       img {
         width: 100px;
         height: 100px;
+        border-radius: 50%;
       }
     }
   }
@@ -238,6 +240,7 @@ h1,h2 {
     img {
         width: 50px;
         height: 50px;
+        border-radius: 50%;
       }
   }
 }
@@ -398,6 +401,12 @@ h1,h2 {
       display: inline-block;
     }
     
+    img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+      
     .child-name {
       // width: 50px;
     }
@@ -421,11 +430,6 @@ h1,h2 {
         border: 1px solid #001858;
       }
     }
-    
-    img {
-        width: 50px;
-        height: 50px;
-      }
   }
 }
 

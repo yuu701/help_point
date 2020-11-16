@@ -22,11 +22,11 @@
             <%= f.password_field :current_password, class: "form-control" %>
           </div>
           <div class="form-group collapse password_form col-md-offset-4 col-md-4" id = "new_password">
-            <%= f.label :password, "パスワード（英数字を必ず含む８文字以上）", class: "text-color" %>
+            <%= f.label :password, "新しいパスワード（英数字を必ず含む８文字以上）", class: "text-color" %>
             <%= f.password_field :password, class: "form-control" %>
           </div>
           <div class="form-group collapse password_form col-md-offset-4 col-md-4" id = "new_password_confirmation">
-            <%= f.label :password_confirmation, "パスワード（確認用）", class: "text-color" %>
+            <%= f.label :password_confirmation, "新しいパスワード（確認用）", class: "text-color" %>
             <%= f.password_field :password_confirmation, class: "form-control" %>
           </div>
           <div class="form-group icon-select col-md-offset-2 col-md-8">
@@ -42,7 +42,7 @@
             <%= f.submit "変更する", class: "btn-block btn-color" %>
           </div>
         <% end %>
-        <%= link_to "戻る", children_path, class: "text-color" %>
+        <%= link_to "戻る", children_path, class: "text-color col-md-offset-4 col-md-4" %>
       </div>
     </div>
   </div>

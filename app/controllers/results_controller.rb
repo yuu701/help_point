@@ -101,17 +101,17 @@ class ResultsController < ApplicationController
     @displays = {}
     @results.each do |result|
       if @displays.key?(result.completion_date)
-        if @displays[result.completion_date].exclude?(result.child.name)
-          @displays[result.completion_date].push(result.child.name)
+        if @displays[result.completion_date].exclude?(result.child)
+          @displays[result.completion_date].push(result.child)
         end
       else
-        @displays[result.completion_date] = [result.child.name]
+        @displays[result.completion_date] = [result.child]
       end
     end
 
     @display_children = []
     @displays.each do |k,v|
-      struct = Struct.new("Display",:start_time, :child_names) 
+      struct = Struct.new("Display",:start_time, :child) 
       @display_children.push(struct.new(k, v))
     end
     

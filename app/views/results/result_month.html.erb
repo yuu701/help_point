@@ -24,11 +24,10 @@
           <%= date.day %>
           
           <% display_children.each do |display_child| %>
-            <% display_child.child_names.each do |child_name| %>
-              <%= link_to child_name, results_path(date: display_child.start_time )%>
-              <%#= link_to results_path(date: display_child.start_time ) do %>
-                <%#= image_tag child.icon.image.url %> 
-              <%# end %>
+            <% display_child.child.each do |child| %>
+              <%= link_to results_path(date: display_child.start_time ) do %>
+                <%= image_tag child.icon.image.url %> 
+              <% end %>
             <% end %>
           <% end %>
           

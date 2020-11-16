@@ -13,21 +13,6 @@
             <%= f.label :email, "メールアドレス", class: "text-color" %>
             <%= f.email_field :email, class: "form-control" %>
           </div>
-          <!--<button class="btn btn-primary" type = "button"-->
-          <!--  data-toggle ="collapse"-->
-          <!--  data-target = ".password_form"-->
-          <!--  aria-expanded = "false"-->
-          <!--  aria-controls = "current_password new_password new_password_confirmation">-->
-          <!--  パスワードを変更する-->
-          <!--</button>-->
-          <!--<div type = "button"-->
-          <!--  data-toggle ="collapse"-->
-          <!--  data-target = ".password_form"-->
-          <!--  aria-expanded = "false"-->
-          <!--  aria-controls = "current_password new_password new_password_confirmation">-->
-          <!--  <%#= f.check_box :change_password, {}, "true", "false" %>-->
-          <!--  <%#= f.label :change_password, "パスワードを変更する" %>-->
-          <!--</div>-->
           <div class="change_password_container">
             <%= f.check_box :change_password, {class: "change_password_check", "data-toggle": "collapse", "data-target": ".password_form", "aria-expanded": "false", "aria-controls": "current_password new_password new_password_confirmation"}, "true", "false"  %>
             <%= f.label :change_password, "パスワードを変更する" %>
@@ -41,7 +26,7 @@
               <%= f.password_field :password, class: "form-control" %>
             </div>
             <div class="form-group collapse password_form" id = "new_password_confirmation">
-              <%= f.label :password, "新しいパスワード（再入力）", class: "text-color" %>
+              <%= f.label :password, "新しいパスワード（確認用）", class: "text-color" %>
               <%= f.password_field :password_confirmation, class: "form-control" %>
             </div>
           <%= f.submit "変更する", class: "btn-block btn-color" %>
