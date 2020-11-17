@@ -98,6 +98,15 @@ h1,h2 {
   @include box_sizing;
 }
 
+/* ヘッダー*/
+header {
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+}
+
 
 /* トップページ*/
 
