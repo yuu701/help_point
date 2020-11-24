@@ -19,6 +19,7 @@ ja:
         login_id: ログインＩＤ
         password: パスワード
         password_confirmation: パスワード確認用
+        icon: アイコン
       help:
         name: お手伝い名
         point: ポイント
