@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   
   root 'pages#index'
   
-  namespace :admin do
-    get '/login',    to: 'sessions#new'
-    post '/login',   to: 'sessions#create'
-    delete '/logout', to: 'sessions#destroy'
-  end
+  # namespace :admin do
+  #   get '/login',    to: 'sessions#new'
+  #   post '/login',   to: 'sessions#create'
+  #   delete '/logout', to: 'sessions#destroy'
+  # end
   
   namespace :parents do
     get '/login',    to: 'sessions#new'
