@@ -1,5 +1,5 @@
 class IconsController < ApplicationController
-  before_action :basic_auth
+  before_action :basic_auth, if: :production?
   
   def new
     @icon = Icon.new
@@ -22,6 +22,10 @@ class IconsController < ApplicationController
   private
   def icon_params
     params.require(:icon).permit(:image)
+  end
+  
+  def production?
+    Rails.env.production?
   end
   
   def basic_auth
