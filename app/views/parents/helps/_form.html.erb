@@ -14,12 +14,12 @@
   </div>
   <p class="text-color">お手伝いを依頼するこども</p>
   <div class="form-group">
-    <% @children.each do |child|%>
+    <%# @children.each do |child|%>
       <div class="child-select">
-        <%= f.radio_button :child_id, child.id %>
-        <%= f.label :child_id, child.name %>
+        <%= f.collection_check_boxes(:child_id, @children, :id, :name) %>
+        <%#= f.label :child_id, child.name %>
       </div>
-    <% end %>
+    <%# end %>
   </div>
   <%= f.submit yield(:button_text), class: "btn-block btn-color" %>
 <% end %>

@@ -11,6 +11,7 @@ class Parents::HelpsController < ApplicationController
     @help = Help.new(help_params)
     @children = current_parent.children
     @help.parent_id = current_parent.id
+    binding.pry
     if @help.save
       redirect_to parents_helps_path, success: "登録が完了しました"
     else
