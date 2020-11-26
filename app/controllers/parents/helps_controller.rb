@@ -8,16 +8,26 @@ class Parents::HelpsController < ApplicationController
   end
   
   def create
-    @help = Help.new(help_params)
     @children = current_parent.children
-    @help.parent_id = current_parent.id
-    binding.pry
-    if @help.save
-      redirect_to parents_helps_path, success: "登録が完了しました"
-    else
-      flash.now[:danger] = "登録に失敗しました"
-      render :new
-    end
+    child_ids = params[:help][:child_id]
+    Help.transaction do
+      if child_ids
+        child_ids.each do |child_id|
+          @help = Help.new(help_params)
+          @help.parent_id = current_parent.id
+          @help.child_id = child_id
+          @help.save!
+        end
+      else
+        @help = Help.new(help_params)
+        @help.parent_id = current_parent.id
+        @help.save!
+      end
+        redirect_to parents_helps_path, success: "登録が完了しました"
+      rescue => e
+        flash.now[:danger] = "登録に失敗しました"
+        render :new
+      end
   end
   
   def edit
