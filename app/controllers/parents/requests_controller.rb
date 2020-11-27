@@ -9,13 +9,24 @@ class Parents::RequestsController < ApplicationController
   end
   
   def create
-    @request = Request.new(request_params)
-    @help = Help.find_by(id: params[:request][:help_id])
     @children = current_parent.children
-    @request.parent_id = current_parent.id
-    if @request.save
+    @help = Help.find_by(id: params[:request][:help_id])
+    child_ids = params[:request][:child_id]
+    Request.transaction do
+      if child_ids
+        child_ids.each do |child_id|
+          @request = Request.new(request_params)
+          @request.parent_id = current_parent.id
+          @request.child_id = child_id
+          @request.save!
+        end
+      else
+        @request = Request.new(request_params)
+        @request.parent_id = current_parent.id
+        @request.save!
+      end
       redirect_to parents_requests_path, success: "登録が完了しました"
-    else
+    rescue => e
       flash.now[:danger] = "登録に失敗しました"
       render :new
     end
@@ -29,9 +40,18 @@ class Parents::RequestsController < ApplicationController
   def update
     # @request = Request.find(params[:id])
     @children = current_parent.children
-    if @request.update_attributes(request_params)
+    child_ids = params[:request][:child_id]
+    Request.transaction do
+      if child_ids
+        child_ids.each do |child_id|
+          @request.child_id = child_id
+          @request.update_attributes!(request_params)
+        end
+      else
+        @request.update_attributes!(request_params)
+      end
       redirect_to parents_requests_path, success: "お手伝いを変更しました"
-    else
+    rescue => e
       flash.now[:danger] = "お手伝いの変更に失敗しました"
       render :edit
     end

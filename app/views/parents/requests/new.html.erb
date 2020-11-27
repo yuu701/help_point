@@ -26,12 +26,12 @@
             <% @children.each do |child|%>
               <% if @help.child_id == child.id %>
               <div class="child-select">
-                  <%= f.radio_button :child_id, child.id, checked: true %>
+                  <%= f.check_box :child_id, {multiple: true, checked: true}, child.id, nil %>
                   <%= f.label :child_id, child.name %>
                 </div>
               <% else %>
                 <div class="child-select">
-                  <%= f.radio_button :child_id, child.id %>
+                  <%= f.check_box :child_id, {multiple: true}, child.id, nil %>
                   <%= f.label :child_id, child.name %>
                 </div>
               <% end %>  
