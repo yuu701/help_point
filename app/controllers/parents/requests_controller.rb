@@ -40,18 +40,9 @@ class Parents::RequestsController < ApplicationController
   def update
     # @request = Request.find(params[:id])
     @children = current_parent.children
-    child_ids = params[:request][:child_id]
-    Request.transaction do
-      if child_ids
-        child_ids.each do |child_id|
-          @request.child_id = child_id
-          @request.update_attributes!(request_params)
-        end
-      else
-        @request.update_attributes!(request_params)
-      end
+    if @request.update_attributes(request_params)
       redirect_to parents_requests_path, success: "お手伝いを変更しました"
-    rescue => e
+    else
       flash.now[:danger] = "お手伝いの変更に失敗しました"
       render :edit
     end

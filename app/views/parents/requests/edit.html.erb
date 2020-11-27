@@ -24,7 +24,7 @@
           <div class="form-group">
             <% @children.each do |child|%>
               <div class="child-select">
-                <%= f.check_box :child_id, {multiple: true}, child.id, nil %>
+                <%= f.radio_button :child_id, child.id %>
                 <%= f.label :child_id, child.name %>
               </div>
             <% end %>
