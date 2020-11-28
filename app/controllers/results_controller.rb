@@ -97,6 +97,9 @@ class ResultsController < ApplicationController
       @results = current_child.parent.results.order(child_id: "ASC").includes(:child)
     end
     
+    # query = ""
+    # Result.find_by_sql(query)
+    
     
     @displays = {}
     @results.each do |result|
