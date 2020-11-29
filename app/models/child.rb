@@ -30,9 +30,6 @@ class Child < ApplicationRecord
   end
   
   def total_point(search_date)
-    # sum_point = results.where(completion_date: search_date.in_time_zone.all_month).sum(:point)
-    # sum_bonus = results.where(completion_date: search_date.in_time_zone.all_month).sum(:bonus)
-    # total_point = sum_point + sum_bonus
     point_bonus_arrays = results.where(completion_date: search_date.in_time_zone.all_month).pluck(:point, :bonus)
     total_point = 0
     point_bonus_arrays.each do |array|
@@ -40,4 +37,12 @@ class Child < ApplicationRecord
     end
     return total_point
   end
+  
+  # def total_point(child)
+  #   if @point = child
+  #     return @point.total_point
+  #   else
+  #     return 0
+  #   end
+  # end
 end

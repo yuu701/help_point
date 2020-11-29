@@ -87,19 +87,15 @@ class ResultsController < ApplicationController
 
   def index
     if parent_logged_in?
-      @children = current_parent.children
+      @children = current_parent.children.includes(:icon)
       @applies = current_parent.applies.where(close: false)
       @results = current_parent.results.order(child_id: "ASC").includes(:child)
       # @results = current_parent.results.select(:completion_date, :child_id).distinct.order(child_id: "ASC").includes(:child)
     elsif child_logged_in?
-      @children = current_child.parent.children
+      @children = current_child.parent.children.includes(:icon)
       @requests = current_child.requests.where(status: false)
       @results = current_child.parent.results.order(child_id: "ASC").includes(:child)
     end
-    
-    # query = ""
-    # Result.find_by_sql(query)
-    
     
     @displays = {}
     @results.each do |result|
@@ -131,6 +127,17 @@ class ResultsController < ApplicationController
     else
       render "results/result_month"
     end
+    
+    month_beginning = @search_month.beginning_of_month.strftime("%Y-%m-%d")
+    month_end = @search_month.end_of_month.strftime("%Y-%m-%d")
+    query = <<~QUERY
+      SELECT SUM(results.point + results.bonus) AS "total_point", child_id 
+      FROM results 
+      WHERE parent_id = #{current_parent.id} AND results.completion_date
+      BETWEEN '#{month_beginning}' AND '#{month_end}'
+      GROUP BY child_id 
+    QUERY
+    @point = ActiveRecord::Base.connection.select_all(query)
   end
   
   # def show
