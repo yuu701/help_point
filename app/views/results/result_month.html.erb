@@ -16,7 +16,8 @@
               <%= image_tag child.icon.image.url %>
               <p class="text-right child-name"><%= child.name %></p>
               <p>：</p>
-              <p><%= child.total_point(@search_date) %>pt</p>
+              <!--<p><%#= child.total_point(@search_date) %>pt</p>-->
+              <p><%= child.total_point(child.id) %>pt</p>
             </div>
           <% end %>
         </div>

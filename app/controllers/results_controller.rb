@@ -137,7 +137,8 @@ class ResultsController < ApplicationController
       BETWEEN '#{month_beginning}' AND '#{month_end}'
       GROUP BY child_id 
     QUERY
-    @point = ActiveRecord::Base.connection.select_all(query)
+    points_data = ActiveRecord::Base.connection.select_all(query)
+    $points = points_data.to_a
   end
   
   # def show
