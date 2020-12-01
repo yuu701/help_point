@@ -38,17 +38,25 @@ class Child < ApplicationRecord
   #   return total_point
   # end
   
-  def total_point(child_id)
-      if $points
-        $points.each do |point|
-          if point["child_id"] == child_id
-            return point["total_point"]
-          else
-            return 0
-          end
-        end
-      else
-        return 0
+  # def total_point
+  #     if $points
+  #       $points.each do |point|
+  #         if point["child_id"] == self.id
+  #           return point["total_point"]
+  #         else
+  #           return 0
+  #         end
+  #       end
+  #     else
+  #       return 0
+  #   end
+  # end
+  
+  def total_point
+    if $point_data_hash.has_key?(self.id)
+      return $point_data_hash[self.id]
+    else
+      return 0
     end
   end
 end

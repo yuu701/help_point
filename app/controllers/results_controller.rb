@@ -121,13 +121,6 @@ class ResultsController < ApplicationController
     end
     @search_month = @search_date.to_date
     
-    if params[:date]
-      @date = params[:date]
-      render "results/result_day"
-    else
-      render "results/result_month"
-    end
-    
     month_beginning = @search_month.beginning_of_month.strftime("%Y-%m-%d")
     month_end = @search_month.end_of_month.strftime("%Y-%m-%d")
     query = <<~QUERY
@@ -138,7 +131,18 @@ class ResultsController < ApplicationController
       GROUP BY child_id 
     QUERY
     points_data = ActiveRecord::Base.connection.select_all(query)
-    $points = points_data.to_a
+    points = points_data.to_a
+    $point_data_hash = {}
+    points.each do |point|
+      $point_data_hash[point["child_id"]] = point["total_point"]
+    end
+    
+    if params[:date]
+      @date = params[:date]
+      render "results/result_day"
+    else
+      render "results/result_month"
+    end
   end
   
   # def show
