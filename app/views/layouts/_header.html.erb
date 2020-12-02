@@ -10,9 +10,13 @@
         <div class="collapse navbar-collapse navbar-right" id="navbarContents">
           <ul class="nav navbar-nav">
           <% if parent_logged_in? %>
-            <li class="nav-item">
-              <%= link_to "お手伝い管理", parents_helps_path %>
-            </li>
+            <!--<div class="dropdown-menu">-->
+              <li class="nav-item">
+                <%= link_to "お手伝い管理", parents_helps_path %>
+                <!--<button type="button" id="dropdown-help" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">お手伝い管理</button>-->
+                <%#= link_to "お手伝い管理", parents_helps_path %>
+              </li>
+            <!--</div>-->
             <li class="nav-item">
               <%= link_to "こども管理",  children_path %>
             </li>
