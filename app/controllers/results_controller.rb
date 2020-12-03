@@ -90,7 +90,6 @@ class ResultsController < ApplicationController
       @children = current_parent.children.includes(:icon)
       @applies = current_parent.applies.where(close: false)
       @results = current_parent.results.order(child_id: "ASC").includes(:child)
-      # @results = current_parent.results.select(:completion_date, :child_id).distinct.order(child_id: "ASC").includes(:child)
     elsif child_logged_in?
       @children = current_child.parent.children.includes(:icon)
       @requests = current_child.requests.where(status: false)
