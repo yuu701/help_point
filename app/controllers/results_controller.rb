@@ -131,10 +131,18 @@ class ResultsController < ApplicationController
     QUERY
     points_data = ActiveRecord::Base.connection.select_all(query)
     points = points_data.to_a
-    $point_data_hash = {}
+    point_data_hash = {}
     points.each do |point|
-      $point_data_hash[point["child_id"]] = point["total_point"]
+      point_data_hash[point["child_id"]] = point["total_point"]
     end
+    @children.each do |child|
+      if point_data_hash.has_key?(child.id)
+        child.total_point = point_data_hash[child.id]
+      else
+        child.total_point = 0
+      end
+    end
+    
     
     if params[:date]
       @date = params[:date]

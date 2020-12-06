@@ -1,4 +1,6 @@
 class Child < ApplicationRecord
+  attr_accessor :total_point
+  
   validates :name, presence: true, length: { maximum: 50 }
   
   validates :login_id, presence: true, length: { maximum: 255 },
@@ -52,11 +54,11 @@ class Child < ApplicationRecord
   #   end
   # end
   
-  def total_point
-    if $point_data_hash.has_key?(self.id)
-      return $point_data_hash[self.id]
-    else
-      return 0
-    end
-  end
+  # def total_point
+  #   if $point_data_hash.has_key?(self.id)
+  #     return $point_data_hash[self.id]
+  #   else
+  #     return 0
+  #   end
+  # end
 end
