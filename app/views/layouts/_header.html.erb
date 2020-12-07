@@ -11,16 +11,16 @@
           <ul class="nav navbar-nav">
           <% if parent_logged_in? %>
             <li class="nav-item">
-              <div class="dropdown">
-                <%#= link_to "お手伝い管理", parents_helps_path %>
-                <button type="button" id="dropdown-help" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">お手伝い管理</button>
-                <div class="dropdown-menu" aria-labelledby="dropdown-help">
-                  <%= link_to "お手伝い登録", new_parents_help_path, class:'dropdown-item' %>
-                  <%= link_to "お手伝い一覧", parents_helps_path, class:'dropdown-item' %>
-                  <%= link_to "依頼中のお手伝い", parents_requests_path, class:'dropdown-item' %>
-                  <%= link_to "承認待ちのお手伝い", parents_applies_path, class:'dropdown-item' %>
-                </div>
-              </div>
+              <!--<div class="dropdown">-->
+                <%= link_to "お手伝い管理", parents_helps_path %>
+              <!--  <button type="button" id="dropdown-help" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">お手伝い管理</button>-->
+              <!--  <div class="dropdown-menu" aria-labelledby="dropdown-help">-->
+              <!--    <%#= link_to "お手伝い登録", new_parents_help_path, class:'dropdown-item' %>-->
+              <!--    <%#= link_to "お手伝い一覧", parents_helps_path, class:'dropdown-item' %>-->
+              <!--    <%#= link_to "依頼中のお手伝い", parents_requests_path, class:'dropdown-item' %>-->
+              <!--    <%#= link_to "承認待ちのお手伝い", parents_applies_path, class:'dropdown-item' %>-->
+              <!--  </div>-->
+              <!--</div>-->
             </li>
             <li class="nav-item">
               <%= link_to "こども管理",  children_path %>
