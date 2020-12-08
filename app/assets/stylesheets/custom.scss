@@ -43,7 +43,7 @@ h1,h2 {
 .navbar-home {
     padding: 0px;
     margin-top: 10px;
-    display: flex;
+    float: left;
     color: #8bd3dd;
     
     &:hover {
@@ -71,8 +71,10 @@ header {
   }
   
   .dropdown {
+    margin-top: 8px;
     a {
       display: block;
+      color: currentColor;
     }
   }
 }
