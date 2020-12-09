@@ -72,8 +72,11 @@ header {
   
   .dropdown {
     margin-top: 8px;
+    ul {
+      list-style: none;
+    }
+    
     a {
-      display: block;
       color: currentColor;
     }
   }
