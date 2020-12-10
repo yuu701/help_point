@@ -70,14 +70,18 @@ header {
     border-radius: 50%;
   }
   
-  .dropdown {
-    margin-top: 8px;
-    ul {
-      list-style: none;
+  #navbarContents {
+    button {
+      background-color: #d4ebd4;
+      margin-top: 8px;
     }
+  }
+  
+  .dropdown {
     
     a {
-      color: currentColor;
+      display: block;
+      padding: 5px 5px;
     }
   }
 }
