@@ -23,13 +23,25 @@
               </div>
             </li>
             <li class="nav-item">
-              <%= link_to "こども管理",  children_path, class:'text-color' %>
+              <div>
+                <button "button" class="btn btn-outline-secondary">
+                  <%= link_to "こども管理",  children_path, class:'text-color' %>
+                </button>
+              </div>
             </li>
             <li class="nav-item">
-              <%= link_to "アカウント設定", edit_parent_path(current_parent), class:'text-color' %>
+              <div>
+                <button "button" class="btn btn-outline-secondary">
+                  <%= link_to "アカウント設定", edit_parent_path(current_parent), class:'text-color' %>
+                </button>
+              </div>
             </li>
             <li class="nav-item">
-              <%= link_to "ログアウト", parents_logout_path, method: :delete, class:'text-color' %>
+              <div>
+                <button "button" class="btn btn-outline-secondary">
+                  <%= link_to "ログアウト", parents_logout_path, method: :delete, class:'text-color' %>
+                </button>
+              </div>
             </li>
           <% elsif child_logged_in? %>
             <li class="nav-item">
