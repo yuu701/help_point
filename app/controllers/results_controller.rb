@@ -104,29 +104,29 @@ class ResultsController < ApplicationController
       parent = current_child.parent
     end
     
-    @displays = {}
+    displays = {}
     @results.each do |result|
-      if @displays.key?(result.completion_date)
-        if @displays[result.completion_date].exclude?(result.child)
-          @displays[result.completion_date].push(result.child)
+      if displays.key?(result.completion_date)
+        if displays[result.completion_date].exclude?(result.child)
+          displays[result.completion_date].push(result.child)
         end
       else
-        @displays[result.completion_date] = [result.child]
+        displays[result.completion_date] = [result.child]
       end
     end
 
     @display_children = []
-    @displays.each do |k,v|
+    displays.each do |k,v|
       struct = Struct.new("Display",:start_time, :child) 
       @display_children.push(struct.new(k, v))
     end
     
     if params[:start_date]
-      @search_date = params[:start_date]
+      search_date = params[:start_date]
     else
-      @search_date = Date.today
+      search_date = Date.today
     end
-    @search_month = @search_date.to_date
+    @search_month = search_date.to_date
     
     month_beginning = @search_month.beginning_of_month.strftime("%Y-%m-%d")
     month_end = @search_month.end_of_month.strftime("%Y-%m-%d")
