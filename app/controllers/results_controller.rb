@@ -46,22 +46,25 @@ class ResultsController < ApplicationController
       #   child_id: @help.child_id,
       #   request_date: @result.completion_date,
       #   status: true)
-      @request = Request.new()
+      request = Request.new()
       create_request_date = @result.completion_date
-      @request.create_request(@help, create_request_date)
-      @apply = Apply.new(
-        comment: "",
-        completion_date: @result.completion_date,
-        close: true)
+      request.create_request(@help, create_request_date)
+      # @apply = Apply.new(
+      #   comment: "",
+      #   completion_date: @result.completion_date,
+      #   close: true)
+      apply = Apply.new()
+      create_apply_date = @result.completion_date
+      apply.create_apply(create_apply_date)
       begin
         Request.transaction do
           Apply.transaction do
             Result.transaction do
-              @request.save!
-              @apply.request_id = @request.id
-              @apply.save!
-              @result.appeal_comment = @apply.comment
-              @result.apply_id = @apply.id
+              request.save!
+              apply.request_id = request.id
+              apply.save!
+              @result.appeal_comment = apply.comment
+              @result.apply_id = apply.id
               @result.save!
             end
           end

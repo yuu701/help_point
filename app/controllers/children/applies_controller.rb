@@ -42,21 +42,21 @@ class Children::AppliesController < ApplicationController
       #   child_id: @help.child_id,
       #   request_date: @apply.completion_date,
       #   status: true)
-      @request = Request.new()
+      request = Request.new()
       create_request_date = @apply.completion_date
-      @request.create_request(@help, create_request_date)
+      request.create_request(@help, create_request_date)
       @apply.direct = true
       begin
           Request.transaction do
             Apply.transaction do
-              @request.save!
-              @apply.request_id = @request.id
+              request.save!
+              @apply.request_id = request.id
               @apply.save!
             end
         end
         redirect_to children_helps_path, success: "ママ・パパに報告しました"
       rescue => e
-        flash.now[:danger] = "報告が失敗しましたた"
+        flash.now[:danger] = "報告が失敗しました"
         render :direct_new
       end
     end

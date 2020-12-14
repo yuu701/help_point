@@ -9,4 +9,10 @@ class Apply < ApplicationRecord
   # def closed
   #   self.close
   # end
+  
+  def create_apply(create_apply_date)
+    self.comment = ""
+    self.completion_date = create_apply_date
+    self.close = true
+  end
 end
