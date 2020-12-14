@@ -34,14 +34,17 @@ class Children::AppliesController < ApplicationController
       end
      # お手伝いリストからのお手伝い報告
     elsif @help = Help.find_by(id: params[:apply][:help_id])
-      @request = Request.new(
-        name: @help.name, 
-        description: @help.description, 
-        point: @help.point, 
-        parent_id: @help.parent_id, 
-        child_id: @help.child_id,
-        request_date: @apply.completion_date,
-        status: true)
+      # @request = Request.new(
+      #   name: @help.name, 
+      #   description: @help.description, 
+      #   point: @help.point, 
+      #   parent_id: @help.parent_id, 
+      #   child_id: @help.child_id,
+      #   request_date: @apply.completion_date,
+      #   status: true)
+      @request = Request.new()
+      create_request_date = @apply.completion_date
+      @request.create_request(@help, create_request_date)
       @apply.direct = true
       begin
           Request.transaction do

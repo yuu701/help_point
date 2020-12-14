@@ -38,14 +38,17 @@ class ResultsController < ApplicationController
     # ポイントを直接登録する処理
     elsif @help = Help.find_by(id: params[:result][:help_id])
       @result.child_id = @help.child_id
-      @request = Request.new(
-        name: @help.name, 
-        description: @help.description, 
-        point: @help.point, 
-        parent_id: @help.parent_id, 
-        child_id: @help.child_id,
-        request_date: @result.completion_date,
-        status: true)
+      # @request = Request.new(
+      #   name: @help.name, 
+      #   description: @help.description, 
+      #   point: @help.point, 
+      #   parent_id: @help.parent_id, 
+      #   child_id: @help.child_id,
+      #   request_date: @result.completion_date,
+      #   status: true)
+      @request = Request.new()
+      create_request_date = @result.completion_date
+      @request.create_request(@help, create_request_date)
       @apply = Apply.new(
         comment: "",
         completion_date: @result.completion_date,
