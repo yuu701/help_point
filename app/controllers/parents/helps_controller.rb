@@ -3,7 +3,8 @@ class Parents::HelpsController < ApplicationController
   before_action :correct_parent_for_helps, only:[:edit, :update, :destroy]
   
   def new
-    @help = Help.new
+    # @help = Help.new
+    @help = current_parent.helps.build
     @children = current_parent.children
   end
   
@@ -13,14 +14,16 @@ class Parents::HelpsController < ApplicationController
     Help.transaction do
       if child_ids
         child_ids.each do |child_id|
-          @help = Help.new(help_params)
-          @help.parent_id = current_parent.id
+          # @help = Help.new(help_params)
+          # @help.parent_id = current_parent.id
+          @help = current_parent.helps.build(help_params)
           @help.child_id = child_id
           @help.save!
         end
       else
-        @help = Help.new(help_params)
-        @help.parent_id = current_parent.id
+        # @help = Help.new(help_params)
+        # @help.parent_id = current_parent.id
+        @help = current_parent.helps.build(help_params)
         @help.save!
       end
       redirect_to parents_helps_path, success: "登録が完了しました"

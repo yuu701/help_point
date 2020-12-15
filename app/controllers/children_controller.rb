@@ -3,14 +3,16 @@ class ChildrenController < ApplicationController
   before_action :correct_parent_for_child, only:[:edit, :update, :destroy]
   
   def new
-    @child = Child.new
+    # @child = Child.new
+    @child = current_parent.children.build
     @icons = Icon.all
   end
   
   def create
-    @child = Child.new(child_params)
+    # @child = Child.new(child_params)
+    # @child.parent_id = current_parent.id
+    @child = current_parent.children.build(child_params)
     @icons = Icon.all
-    @child.parent_id = current_parent.id
     if @child.save
       redirect_to children_path, success: "登録が完了しました"
     else

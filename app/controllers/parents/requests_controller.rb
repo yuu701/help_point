@@ -3,7 +3,8 @@ class Parents::RequestsController < ApplicationController
   before_action :correct_parent_for_requests, only:[:edit, :update, :destroy]
   
   def new
-    @request = Request.new
+    # @request = Request.new
+    @request = current_parent.requests.build
     @help = Help.find_by(id: params[:help_id])
     @children = current_parent.children
   end
@@ -15,14 +16,16 @@ class Parents::RequestsController < ApplicationController
     Request.transaction do
       if child_ids
         child_ids.each do |child_id|
-          @request = Request.new(request_params)
-          @request.parent_id = current_parent.id
+          # @request = Request.new(request_params)
+          # @request.parent_id = current_parent.id
+          @request = current_parent.requests.build(request_params)
           @request.child_id = child_id
           @request.save!
         end
       else
-        @request = Request.new(request_params)
-        @request.parent_id = current_parent.id
+        # @request = Request.new(request_params)
+        # @request.parent_id = current_parent.id
+        @request = current_parent.requests.build(request_params)
         @request.save!
       end
       redirect_to parents_requests_path, success: "登録が完了しました"

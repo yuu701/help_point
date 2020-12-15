@@ -4,7 +4,8 @@ class ResultsController < ApplicationController
   
   def new
     # ポイント承認ページ
-    @result = Result.new
+    # @result = Result.new
+    @result = current_parent.results.build
     if params[:apply_id] != nil
       @apply = Apply.find_by(id: params[:apply_id])
       render "results/approval_new"
@@ -16,8 +17,9 @@ class ResultsController < ApplicationController
   end
   
   def create
-    @result = Result.new(result_params)
-    @result.parent_id = current_parent.id
+    # @result = Result.new(result_params)
+    # @result.parent_id = current_parent.id
+    @result = current_parent.results.build(result_params)
     # ポイント承認処理
     if @apply = Apply.find_by(id: params[:result][:apply_id])
       @result.appeal_comment = @apply.comment
