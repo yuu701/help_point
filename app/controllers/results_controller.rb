@@ -22,9 +22,10 @@ class ResultsController < ApplicationController
     @result = current_parent.results.build(result_params)
     # ポイント承認処理
     if @apply = Apply.find_by(id: params[:result][:apply_id])
-      @result.appeal_comment = @apply.comment
-      @result.child_id = @apply.request.child_id
-      @result.apply_id = @apply.id
+      # @result.child_id = @apply.request.child_id
+      # @result.appeal_comment = @apply.comment
+      # @result.apply_id = @apply.id
+      @result.create_result(@apply)
       begin
         Result.transaction do
           Apply.transaction do
@@ -39,7 +40,6 @@ class ResultsController < ApplicationController
       end
     # ポイントを直接登録する処理
     elsif @help = Help.find_by(id: params[:result][:help_id])
-      @result.child_id = @help.child_id
       # @request = Request.new(
       #   name: @help.name, 
       #   description: @help.description, 
@@ -65,8 +65,10 @@ class ResultsController < ApplicationController
               request.save!
               apply.request_id = request.id
               apply.save!
-              @result.appeal_comment = apply.comment
-              @result.apply_id = apply.id
+              # @result.child_id = @help.child_id
+              # @result.appeal_comment = apply.comment
+              # @result.apply_id = apply.id
+              @result.create_result(apply)
               @result.save!
             end
           end

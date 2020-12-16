@@ -12,4 +12,10 @@ class Result < ApplicationRecord
   def start_time
     self.completion_date
   end
+  
+  def create_result(apply)
+    self.child_id = apply.request.child_id
+    self.appeal_comment = apply.comment
+    self.apply_id = apply.id
+  end
 end
