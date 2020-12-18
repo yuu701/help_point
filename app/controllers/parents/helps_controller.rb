@@ -33,30 +33,52 @@ class Parents::HelpsController < ApplicationController
     # end
     
     
+    # helps_data = []
+    # error = 0
+    # if child_ids
+    #   child_ids.each do |child_id|
+    #     @help = current_parent.helps.build(help_params)
+    #     @help.child_id = child_id
+    #     if @help.valid?
+    #       helps_data.push(@help)
+    #     else
+    #       error += 1
+    #     end
+    #   end
+    #   if error != 0 
+    #     Help.import helps_data
+    #     redirect_to parents_helps_path, success: "登録が完了しました"
+    #   else
+    #     flash.now[:danger] = "登録に失敗しました"
+    #     render :new
+    #   end
+    # else
+    #   @help = current_parent.helps.build(help_params)
+    #   flash.now[:danger] = "登録に失敗しました"
+    #   render :new
+    # end
+    
     helps_data = []
-    error = 0
     if child_ids
       child_ids.each do |child_id|
         @help = current_parent.helps.build(help_params)
         @help.child_id = child_id
-        if @help.valid?
-          helps_data.push(@help)
+        if @help.invalid?
+          flash.now[:danger] = "登録に失敗しました"
+          render :new
+          return
         else
-          error += 1
+          helps_data.push(@help)
         end
       end
-      if error != 0 
-        Help.import helps_data
-        redirect_to parents_helps_path, success: "登録が完了しました"
-      else
-        flash.now[:danger] = "登録に失敗しました"
-        render :new
-      end
+      Help.import helps_data
+      redirect_to parents_helps_path, success: "登録が完了しました"
     else
       @help = current_parent.helps.build(help_params)
+      @help.save
       flash.now[:danger] = "登録に失敗しました"
       render :new
-    end  
+    end
   end
   
   def edit
