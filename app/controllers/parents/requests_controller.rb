@@ -13,23 +13,44 @@ class Parents::RequestsController < ApplicationController
     @children = current_parent.children
     @help = Help.find_by(id: params[:request][:help_id])
     child_ids = params[:request][:child_id]
-    Request.transaction do
-      if child_ids
-        child_ids.each do |child_id|
-          # @request = Request.new(request_params)
-          # @request.parent_id = current_parent.id
-          @request = current_parent.requests.build(request_params)
-          @request.child_id = child_id
-          @request.save!
-        end
-      else
-        # @request = Request.new(request_params)
-        # @request.parent_id = current_parent.id
+    # Request.transaction do
+    #   if child_ids
+    #     child_ids.each do |child_id|
+    #       # @request = Request.new(request_params)
+    #       # @request.parent_id = current_parent.id
+    #       @request = current_parent.requests.build(request_params)
+    #       @request.child_id = child_id
+    #       @request.save!
+    #     end
+    #   else
+    #     # @request = Request.new(request_params)
+    #     # @request.parent_id = current_parent.id
+    #     @request = current_parent.requests.build(request_params)
+    #     @request.save!
+    #   end
+    #   redirect_to parents_requests_path, success: "登録が完了しました"
+    # rescue => e
+    #   flash.now[:danger] = "登録に失敗しました"
+    #   render :new
+    # end
+    
+    requests_data = []
+    if child_ids
+      child_ids.each do |child_id|
         @request = current_parent.requests.build(request_params)
-        @request.save!
+        @request.child_id = child_id
+        if @request.invalid?
+          flash.now[:danger] = "登録に失敗しました"
+          render :new
+          return
+        else
+          requests_data.push(@request)
+        end
       end
+      Request.import requests_data
       redirect_to parents_requests_path, success: "登録が完了しました"
-    rescue => e
+    else
+      @request = current_parent.requests.create(request_params)
       flash.now[:danger] = "登録に失敗しました"
       render :new
     end
