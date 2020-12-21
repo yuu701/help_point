@@ -62,47 +62,47 @@ class Parents::HelpsController < ApplicationController
   def update
     # @help = Help.find(params[:id])
     @children = current_parent.children
-    # if @help.update_attributes(help_params)
-    #   redirect_to parents_helps_path, success: "お手伝いを変更しました"
-    # else
-    #   flash.now[:danger] = "お手伝いの変更に失敗しました"
-    #   render :edit
-    # end
-    
-    child_ids = params[:help][:child_id]
-    new_helps_data = []
-    if child_ids
-      child_ids.each do |child_id|
-        if @help.child_id != child_id
-          help = current_parent.helps.build(help_params)
-          help.child_id = child_id
-          if help.invalid?
-            flash.now[:danger] = "変更に失敗しました"
-            render :edit
-            return
-          else
-            new_helps_data.push(help)
-          end
-        end
-      end
-      if child_ids.include?(@help.child_id)
-        if @help.update_attributes(help_params)
-          Help.import new_helps_data
-          redirect_to parents_helps_path, success: "変更が完了しました"
-        else
-          flash.now[:danger] = "変更に失敗しました"
-          render :edit
-        end
-      else
-        @help.destroy
-        Help.import new_helps_data
-        redirect_to parents_helps_path, success: "変更が完了しました"
-      end
+    if @help.update_attributes(help_params)
+      redirect_to parents_helps_path, success: "お手伝いを変更しました"
     else
-      @help.update_attributes(help_params)
-      flash.now[:danger] = "変更に失敗しました"
+      flash.now[:danger] = "お手伝いの変更に失敗しました"
       render :edit
     end
+    
+    # child_ids = params[:help][:child_id]
+    # new_helps_data = []
+    # if child_ids
+    #   child_ids.each do |child_id|
+    #     if @help.child_id != child_id
+    #       help = current_parent.helps.build(help_params)
+    #       help.child_id = child_id
+    #       if help.invalid?
+    #         flash.now[:danger] = "変更に失敗しました"
+    #         render :edit
+    #         return
+    #       else
+    #         new_helps_data.push(help)
+    #       end
+    #     end
+    #   end
+    #   if child_ids.include?(@help.child_id)
+    #     if @help.update_attributes(help_params)
+    #       Help.import new_helps_data
+    #       redirect_to parents_helps_path, success: "変更が完了しました"
+    #     else
+    #       flash.now[:danger] = "変更に失敗しました"
+    #       render :edit
+    #     end
+    #   else
+    #     @help.destroy
+    #     Help.import new_helps_data
+    #     redirect_to parents_helps_path, success: "変更が完了しました"
+    #   end
+    # else
+    #   @help.update_attributes(help_params)
+    #   flash.now[:danger] = "変更に失敗しました"
+    #   render :edit
+    # end
   end
 
   def index
