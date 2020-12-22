@@ -74,12 +74,15 @@ header {
     button {
       background-color: #d4ebd4;
       margin-top: 8px;
-      padding-bottom: 13px;
+      padding: 13px 5px;
     }
     
     li {
-      background-color: #d4ebd4;
       margin: 5px 10px;
+    }
+    
+    .header-btn {
+      background-color: #d4ebd4;
     }
   }
   
