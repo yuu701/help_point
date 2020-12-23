@@ -71,10 +71,16 @@ header {
   }
   
   #navbarContents {
-    button {
-      background-color: #d4ebd4;
-      margin-top: 8px;
-      padding: 13px 5px;
+    // button {
+    //   background-color: #d4ebd4;
+    //   margin-top: 8px;
+    //   padding: 13px 5px;
+    // }
+    
+    .dropdown {
+      a {
+        margin: 0;
+      }
     }
     
     li {
@@ -86,12 +92,34 @@ header {
     }
   }
   
-  .dropdown {
-    a {
-      display: block;
-      padding: 5px 5px;
+  .help-menu {
+    
+    .help-list {
+      // display: none;
+      // background-color: #d4ebd4;
+    }
+    
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      
+      a {
+        text-decoration: none;
+      }
     }
   }
+  
+  // .help-menu:hover .help-list {
+  //   display: block;
+  // }
+  
+  // .dropdown {
+  //   a {
+  //     display: block;
+  //     padding: 5px 5px;
+  //   }
+  // }
 }
 
 /*forms*/
