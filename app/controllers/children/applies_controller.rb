@@ -43,8 +43,7 @@ class Children::AppliesController < ApplicationController
       #   request_date: @apply.completion_date,
       #   status: true)
       request = Request.new()
-      create_request_date = @apply.completion_date
-      request.create_request(@help, create_request_date)
+      request.create_request(@help, @apply.completion_date)
       @apply.direct = true
       begin
           Request.transaction do

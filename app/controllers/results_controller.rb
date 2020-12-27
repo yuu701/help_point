@@ -49,8 +49,7 @@ class ResultsController < ApplicationController
       #   request_date: @result.completion_date,
       #   status: true)
       request = Request.new()
-      create_request_date = @result.completion_date
-      request.create_request(@help, create_request_date)
+      request.create_request(@help, @result.completion_date)
       # @apply = Apply.new(
       #   comment: "",
       #   completion_date: @result.completion_date,
