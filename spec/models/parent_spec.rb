@@ -71,6 +71,31 @@ RSpec.describe Parent, type: :model do
       expect(FactoryBot.build(:parent, password: string)).to be_invalid
      end
    end
-   
  end
+ 
+ describe "association" do
+  describe "children" do
+    before do
+      @parent = FactoryBot.create(:parent)
+      @icon = FactoryBot.create(:icon)
+      @child1 = FactoryBot.create(:child, parent_id: @parent.id, icon_id: @icon.id)
+    end
+    it "has many children"
+    describe "parentが削除されるとparentに紐づくchildが削除されること" do
+       context "childが1人の場合" do
+         it "childモデルが1減ること" do
+           expect{ @parent.destroy }.to change{ Child.count }.by(-1)
+         end
+       end
+       context "childが2人の場合" do
+         it "childモデルが2減ること" do
+           child2 = FactoryBot.create(:child, parent_id: @parent.id, icon_id: @icon.id)
+           expect{ @parent.destroy }.to change{ Child.count }.by(-2)
+         end
+       end
+     end
+   end
+    
+    
+  end
 end
