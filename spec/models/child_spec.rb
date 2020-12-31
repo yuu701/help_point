@@ -1,33 +1,33 @@
 require 'rails_helper'
 
 RSpec.describe Child, type: :model do
-  it "is valid with a name and login_id and password" do
-    expect(FactoryBot.create(:parent)).to be_valid
+  it "is valid with a name and login_id and password and icon_id and parent_id" do
+    expect(FactoryBot.create(:child)).to be_valid
  end
  
  it "is invalid without a name" do
-   expect(FactoryBot.build(:parent, name: "")).to_not be_valid
+   expect(FactoryBot.build(:child, name: "")).to_not be_valid
  end
  
- it "is invalid without a email" do
-   expect(FactoryBot.build(:parent, email: "")).to_not be_valid
+ it "is invalid without a login_id" do
+   expect(FactoryBot.build(:child, login_id: "")).to_not be_valid
  end
  
- it "メールアドレスが重複していたら登録できない" do
-   parent1 = FactoryBot.create(:parent, name: "taro", email: "taro@example.com")
-   expect(FactoryBot.build(:parent, name: "ziro", email: parent1.email)).to_not be_valid
+ it "login_idが重複していたら登録できない" do
+   child1 = FactoryBot.create(:child, name: "taro", login_id: "aaa")
+   expect(FactoryBot.build(:child, name: "ziro", login_id: child1.login_id)).to_not be_valid
  end
  
  it "is invalid without a password" do
-   expect(FactoryBot.build(:parent, password: "")).to_not be_valid
+   expect(FactoryBot.build(:child, password: "")).to_not be_valid
  end
  
  it "パスワードが暗号化されているか" do
-   parent = FactoryBot.create(:parent)
-   expect(parent.password_digest).to_not eq "password1"
+   child = FactoryBot.create(:child)
+   expect(child.password_digest).to_not eq "password1"
  end
  
  it "password_confirmationとpasswordが異なる場合保存できない" do
-   expect(FactoryBot.build(:parent, password:"password1",password_confirmation: "passward1")).to_not be_valid
+   expect(FactoryBot.build(:child, password:"password1",password_confirmation: "passward1")).to_not be_valid
  end
 end
