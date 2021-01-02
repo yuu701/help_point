@@ -34,5 +34,20 @@ RSpec.describe Child, type: :model do
    it "password_confirmationとpasswordが異なる場合保存できない" do
      expect(FactoryBot.build(:child, password:"password1",password_confirmation: "passward1")).to_not be_valid
    end
+   
+   it "password_confirmationとpasswordが異なる場合保存できない" do
+     expect(FactoryBot.build(:child, password:"password1",password_confirmation: "passward1")).to be_invalid
+   end
+   
+   it "passwordが７文字以下だと登録できないか" do
+      expect(FactoryBot.build(:child, password: "a"*7)).to be_invalid
+   end
+   
+   it "パスワードの無効なフォーマットで登録できないか" do
+     strings = %w[aaaaaaaa 11111111 aaaaaa1@ 111111a¥]
+     strings.each do |string|
+      expect(FactoryBot.build(:child, password: string)).to be_invalid
+     end
+   end
  end
 end
