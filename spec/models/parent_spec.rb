@@ -80,7 +80,7 @@ RSpec.describe Parent, type: :model do
       @icon = FactoryBot.create(:icon)
       @child1 = FactoryBot.create(:child, parent_id: @parent.id, icon_id: @icon.id)
     end
-    it "has many children"
+    # it "has many children"
     describe "parentが削除されるとparentに紐づくchildが削除されること" do
        context "childが1人の場合" do
          it "childモデルが1減ること" do

@@ -19,6 +19,11 @@ RSpec.describe Child, type: :model do
      child1 = FactoryBot.create(:child, name: "taro", login_id: "aaa")
      expect(FactoryBot.build(:child, name: "ziro", login_id: child1.login_id)).to_not be_valid
    end
+   
+  # it "大文字で登録された場合小文字に変換して登録できているか" do
+  #   child = FactoryBot.create(:child, login_id: "FooExAmpLe")
+  #   expect(child.login_id).to eq "fooexample"
+  # end
  end
  
  describe "passwordについてのバリデーション チェック" do
@@ -50,4 +55,29 @@ RSpec.describe Child, type: :model do
      end
    end
  end
+ 
+ describe "association" do
+  describe "helps" do
+    before do
+      # @parent = FactoryBot.create(:parent)
+      # @icon = FactoryBot.create(:icon)
+      @child = FactoryBot.create(:child)
+      @help = FactoryBot.create(:help, child_id: @child.id)
+    end
+    describe "childが削除されるとchildに紐づくhelpが削除されること" do
+       context "helpが1つの場合" do
+         it "helpモデルが1減ること" do
+           expect{ @child.destroy }.to change{ Help.count }.by(-1)
+         end
+       end
+       context "helpが2つの場合" do
+         it "helpモデルが2減ること" do
+           help2 = FactoryBot.create(:help, child_id: @child.id)
+           expect{ @child.destroy }.to change{ Help.count }.by(-2)
+         end
+       end
+     end
+   end
+ end
+ 
 end
