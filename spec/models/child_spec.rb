@@ -78,6 +78,27 @@ RSpec.describe Child, type: :model do
        end
      end
    end
+   
+   describe "requests" do
+     before do
+       @child = FactoryBot.create(:child)
+       @request = FactoryBot.create(:request, child_id: @child.id)
+     end
+     describe "childが削除されるとchildに紐づくrequestが削除されること" do
+       context "requestが1つの場合" do
+         it "requestモデルが1減ること" do
+           expect{ @child.destroy }.to change{ Request.count }.by(-1)
+         end
+       end
+       context "requestが2つの場合" do
+         it "requestモデルが2減ること" do
+           request2 = FactoryBot.create(:request, child_id: @child.id)
+           expect{ @child.destroy }.to change{ Request.count }.by(-2)
+         end
+       end
+     end
+   end
+   
  end
  
 end
