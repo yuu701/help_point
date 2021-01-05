@@ -99,6 +99,12 @@ RSpec.describe Child, type: :model do
      end
    end
    
+   describe "applies" do
+     describe "childが削除されるとrequestsを通してapplyが削除される" do
+       
+     end
+   end
+   
  end
  
 end
