@@ -101,7 +101,11 @@ RSpec.describe Child, type: :model do
    
    describe "applies" do
      describe "childが削除されるとrequestsを通してapplyが削除される" do
-       
+       before do
+         @child = FactoryBot.create(:child)
+         @request = FactoryBot.create(:request, child_id: @child.id)
+         @apply = FactoryBot.create(:apply, request_id: @request.id)
+       end
      end
    end
    
