@@ -106,6 +106,11 @@ RSpec.describe Child, type: :model do
          @request = FactoryBot.create(:request, child_id: @child.id)
          @apply = FactoryBot.create(:apply, request_id: @request.id)
        end
+       context "applyが１つの場合" do
+         it "applyモデルが1減ること" do
+           
+         end
+       end
      end
    end
    
